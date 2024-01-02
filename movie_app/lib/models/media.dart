@@ -33,7 +33,7 @@ class Media {
     };
   }
 
-  factory Media.fromMap(Map<String, dynamic> json) {
+  factory Media.fromJson(Map<String, dynamic> json) {
     return Media(
       title: json['title'] as String,
       backdropPath: json['backdrop_path'] as String,
@@ -45,7 +45,4 @@ class Media {
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory Media.fromJson(String source) => Media.fromMap(json.decode(source) as Map<String, dynamic>);
 }

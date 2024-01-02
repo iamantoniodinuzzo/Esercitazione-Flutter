@@ -11,6 +11,9 @@ class Api {
     final response = await http.get(Uri.parse(_trendingUrl));
     if (response.statusCode == 200) {
       final decodedData = json.decode(response.body)['results'] as List;
+      return decodedData.map((media) => Media.fromJson(media)).toList();
+    } else {
+      throw Exception('Something happened');
     }
   }
 }
