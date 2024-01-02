@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/views/detail.screen.dart';
 import 'package:movie_app/views/home.screen.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MainApp extends StatelessWidget {
     const String appTitle = 'Movie App';
     return const MaterialApp(
       title: appTitle,
-      home: DetailScreen(), //  HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
