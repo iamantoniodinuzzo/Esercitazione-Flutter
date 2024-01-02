@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/api/api.dart';
+import 'package:movie_app/api/movie_api.dart';
 import 'package:movie_app/models/media.dart';
 
 import 'widgets/media_section.dart';
@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    trendingMovies = Api().getTrendingMovies();
+    trendingMovies = MovieApi().getTrendingMovies();
   }
 
   @override

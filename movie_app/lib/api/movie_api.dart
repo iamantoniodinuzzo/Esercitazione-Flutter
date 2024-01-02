@@ -1,11 +1,13 @@
-import 'package:movie_app/constants.dart';
+import 'package:movie_app/util/constants.dart';
 import 'package:movie_app/models/media.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class Api {
+class MovieApi {
   static const _trendingUrl =
       'https://api.themoviedb.org/3/trending/movie/day?api_key=${Constants.apiKey}';
+
+  static const _movieDetailsUrl = 'https://api.themoviedb.org/3/movie/{movie_id}?api_key=9ca2906942298ba2a5a9f3b813ee0491';
 
   Future<List<Media>> getTrendingMovies() async {
     final response = await http.get(Uri.parse(_trendingUrl));
@@ -13,7 +15,7 @@ class Api {
       final decodedData = json.decode(response.body)['results'] as List;
       return decodedData.map((media) => Media.fromJson(media)).toList();
     } else {
-      throw Exception('Something happened');
+      throw Exception('Something happened, error code: ${response.statusCode}');
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/constants.dart';
+import 'package:movie_app/util/constants.dart';
 
 class MediaSection extends StatelessWidget {
   const MediaSection({
