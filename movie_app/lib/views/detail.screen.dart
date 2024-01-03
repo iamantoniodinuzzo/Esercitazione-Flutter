@@ -1,14 +1,12 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/api/movie_api.dart';
 import 'package:movie_app/models/media.dart';
 import 'package:movie_app/models/media.details.dart';
 import 'package:movie_app/util/constants.dart';
-import 'package:movie_app/views/home.screen.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({super.key, required this.selectedMedia});
+  const DetailScreen({Key? key, required this.selectedMedia}) : super(key: key);
+
   final Media selectedMedia;
 
   @override
@@ -16,76 +14,91 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  late Future<MediaDetails> _selectedMediaDetails;
+  late Future<MediaDetails> _futureMovieDetails;
 
   @override
   void initState() {
     super.initState();
-    final selectedMedia = widget.selectedMedia;
-    _selectedMediaDetails = fetchData(selectedMedia.id);
-  }
-
-  Future<MediaDetails> fetchData(int mediaId) async {
-    // Simulare una chiamata asincrona
-    await Future.delayed(const Duration(seconds: 3));
-
-    // Effettuare la chiamata e restituire il risultato
-    var result = MovieApi().getMovieDetails(mediaId);
-    return result;
+    _futureMovieDetails = MovieApi().getMovieDetails(widget.selectedMedia.id);
   }
 
   @override
   Widget build(BuildContext context) {
-    final selectedMedia = widget.selectedMedia;
-
     return Scaffold(
-      body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                pinned: true,
-                leading: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+      body: FutureBuilder(
+        future: _futureMovieDetails,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                    'Error movieId(${widget.selectedMedia.id}): ${snapshot.error}'),
+              ),
+            );
+          } else if (snapshot.hasData) {
+            MediaDetails? movieDetails = snapshot.data;
+            return NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    expandedHeight: 200.0,
+                    floating: true,
+                    pinned: true,
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: Text(widget.selectedMedia.title),
+                      background: Image.network(
+                        '${Constants.imagePath}${movieDetails?.backdropPath ?? ""}',
+                        fit: BoxFit.cover,
                       ),
-                    );
-                  },
-                  child: const Icon(Icons.arrow_back),
-                ),
-                floating: true,
-                expandedHeight: 300.0,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text(selectedMedia.title),
-                  background: Image.network(
-                    filterQuality: FilterQuality.high,
-                    fit: BoxFit.cover,
-                    '${Constants.imagePath}${selectedMedia.backdropPath}',
+                    ),
+                  ),
+                ];
+              },
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 16.0),
+                      Text(
+                        'Overview',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      Text(movieDetails?.overview ?? ''),
+                      const SizedBox(height: 16.0),
+                      Text(
+                        'Genres',
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      Wrap(
+                        spacing: 8.0,
+                        children: (movieDetails?.genres ?? [])
+                            .map((genre) => Chip(label: Text(genre.name)))
+                            .toList(),
+                      ),
+                      const SizedBox(height: 16.0),
+                      Text(
+                        'Release Date: ${movieDetails?.releaseDate.toLocal()}',
+                      ),
+                      Text('Tagline: ${movieDetails?.tagline}'),
+                      Text('Original Title: ${movieDetails?.originalTitle}'),
+                      Text('Language: ${movieDetails?.originalLanguage}'),
+                      Text('Budget: ${movieDetails?.budget}'),
+                    ],
                   ),
                 ),
               ),
-            ];
-          },
-          body: FutureBuilder(
-            future: _selectedMediaDetails,
-            builder: (context, snapshot) {
-              print('Mostrare i dettagli di ${selectedMedia.id}');
-              if (snapshot.hasData) {
-                return Center(
-                  child: Text(
-                      'Mostrare i dettagli del film con id (${selectedMedia.id})'),
-                );
-              } else if (snapshot.hasError) {
-                return const Text('Something went wrong');
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          )),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }

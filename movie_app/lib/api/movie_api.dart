@@ -8,8 +8,7 @@ class MovieApi {
   static const _trendingUrl =
       'https://api.themoviedb.org/3/trending/movie/day?api_key=${Constants.apiKey}';
 
-  static const _movieDetailsUrl =
-      'https://api.themoviedb.org/3/movie/{movie_id}?api_key=${Constants.apiKey}';
+  static const _movieDetailsUrl = 'https://api.themoviedb.org/3/movie/';
 
   Future<List<Media>> getTrendingMovies() async {
     final response = await http.get(Uri.parse(_trendingUrl));
@@ -23,9 +22,7 @@ class MovieApi {
 
   Future<MediaDetails> getMovieDetails(int movieId) async {
     final response = await http.get(
-      Uri.parse(_movieDetailsUrl).replace(
-        queryParameters: {'movie_id': movieId},
-      ),
+      Uri.parse('$_movieDetailsUrl$movieId?api_key=${Constants.apiKey}'),
     );
     if (response.statusCode == 200) {
       final decodedData = mediaDetailsFromJson(response.body);
