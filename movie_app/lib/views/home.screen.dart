@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               scrollDirection: Axis.vertical,
               itemCount: movies.length,
               itemBuilder: (context, index) {
-                return GestureDetector(
+                return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
@@ -47,35 +47,38 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
-                  child: Card(
-                    margin: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        // Left side: Movie Poster
-                        Image.network(
-                          '${Constants.imagePath}${movies[index].posterPath}',
-                          width: 100.0,
-                          height: 150.0,
-                          fit: BoxFit.cover,
-                        ),
-                        // Right side: Movie Details
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  movies[index].title,
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                                Text(
-                                    'Vote Average: ${movies[index].voteAverage}'),
-                              ],
+                  child: Material(
+                    child: Card(
+                      margin: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          // Left side: Movie Poster
+                          Image.network(
+                            '${Constants.imagePath}${movies[index].posterPath}',
+                            width: 100.0,
+                            height: 150.0,
+                            fit: BoxFit.cover,
+                          ),
+                          // Right side: Movie Details
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    movies[index].title,
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                  Text(
+                                      'Vote Average: ${movies[index].voteAverage}'),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );

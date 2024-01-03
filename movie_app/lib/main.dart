@@ -12,6 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     const String appTitle = 'Movie App';
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appTitle,
       home: HomeScreen(),
     );
