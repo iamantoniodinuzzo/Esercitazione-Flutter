@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-MediaDetails mediaDetailsFromJson(String str) => MediaDetails.fromJson(json.decode(str));
+MovieDetails mediaDetailsFromJson(String str) => MovieDetails.fromJson(json.decode(str));
 
-String mediaDetailsToJson(MediaDetails data) => json.encode(data.toJson());
+String mediaDetailsToJson(MovieDetails data) => json.encode(data.toJson());
 
-class MediaDetails {
+class MovieDetails {
     bool adult;
     String backdropPath;
     dynamic belongsToCollection;
@@ -31,7 +31,7 @@ class MediaDetails {
     double voteAverage;
     int voteCount;
 
-    MediaDetails({
+    MovieDetails({
         required this.adult,
         required this.backdropPath,
         required this.belongsToCollection,
@@ -59,7 +59,7 @@ class MediaDetails {
         required this.voteCount,
     });
 
-    factory MediaDetails.fromJson(Map<String, dynamic> json) => MediaDetails(
+    factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
         adult: json["adult"],
         backdropPath: json["backdrop_path"],
         belongsToCollection: json["belongs_to_collection"],
