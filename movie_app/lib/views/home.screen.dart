@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
+import 'package:movie_app/res/components/media_poster.dart';
 import 'package:movie_app/util/constants.dart';
 import 'package:movie_app/util/time_widow.dart';
 import 'package:movie_app/views/detail.screen.dart';
@@ -58,12 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Row(
                         children: [
                           // Left side: Movie Poster
-                          Image.network(
-                            '${Constants.imagePathW500}${movies[index].posterPath}',
-                            width: 100.0,
-                            height: 150.0,
-                            fit: BoxFit.cover,
-                          ),
+                          MediaPoster(movie: movies[index]),
                           // Right side: Movie Details
                           Expanded(
                             child: Padding(

@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:movie_app/util/constants.dart';
 import 'package:movie_app/util/media_type.dart';
 
 class Movie {
@@ -25,7 +26,8 @@ class Movie {
     required this.releaseDate,
     required this.voteAverage,
   }) : mediaType = MediaType.movie;
+
+  String get completePosterPathW500 {
+    return '${Constants.imagePathW500}$posterPath';
+  }
 }
-
-
-
