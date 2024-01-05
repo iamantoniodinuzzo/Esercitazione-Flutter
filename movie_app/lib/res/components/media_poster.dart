@@ -21,8 +21,10 @@ class MediaPoster extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5.0),
                 child: CachedNetworkImage(
                   imageUrl: movie.completePosterPathW500,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
+                  progressIndicatorBuilder: (context, url, progress) =>
+                      CircularProgressIndicator(
+                    value: progress.progress,
+                  ),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),

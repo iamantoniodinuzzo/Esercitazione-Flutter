@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
+import 'package:movie_app/res/components/media_poster.dart';
 import 'package:movie_app/util/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -21,39 +23,45 @@ class _DetailScreenState extends State<DetailScreen> {
         Provider.of<MovieRepository>(context, listen: false);
 
     return Scaffold(
-      body: FutureBuilder<MovieDetails>(
-        future: movieRepository.getMovieDetails(widget.selectedMedia.id),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  'Error movieId(${widget.selectedMedia.id}): ${snapshot.error}',
-                ),
-              ),
-            );
-          } else if (snapshot.hasData) {
-            MovieDetails? movieDetails = snapshot.data;
-            return NestedScrollView(
-              headerSliverBuilder:
-                  (BuildContext context, bool innerBoxIsScrolled) {
-                return [
-                  SliverAppBar(
-                    expandedHeight: 200.0,
-                    floating: true,
-                    pinned: true,
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: Text(widget.selectedMedia.title),
-                      background: Image.network(
-                        '${Constants.imagePathW500}${movieDetails?.backdropPath ?? ""}',
-                        fit: BoxFit.cover,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 200.0,
+              floating: true,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(widget.selectedMedia.title),
+                background: Hero(
+                  tag: widget.selectedMedia.id,
+                  child: CachedNetworkImage(
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
+                    imageUrl: widget.selectedMedia.completePosterPathW500,
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        CircularProgressIndicator(
+                      value: progress.progress,
+                    ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
-                ];
-              },
-              body: SingleChildScrollView(
+                ),
+              ),
+            ),
+          ];
+        },
+        body: FutureBuilder<MovieDetails>(
+          future: movieRepository.getMovieDetails(widget.selectedMedia.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              MovieDetails? movieDetails = snapshot.data;
+              return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -87,14 +95,23 @@ class _DetailScreenState extends State<DetailScreen> {
                     ],
                   ),
                 ),
-              ),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    'Error movieId(${widget.selectedMedia.id}): ${snapshot.error}',
+                  ),
+                ),
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }

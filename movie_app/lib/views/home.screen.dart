@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/res/components/media_poster.dart';
@@ -59,7 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Row(
                         children: [
                           // Left side: Movie Poster
-                          MediaPoster(movie: movies[index]),
+                          Hero(
+                              tag: movies[index].id,
+                              child: MediaPoster(movie: movies[index])),
                           // Right side: Movie Details
                           Expanded(
                             child: Padding(
