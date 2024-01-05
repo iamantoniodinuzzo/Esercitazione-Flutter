@@ -10,7 +10,10 @@ MovieDetailsDto _$MovieDetailsDtoFromJson(Map<String, dynamic> json) =>
     MovieDetailsDto(
       adult: json['adult'] as bool,
       backdropPath: json['backdrop_path'] as String,
-      belongsToCollection: json['belongs_to_collection'],
+      belongsToCollection: json['belongs_to_collection'] == null
+          ? null
+          : CollectionDto.fromJson(
+              json['belongs_to_collection'] as Map<String, dynamic>),
       budget: json['budget'] as int,
       genres: (json['genres'] as List<dynamic>)
           .map((e) => GenreDto.fromJson(e as Map<String, dynamic>))

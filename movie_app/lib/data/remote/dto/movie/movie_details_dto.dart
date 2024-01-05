@@ -1,6 +1,7 @@
 // ignore_for_file: overridden_fields
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:movie_app/data/remote/dto/collection/collection_dto.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_dto.dart';
 import 'package:movie_app/util/media_type.dart';
 
@@ -19,7 +20,7 @@ class MovieDetailsDto extends MovieDto {
   @JsonKey(name: "backdrop_path")
   final String backdropPath;
   @JsonKey(name: "belongs_to_collection")
-  final dynamic belongsToCollection;
+  final CollectionDto? belongsToCollection;
   final int budget;
   final List<GenreDto> genres;
   final String homepage;

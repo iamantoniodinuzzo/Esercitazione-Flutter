@@ -1,3 +1,5 @@
+import 'package:movie_app/domain/model/collection/collection.dart';
+
 import '../genre/genre.dart';
 import '../production_company/production_company.dart';
 import '../production_country/production_country.dart';
@@ -6,7 +8,7 @@ import '../spoken_language/spoken_language.dart';
 class MovieDetails {
   final bool adult;
   final String backdropPath;
-  final dynamic belongsToCollection;
+  final Collection? belongsToCollection;
   final int budget;
   final List<Genre> genres;
   final String homepage;

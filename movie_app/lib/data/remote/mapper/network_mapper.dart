@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:logger/logger.dart';
+import 'package:movie_app/data/remote/dto/collection/collection_dto.dart';
 import 'package:movie_app/data/remote/dto/genre/genre_dto.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_dto.dart';
@@ -7,6 +8,7 @@ import 'package:movie_app/data/remote/dto/production_company/production_company_
 import 'package:movie_app/data/remote/dto/production_country/production_country_dto.dart';
 import 'package:movie_app/data/remote/dto/spoken_language/spoken_language_dto.dart';
 import 'package:movie_app/domain/exception/mapper_exception.dart';
+import 'package:movie_app/domain/model/collection/collection.dart';
 import 'package:movie_app/domain/model/genre/genre.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
@@ -58,7 +60,7 @@ class NetworkMapper {
       (dto) => MovieDetails(
         adult: dto.adult,
         backdropPath: dto.backdropPath,
-        belongsToCollection: dto.belongsToCollection,
+        belongsToCollection: toCollection(dto.belongsToCollection),
         budget: dto.budget,
         genres: toGenreList(dto.genres),
         homepage: dto.homepage,
@@ -86,6 +88,20 @@ class NetworkMapper {
       ),
       'MovieDetailsDto',
     );
+  }
+
+  Collection? toCollection(CollectionDto? collectionDto) {
+    if (collectionDto != null) {
+      return _safeMap<Collection, CollectionDto>(
+          collectionDto,
+          (dto) => Collection(
+                id: dto.id,
+                name: dto.name,
+                backdropPath: dto.backdropPath,
+              ),
+          'CollectionDto');
+    }
+    return null;
   }
 
   Genre toGenre(GenreDto genreDto) {

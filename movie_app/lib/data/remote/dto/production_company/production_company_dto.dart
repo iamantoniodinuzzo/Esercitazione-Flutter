@@ -6,7 +6,7 @@ part 'production_company_dto.g.dart';
 class ProductionCompanyDto {
   final int id;
   @JsonKey(name: "logo_path")
-  final String logoPath;
+  final String? logoPath;
   final String name;
   @JsonKey(name: "origin_country")
   final String originCountry;
