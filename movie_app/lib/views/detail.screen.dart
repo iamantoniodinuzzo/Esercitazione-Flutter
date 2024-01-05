@@ -1,43 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/api/movie_api.dart';
-import 'package:movie_app/domain/model/movie.dart';
-import 'package:movie_app/domain/model/movie_details.dart';
+import 'package:movie_app/data/remote/repository/movie_repository.dart';
+import 'package:movie_app/domain/model/movie/movie.dart';
+import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/util/constants.dart';
+import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
-  const DetailScreen({Key? key, required this.selectedMedia}) : super(key: key);
+  const DetailScreen({super.key, required this.selectedMedia});
 
-  final Media selectedMedia;
+  final Movie selectedMedia;
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  late Future<MediaDetails> _futureMovieDetails;
-
-  @override
-  void initState() {
-    super.initState();
-    _futureMovieDetails = MovieApi().getMovieDetails(widget.selectedMedia.id);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final movieRepository =
+        Provider.of<MovieRepository>(context, listen: false);
+
     return Scaffold(
-      body: FutureBuilder(
-        future: _futureMovieDetails,
+      body: FutureBuilder<MovieDetails>(
+        future: movieRepository.getMovieDetails(widget.selectedMedia.id),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                    'Error movieId(${widget.selectedMedia.id}): ${snapshot.error}'),
+                  'Error movieId(${widget.selectedMedia.id}): ${snapshot.error}',
+                ),
               ),
             );
           } else if (snapshot.hasData) {
-            MediaDetails? movieDetails = snapshot.data;
+            MovieDetails? movieDetails = snapshot.data;
             return NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
@@ -49,7 +46,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     flexibleSpace: FlexibleSpaceBar(
                       title: Text(widget.selectedMedia.title),
                       background: Image.network(
-                        '${Constants.imagePath}${movieDetails?.backdropPath ?? ""}',
+                        '${Constants.imagePathW500}${movieDetails?.backdropPath ?? ""}',
                         fit: BoxFit.cover,
                       ),
                     ),

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import '../dto/movie_dto.dart';
+import '../dto/movie/movie_dto.dart';
 
 part 'trending_movies_response.g.dart';
 

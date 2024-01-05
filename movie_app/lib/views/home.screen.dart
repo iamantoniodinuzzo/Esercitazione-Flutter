@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/api/movie_api.dart';
-import 'package:movie_app/domain/model/movie.dart';
+import 'package:movie_app/data/remote/repository/movie_repository.dart';
+import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/util/constants.dart';
+import 'package:movie_app/util/time_widow.dart';
 import 'package:movie_app/views/detail.screen.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -16,12 +18,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final moviesRepository =
+        Provider.of<MovieRepository>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Trending Movies'),
       ),
-      body: FutureBuilder(
-        future: MovieApi().getTrendingMovies(),
+      body: FutureBuilder<List<Movie>>(
+        future: moviesRepository.getTrendingMovies(TimeWidow.week),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -31,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(
               child: Text('Error: ${snapshot.error}'),
             );
-          } else if (snapshot.data != null) {
-            List<Media> movies = snapshot.data!;
+          } else if (snapshot.hasData) {
+            List<Movie> movies = snapshot.data!;
             return ListView.builder(
               scrollDirection: Axis.vertical,
               itemCount: movies.length,
@@ -54,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           // Left side: Movie Poster
                           Image.network(
-                            '${Constants.imagePath}${movies[index].posterPath}',
+                            '${Constants.imagePathW500}${movies[index].posterPath}',
                             width: 100.0,
                             height: 150.0,
                             fit: BoxFit.cover,

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:movie_app/util/constants.dart';
 
 class TmdbClient {
-  static const String _baseUrl = Constants.baseUrl;
+   static const String _baseUrl = Constants.baseUrl;
   static const String _apiKey =
       Constants.apiKey; 
 

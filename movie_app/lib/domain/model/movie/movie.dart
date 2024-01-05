@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:movie_app/util/media_type.dart';
+
 class Movie {
   final bool adult;
   final String backdropPath;
@@ -22,31 +24,8 @@ class Movie {
     required this.popularity,
     required this.releaseDate,
     required this.voteAverage,
-  }) : mediaType = MediaType.MOVIE;
+  }) : mediaType = MediaType.movie;
 }
 
-enum MediaType {
-  MOVIE;
-}
 
-final mediaTypeValues = EnumValues({"movie": MediaType.MOVIE});
 
-enum OriginalLanguage {
-  EN,
-  JA;
-}
-
-final originalLanguageValues =
-    EnumValues({"en": OriginalLanguage.EN, "ja": OriginalLanguage.JA});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  late Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap = map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
-}
