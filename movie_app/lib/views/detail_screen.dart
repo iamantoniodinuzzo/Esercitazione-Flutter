@@ -18,7 +18,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  var top = 0.0;
+  var appBarHeight = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,11 @@ class _DetailScreenState extends State<DetailScreen> {
               pinned: true,
               snap: false,
               flexibleSpace: LayoutBuilder(builder: (context, constraints) {
-                top = constraints.biggest.height;
+                appBarHeight = constraints.biggest.height;
                 return FlexibleSpaceBar(
                   //* Titolo visibile solo se app bar collassata
                   title: _CollapsedTitle(
-                    top: top,
+                    appBarHeight: appBarHeight,
                     title: widget.selectedMedia.title,
                   ),
                   collapseMode: CollapseMode.parallax,
@@ -85,12 +85,13 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            // Poster
+                            // * Poster
                             Hero(
                               tag: widget.selectedMedia.id,
                               child: MediaPoster(movie: widget.selectedMedia),
                             ),
                             const SizedBox(width: 16.0),
+                            //* Titolo
                             Expanded(
                               child: Text(
                                 maxLines: 3,
@@ -179,20 +180,21 @@ class _DetailScreenState extends State<DetailScreen> {
 
 class _CollapsedTitle extends StatelessWidget {
   const _CollapsedTitle({
-    required this.top,
+    required this.appBarHeight,
     required this.title,
   });
 
-  final double top;
+  final double appBarHeight;
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 300),
-      opacity: top == MediaQuery.of(context).padding.top + kToolbarHeight
-          ? 1.0
-          : 0.0,
+      opacity:
+          appBarHeight == MediaQuery.of(context).padding.top + kToolbarHeight
+              ? 1.0
+              : 0.0,
       child: Text(
         title,
         style: const TextStyle(
