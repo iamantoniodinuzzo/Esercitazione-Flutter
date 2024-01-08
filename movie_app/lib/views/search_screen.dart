@@ -58,7 +58,7 @@ class SearchScreen extends SearchDelegate {
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.grey,
-                  ),
+                   ),
                 ),
               );
             } else {
