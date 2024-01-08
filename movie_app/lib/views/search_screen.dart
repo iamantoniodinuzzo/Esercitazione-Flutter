@@ -30,6 +30,15 @@ class SearchScreen extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    return _searchMovie(context);
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    return _searchMovie(context);
+  }
+
+  FutureBuilder<List<Movie>> _searchMovie(BuildContext context) {
     final moviesRepository =
         Provider.of<MovieRepository>(context, listen: false);
 
@@ -42,9 +51,21 @@ class SearchScreen extends SearchDelegate {
             );
           } else if (snapshot.hasData) {
             List<Movie> medias = snapshot.data!;
-            return MediaTileList(
-              movies: medias,
-            );
+            if (medias.isEmpty) {
+              return const Center(
+                child: Text(
+                  'Seems empty here, search some movies',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
+                ),
+              );
+            } else {
+              return MediaTileList(
+                movies: medias,
+              );
+            }
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -62,16 +83,5 @@ class SearchScreen extends SearchDelegate {
             );
           }
         });
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Search movies',
-        style: TextStyle(
-            fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 18),
-      ),
-    );
   }
 }
