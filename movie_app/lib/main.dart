@@ -5,9 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
+import 'package:movie_app/core/network/dio_client.dart';
 import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
-import 'package:movie_app/data/remote/service/client/tmdb_client.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/util/config/config.dart';
 import 'package:movie_app/views/home_screen.dart';
@@ -32,14 +32,11 @@ Future<InitialData> _createData() async {
   final config = await _loadConfig(log);
 
   //Data
-  final tmdbClient = TmdbClient(
-    apiKey: config.apiKey,
-    logger: log,
-  );
+  final dioClient = DioClient(apiKey: config.apiKey);
 
   final networkMapper = NetworkMapper(log: log);
   final movieService = MovieService(
-    apiClient: tmdbClient,
+    apiClient: dioClient,
     log,
   );
 
