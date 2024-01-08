@@ -8,7 +8,6 @@ import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/response/base_media_response.dart';
 
 class MovieService {
-  //final TmdbClient apiClient;
   final DioClient apiClient;
   final Logger log;
 

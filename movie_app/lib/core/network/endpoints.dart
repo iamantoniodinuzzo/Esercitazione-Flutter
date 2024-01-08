@@ -1,4 +1,11 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+/// A utility class for getting paths for API endpoints.
+/// This class has no constructor and all methods are `static`.
+@immutable
 class Endpoints {
+  const Endpoints._();
+
   static const String baseUrl = 'https://api.themoviedb.org/3';
   static const String imagePathW500 = 'https://image.tmdb.org/t/p/w500';
   static const String imagePathOriginal = 'https://image.tmdb.org/t/p/original';
