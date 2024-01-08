@@ -3,7 +3,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:movie_app/data/remote/dto/collection/collection_dto.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_dto.dart';
-import 'package:movie_app/util/media_type.dart';
 
 import '../genre/genre_dto.dart';
 import '../production_company/production_company_dto.dart';

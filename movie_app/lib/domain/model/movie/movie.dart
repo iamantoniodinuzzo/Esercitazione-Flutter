@@ -36,4 +36,16 @@ class Movie {
         ? '${Constants.imagePathW500}$backdropPath'
         : '';
   }
+
+  String get completePosterPathOriginal {
+    return posterPath != null
+        ? '${Constants.imagePathOriginal}$posterPath'
+        : '';
+  }
+
+  String get completeBackdropPathOriginal {
+    return posterPath != null
+        ? '${Constants.imagePathOriginal}$backdropPath'
+        : '';
+  }
 }
