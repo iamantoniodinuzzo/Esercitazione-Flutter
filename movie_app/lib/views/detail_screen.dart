@@ -18,6 +18,8 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  var top = 0.0;
+
   @override
   Widget build(BuildContext context) {
     final movieRepository =
@@ -32,74 +34,82 @@ class _DetailScreenState extends State<DetailScreen> {
               floating: false,
               pinned: true,
               snap: false,
-              flexibleSpace: FlexibleSpaceBar(
-                collapseMode: CollapseMode.parallax,
-                background: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    // * Immagine di sfondo
-                    CachedNetworkImage(
-                      imageBuilder: (context, imageProvider) => Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: imageProvider,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Container(
+              flexibleSpace: LayoutBuilder(builder: (context, constraints) {
+                top = constraints.biggest.height;
+                return FlexibleSpaceBar(
+                  //* Titolo visibile solo se app bar collassata
+                  title: _CollapsedTitle(
+                    top: top,
+                    title: widget.selectedMedia.title,
+                  ),
+                  collapseMode: CollapseMode.parallax,
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      // * Immagine di sfondo
+                      CachedNetworkImage(
+                        imageBuilder: (context, imageProvider) => Container(
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.black.withOpacity(0.5),
-                                Colors.transparent,
-                              ],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                      ),
-                      imageUrl:
-                          widget.selectedMedia.completeBackdropPathOriginal,
-                      progressIndicatorBuilder: (context, url, progress) =>
-                          Center(
-                        child: CircularProgressIndicator(
-                          value: progress.progress,
-                        ),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.image_not_supported),
-                    ),
-                    // * Contenuto sovrapposto
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          // Poster
-                          Hero(
-                            tag: widget.selectedMedia.id,
-                            child: MediaPoster(movie: widget.selectedMedia),
-                          ),
-                          const SizedBox(width: 16.0),
-                          Expanded(
-                            child: Text(
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              widget.selectedMedia.title,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 30.0,
-                                fontWeight: FontWeight.bold,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.black.withOpacity(0.5),
+                                  Colors.transparent,
+                                ],
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
                               ),
                             ),
                           ),
-                        ],
+                        ),
+                        imageUrl:
+                            widget.selectedMedia.completeBackdropPathOriginal,
+                        progressIndicatorBuilder: (context, url, progress) =>
+                            Center(
+                          child: CircularProgressIndicator(
+                            value: progress.progress,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.image_not_supported),
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                      // * Contenuto sovrapposto
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            // Poster
+                            Hero(
+                              tag: widget.selectedMedia.id,
+                              child: MediaPoster(movie: widget.selectedMedia),
+                            ),
+                            const SizedBox(width: 16.0),
+                            Expanded(
+                              child: Text(
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                widget.selectedMedia.title,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }),
             ),
           ];
         },
@@ -115,7 +125,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Overview',
+                        movieDetails?.tagline ?? '',
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Text(movieDetails?.overview ?? ''),
@@ -161,6 +171,33 @@ class _DetailScreenState extends State<DetailScreen> {
               );
             }
           },
+        ),
+      ),
+    );
+  }
+}
+
+class _CollapsedTitle extends StatelessWidget {
+  const _CollapsedTitle({
+    required this.top,
+    required this.title,
+  });
+
+  final double top;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedOpacity(
+      duration: const Duration(milliseconds: 300),
+      opacity: top == MediaQuery.of(context).padding.top + kToolbarHeight
+          ? 1.0
+          : 0.0,
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18.0,
+          color: Colors.black,
         ),
       ),
     );
