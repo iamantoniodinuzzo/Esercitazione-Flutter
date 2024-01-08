@@ -6,7 +6,7 @@ part 'movie_dto.g.dart';
 class MovieDto {
   final bool adult;
   @JsonKey(name: "backdrop_path")
-  final String backdropPath;
+  final String? backdropPath;
   final int id;
   final String title;
   @JsonKey(name: "original_language")
@@ -15,14 +15,12 @@ class MovieDto {
   final String originalTitle;
   final String overview;
   @JsonKey(name: "poster_path")
-  final String posterPath;
-  @JsonKey(name: "media_type")
-  final String mediaType;
+  final String? posterPath;
   @JsonKey(name: "genre_ids")
   final List<int> genreIds;
   final double popularity;
   @JsonKey(name: "release_date")
-  final DateTime releaseDate;
+  final String releaseDate;
   final bool video;
   @JsonKey(name: "vote_average")
   final double voteAverage;
@@ -38,7 +36,6 @@ class MovieDto {
     required this.originalTitle,
     required this.overview,
     required this.posterPath,
-    required this.mediaType,
     required this.genreIds,
     required this.popularity,
     required this.releaseDate,

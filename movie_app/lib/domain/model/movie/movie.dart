@@ -5,14 +5,14 @@ import 'package:movie_app/util/media_type.dart';
 
 class Movie {
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final int id;
   final String title;
-  final String posterPath;
+  final String? posterPath;
   final MediaType mediaType;
   final List<int> genreIds;
   final double popularity;
-  final DateTime releaseDate;
+  final String releaseDate;
   final double voteAverage;
 
   Movie({
@@ -28,6 +28,12 @@ class Movie {
   }) : mediaType = MediaType.movie;
 
   String get completePosterPathW500 {
-    return '${Constants.imagePathW500}$posterPath';
+    return posterPath != null ? '${Constants.imagePathW500}$posterPath' : '';
+  }
+
+  String get completeBackdropPathW500 {
+    return backdropPath != null
+        ? '${Constants.imagePathW500}$backdropPath'
+        : '';
   }
 }

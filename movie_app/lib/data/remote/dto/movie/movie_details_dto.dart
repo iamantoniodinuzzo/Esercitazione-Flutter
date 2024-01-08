@@ -47,7 +47,7 @@ class MovieDetailsDto extends MovieDto {
   final List<ProductionCountryDto> productionCountries;
   @override
   @JsonKey(name: "release_date")
-  final DateTime releaseDate;
+  final String releaseDate;
   final int revenue;
   final int runtime;
   @JsonKey(name: "spoken_languages")
@@ -106,7 +106,6 @@ class MovieDetailsDto extends MovieDto {
           video: video,
           voteAverage: voteAverage,
           voteCount: voteCount,
-          mediaType: MediaType.movie.name,
         );
 
   factory MovieDetailsDto.fromJson(Map<String, dynamic> json) =>

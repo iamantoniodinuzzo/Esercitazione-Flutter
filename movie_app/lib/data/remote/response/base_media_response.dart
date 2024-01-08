@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 import '../dto/movie/movie_dto.dart';
 
-part 'trending_movies_response.g.dart';
+part 'base_media_response.g.dart';
 
 @JsonSerializable()
-class TrendingMoviesResponse {
+class BaseMediaResponse {
   final int page;
   final List<MovieDto> results;
   @JsonKey(name: "total_pages")
@@ -12,16 +12,16 @@ class TrendingMoviesResponse {
   @JsonKey(name: "total_results")
   final int totalResults;
 
-  TrendingMoviesResponse({
+  BaseMediaResponse({
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  factory TrendingMoviesResponse.fromJson(Map<String, dynamic> json) =>
-      _$TrendingMoviesResponseFromJson(json);
+  factory BaseMediaResponse.fromJson(Map<String, dynamic> json) =>
+      _$BaseMediaResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$TrendingMoviesResponseToJson(this);
+  Map<String, dynamic> toJson() => _$BaseMediaResponseToJson(this);
 }
 

@@ -26,4 +26,10 @@ class MovieRepository {
     final mappedResult = networkMapper.toMovieDetails(movieDetails);
     return mappedResult;
   }
+
+  Future<List<Movie>> searchMovie(String query) async {
+    final baseResponse = await movieService.searchMovie(query);
+    final mappedResult = networkMapper.toMovies(baseResponse.results);
+    return mappedResult;
+  }
 }

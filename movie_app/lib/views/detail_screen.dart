@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
-import 'package:movie_app/res/components/media_poster.dart';
-import 'package:movie_app/util/constants.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -86,7 +84,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       const SizedBox(height: 16.0),
                       Text(
-                        'Release Date: ${movieDetails?.releaseDate.toLocal()}',
+                        'Release Date: ${movieDetails?.releaseDate}',
                       ),
                       Text('Tagline: ${movieDetails?.tagline}'),
                       Text('Original Title: ${movieDetails?.originalTitle}'),

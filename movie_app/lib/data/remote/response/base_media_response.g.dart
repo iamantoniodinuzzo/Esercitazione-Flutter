@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trending_movies_response.dart';
+part of 'base_media_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TrendingMoviesResponse _$TrendingMoviesResponseFromJson(
-        Map<String, dynamic> json) =>
-    TrendingMoviesResponse(
+BaseMediaResponse _$BaseMediaResponseFromJson(Map<String, dynamic> json) =>
+    BaseMediaResponse(
       page: json['page'] as int,
       results: (json['results'] as List<dynamic>)
           .map((e) => MovieDto.fromJson(e as Map<String, dynamic>))
@@ -17,8 +16,7 @@ TrendingMoviesResponse _$TrendingMoviesResponseFromJson(
       totalResults: json['total_results'] as int,
     );
 
-Map<String, dynamic> _$TrendingMoviesResponseToJson(
-        TrendingMoviesResponse instance) =>
+Map<String, dynamic> _$BaseMediaResponseToJson(BaseMediaResponse instance) =>
     <String, dynamic>{
       'page': instance.page,
       'results': instance.results,

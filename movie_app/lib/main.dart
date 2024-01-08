@@ -10,7 +10,7 @@ import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/data/remote/service/client/tmdb_client.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/util/config/config.dart';
-import 'package:movie_app/views/home.screen.dart';
+import 'package:movie_app/views/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
