@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/res/components/media_poster.dart';
@@ -32,6 +33,12 @@ class _DetailScreenState extends State<DetailScreen> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              leading: GestureDetector(
+                child: const Icon(Icons.arrow_back),
+                onTap: () {
+                  context.pop();
+                },
+              ),
               expandedHeight: 300.0,
               floating: false,
               pinned: true,

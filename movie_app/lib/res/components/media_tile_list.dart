@@ -20,7 +20,7 @@ class MediaTileList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            context.goNamed(
+            context.pushNamed(
               AppRoutes.details.name,
               extra: movies[index],
             );

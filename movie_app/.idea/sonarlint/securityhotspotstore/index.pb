@@ -13,3 +13,5 @@ W
 'lib/res/components/media_tile_list.dart,e\0\e059373c2d5acc22f4eec997b897043d44080436
 T
 $lib/views/details/detail_screen.dart,b\4\b438b2aacec2a0e293b94af0e56edc2bdd73d509
+T
+$lib/res/components/media_poster.dart,5\e\5ef24754b4667d31257559d486eea8b66db193ed
