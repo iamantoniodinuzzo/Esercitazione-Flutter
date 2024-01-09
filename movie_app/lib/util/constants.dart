@@ -1,4 +1,8 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+@immutable
 class Constants {
-  static const apiKey = '9ca2906942298ba2a5a9f3b813ee0491';
-  static const imagePath = 'https://image.tmdb.org/t/p/w500';
+  const Constants._();
+  static const connectTimeout = 5000;
+  static const receiveTimeout = 5000;
 }
