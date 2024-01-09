@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/res/components/media_poster.dart';
-import 'package:movie_app/views/detail_screen.dart';
+import 'package:movie_app/views/details/detail_screen.dart';
 
 
 class MediaTileList extends StatelessWidget {
