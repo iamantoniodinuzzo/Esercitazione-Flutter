@@ -3,7 +3,7 @@ import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
-import 'package:movie_app/util/time_widow.dart';
+import 'package:movie_app/util/time_window.dart';
 
 class MovieRepository {
   final MovieService movieService;
@@ -14,7 +14,7 @@ class MovieRepository {
     required this.networkMapper,
   });
 
-  Future<List<Movie>> getTrendingMovies(TimeWidow timeWindow) async {
+  Future<List<Movie>> getTrendingMovies(TimeWindow timeWindow) async {
     final trendingMovies =
         await movieService.getTrendingMovies(timeWindow.name);
     final mappedResult = networkMapper.toMovies(trendingMovies.results);

@@ -10,12 +10,16 @@ import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/util/config/config.dart';
-import 'package:movie_app/views/home_screen.dart';
+import 'package:movie_app/views/details/detail_view_model.dart';
+import 'package:movie_app/views/home/home_screen.dart';
+import 'package:movie_app/views/home/home_view_model.dart';
+import 'package:movie_app/views/search/search_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 class InitialData {
   final List<SingleChildWidget> providers;
+
   InitialData({
     required this.providers,
   });
@@ -44,11 +48,29 @@ Future<InitialData> _createData() async {
     movieService: movieService,
     networkMapper: networkMapper,
   );
+
+  //ViewModel's
+  final homeViewModel = HomeViewModel(
+    log: log,
+    movieRepository: movieRepository,
+  );
+  final detailViewModel = DetailViewModel(
+    movieRepository: movieRepository,
+    log: log,
+  );
+  final searchViewModel = SearchViewModel(
+    movieRepository: movieRepository,
+    log: log,
+  );
+
 //Create and return list of providers
   return InitialData(
     providers: [
       Provider<Logger>.value(value: log),
-      Provider<MovieRepository>.value(value: movieRepository)
+      Provider<MovieRepository>.value(value: movieRepository),
+      ChangeNotifierProvider<HomeViewModel>.value(value: homeViewModel),
+      ChangeNotifierProvider<DetailViewModel>.value(value: detailViewModel),
+      ChangeNotifierProvider<SearchViewModel>.value(value: searchViewModel),
     ],
   );
 }
@@ -74,8 +96,8 @@ Future<Config> _loadConfig(Logger log) async {
   } catch (e) {
     log.e(
       'Error while loading project configuration, please make sure'
-      'that the file located at /assets/config/config.json'
-      'exists and that it contains the correct configuration.',
+          'that the file located at /assets/config/config.json'
+          'exists and that it contains the correct configuration.',
       error: e,
     );
     rethrow;
@@ -84,6 +106,7 @@ Future<Config> _loadConfig(Logger log) async {
 
 class MainApp extends StatelessWidget {
   final InitialData data;
+
   const MainApp({super.key, required this.data});
 
   @override
