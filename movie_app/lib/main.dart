@@ -11,8 +11,8 @@ import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/util/config/config.dart';
 import 'package:movie_app/views/details/detail_view_model.dart';
-import 'package:movie_app/views/home/home_screen.dart';
 import 'package:movie_app/views/home/home_view_model.dart';
+import 'package:movie_app/views/routes/go_router_config.dart';
 import 'package:movie_app/views/search/search_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -96,8 +96,8 @@ Future<Config> _loadConfig(Logger log) async {
   } catch (e) {
     log.e(
       'Error while loading project configuration, please make sure'
-          'that the file located at /assets/config/config.json'
-          'exists and that it contains the correct configuration.',
+      'that the file located at /assets/config/config.json'
+      'exists and that it contains the correct configuration.',
       error: e,
     );
     rethrow;
@@ -114,10 +114,10 @@ class MainApp extends StatelessWidget {
     const String appTitle = 'Movie App';
     return MultiProvider(
       providers: data.providers,
-      child: const MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: appTitle,
-        home: HomeScreen(),
+        routerConfig: GoRouterConfig.routes,
       ),
     );
   }

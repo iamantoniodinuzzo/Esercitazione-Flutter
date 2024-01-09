@@ -1,9 +1,6 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:movie_app/data/remote/repository/movie_repository.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/res/components/media_poster.dart';
@@ -21,6 +18,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  // Questa variabile permette di visualizzare il titolo quando l'app bar collassa
   var appBarHeight = 0.0;
 
   @override
@@ -28,7 +26,6 @@ class _DetailScreenState extends State<DetailScreen> {
     final detailViewModel =
         Provider.of<DetailViewModel>(context, listen: false);
 
-    //? Quante volte viene effettuata questa chiamata
     detailViewModel.getMovieDetails(widget.selectedMedia.id);
 
     return Scaffold(
@@ -36,6 +33,12 @@ class _DetailScreenState extends State<DetailScreen> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              leading: GestureDetector(
+                child: const Icon(Icons.arrow_back),
+                onTap: () {
+                  context.pop();
+                },
+              ),
               expandedHeight: 300.0,
               floating: false,
               pinned: true,
