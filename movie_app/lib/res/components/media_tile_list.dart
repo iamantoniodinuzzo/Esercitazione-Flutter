@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/res/components/media_poster.dart';
-import 'package:movie_app/views/details/detail_screen.dart';
-
+import 'package:movie_app/views/routes/app_routes.dart';
 
 class MediaTileList extends StatelessWidget {
   const MediaTileList({
@@ -20,12 +20,9 @@ class MediaTileList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    DetailScreen(selectedMedia: movies[index]),
-              ),
+            context.goNamed(
+              AppRoutes.details.name,
+              extra: movies[index],
             );
           },
           child: Material(
@@ -46,11 +43,9 @@ class MediaTileList extends StatelessWidget {
                         children: [
                           Text(
                             movies[index].title,
-                            style:
-                                Theme.of(context).textTheme.titleLarge,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          Text(
-                              'Vote Average: ${movies[index].voteAverage}'),
+                          Text('Vote Average: ${movies[index].voteAverage}'),
                         ],
                       ),
                     ),
