@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/util/user_interface_state.dart';
 import 'package:movie_app/views/home/home_view_model.dart';
-import 'package:movie_app/views/search_screen.dart';
+import 'package:movie_app/views/search/search_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../res/components/media_tile_list.dart';
