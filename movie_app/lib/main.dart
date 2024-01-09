@@ -10,7 +10,8 @@ import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/util/config/config.dart';
-import 'package:movie_app/views/home_screen.dart';
+import 'package:movie_app/views/home/home_screen.dart';
+import 'package:movie_app/views/home/home_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -44,11 +45,17 @@ Future<InitialData> _createData() async {
     movieService: movieService,
     networkMapper: networkMapper,
   );
+
+  //ViewModel's
+  final homeViewModel =
+      HomeViewModel(log: log, movieRepository: movieRepository);
+
 //Create and return list of providers
   return InitialData(
     providers: [
       Provider<Logger>.value(value: log),
-      Provider<MovieRepository>.value(value: movieRepository)
+      Provider<MovieRepository>.value(value: movieRepository),
+      ChangeNotifierProvider<HomeViewModel>.value(value: homeViewModel)
     ],
   );
 }
