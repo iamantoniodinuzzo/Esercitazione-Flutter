@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/res/components/media_poster.dart';
+import 'package:movie_app/theme/colors.dart';
+import 'package:movie_app/theme/texts.dart';
 import 'package:movie_app/util/user_interface_state.dart';
 import 'package:movie_app/views/details/detail_view_model.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              backgroundColor: MovieAppColors.primary,
               leading: GestureDetector(
                 child: const Icon(Icons.arrow_back),
                 onTap: () {
@@ -70,7 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.white.withOpacity(0.6),
+                                    MovieAppColors.primary.withOpacity(0.8),
                                     Colors.transparent,
                                   ],
                                   begin: Alignment.bottomCenter,
@@ -109,11 +112,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 widget.selectedMedia.title,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: MovieAppTextStyle.secondaryH1Bold,
                               ),
                             ),
                           ],
@@ -140,13 +139,13 @@ class _DetailScreenState extends State<DetailScreen> {
                       children: [
                         Text(
                           movieDetails.tagline,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
                         Text(movieDetails.overview),
                         const SizedBox(height: 16.0),
-                        Text(
+                        const Text(
                           'Genres',
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
                         Wrap(
                           spacing: 8.0,
@@ -159,13 +158,37 @@ class _DetailScreenState extends State<DetailScreen> {
                               .toList(),
                         ),
                         const SizedBox(height: 16.0),
-                        Text(
-                          'Release Date: ${movieDetails.releaseDate}',
+                        const Text(
+                          'Information',
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
-                        Text('Tagline: ${movieDetails.tagline}'),
-                        Text('Original Title: ${movieDetails.originalTitle}'),
-                        Text('Language: ${movieDetails.originalLanguage}'),
-                        Text('Budget: ${movieDetails.budget}'),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Original title',
+                          value: movieDetails.originalTitle,
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Release date',
+                          value: movieDetails.releaseDate,
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Budget',
+                          value: movieDetails.budget.toString(),
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Revenue',
+                          value: movieDetails.revenue.toString(),
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Runtime',
+                          value: movieDetails.runtime.toString(),
+                        ),
+                        _HorizontalSectionInfo(
+                          title: 'Original language',
+                          value: movieDetails.originalLanguage,
+                        ),
                       ],
                     ),
                   ),
@@ -191,6 +214,36 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 }
 
+/// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
+class _HorizontalSectionInfo extends StatelessWidget {
+  final String title;
+  final String value;
+
+  const _HorizontalSectionInfo({
+    super.key,
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: MovieAppTextStyle.secondaryPRegular,
+        ),
+        Text(
+          textAlign: TextAlign.center,
+          value,
+          style: MovieAppTextStyle.secondaryPBold,
+        )
+      ],
+    );
+  }
+}
+
 class _CollapsedTitle extends StatelessWidget {
   const _CollapsedTitle({
     required this.appBarHeight,
@@ -210,10 +263,7 @@ class _CollapsedTitle extends StatelessWidget {
               : 0.0,
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18.0,
-          color: Colors.black,
-        ),
+        style: MovieAppTextStyle.secondaryPBold,
       ),
     );
   }

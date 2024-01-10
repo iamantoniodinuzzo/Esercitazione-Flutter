@@ -13,3 +13,15 @@ T
 $lib/views/details/detail_screen.dart,b\4\b438b2aacec2a0e293b94af0e56edc2bdd73d509
 T
 $lib/res/components/media_poster.dart,5\e\5ef24754b4667d31257559d486eea8b66db193ed
+E
+lib/theme/colors.dart,d\d\dd21080c5a1ee62c70a0b2f4872cc23bf64a4aa1
+I
+lib/theme/dimensions.dart,d\4\d45dc376f8f8c879b0c0162e8db0374495106823
+D
+lib/theme/texts.dart,4\c\4c0fa73df7294540253501bd95c93b849a77211b
+D
+lib/theme/theme.dart,8\b\8b653a71a0aef7f83818701a1d879238319e2a5d
+[
++lib/res/components/media_vertical_list.dart,9\1\9143c96d231ca9fefa9a6eaf23a017771724ecd8
+Y
+)lib/domain/model/movie/movie_details.dart,6\c\6c32d64cc1a616e262395045a15fa7ee2d7e2357
