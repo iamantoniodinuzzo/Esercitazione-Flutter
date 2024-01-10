@@ -45,7 +45,6 @@ class MediaVerticalList extends StatelessWidget {
                             movies[index].title,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          Text('Vote Average: ${movies[index].voteAverage}'),
                         ],
                       ),
                     ),
