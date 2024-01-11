@@ -30,189 +30,191 @@ class _DetailScreenState extends State<DetailScreen> {
 
     detailViewModel.getMovieDetails(widget.selectedMedia.id);
 
-    return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              backgroundColor: MovieAppColors.primary,
-              leading: GestureDetector(
-                child: const Icon(Icons.arrow_back),
-                onTap: () {
-                  context.pop();
-                },
-              ),
-              expandedHeight: 300.0,
-              floating: false,
-              pinned: true,
-              snap: false,
-              flexibleSpace: LayoutBuilder(builder: (context, constraints) {
-                appBarHeight = constraints.biggest.height;
-                return FlexibleSpaceBar(
-                  //* Titolo visibile solo se app bar collassata
-                  title: _CollapsedTitle(
-                    appBarHeight: appBarHeight,
-                    title: widget.selectedMedia.title,
-                  ),
-                  collapseMode: CollapseMode.parallax,
-                  background: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      // * Immagine di sfondo
-                      Positioned.fill(
-                        bottom: 100,
-                        child: CachedNetworkImage(
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  colors: [
-                                    MovieAppColors.primary.withOpacity(0.8),
-                                    Colors.transparent,
-                                  ],
-                                  begin: Alignment.bottomCenter,
-                                  end: Alignment.topCenter,
-                                ),
-                              ),
-                            ),
-                          ),
-                          imageUrl:
-                              widget.selectedMedia.completeBackdropPathOriginal,
-                          progressIndicatorBuilder: (context, url, progress) =>
-                              Center(
-                            child: CircularProgressIndicator(
-                              value: progress.progress,
-                            ),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.image_not_supported),
-                        ),
-                      ),
-                      // * Contenuto sovrapposto
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            // * Poster
-                            Hero(
-                              tag: widget.selectedMedia.id,
-                              child: MediaPoster(
-                                movie: widget.selectedMedia,
-                                isVoteAverageVisible: false,
-                              ),
-                            ),
-                            const SizedBox(width: 16.0),
-                            //* Titolo
-                            Expanded(
-                              child: Text(
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                widget.selectedMedia.title,
-                                style: MovieAppTextStyle.secondaryH1Bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }),
-            ),
-          ];
-        },
-        body: Consumer<DetailViewModel>(
-          builder: (context, viewModel, child) {
-            switch (viewModel.movieDetails) {
-              //* Success
-              case Success<MovieDetails>(data: var data):
-                MovieDetails? movieDetails = data;
-                return SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+    return SafeArea(
+      child: Scaffold(
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                backgroundColor: MovieAppColors.primary,
+                leading: GestureDetector(
+                  child: const Icon(Icons.arrow_back),
+                  onTap: () {
+                    context.pop();
+                  },
+                ),
+                expandedHeight: 300.0,
+                floating: false,
+                pinned: true,
+                snap: false,
+                flexibleSpace: LayoutBuilder(builder: (context, constraints) {
+                  appBarHeight = constraints.biggest.height;
+                  return FlexibleSpaceBar(
+                    //* Titolo visibile solo se app bar collassata
+                    title: _CollapsedTitle(
+                      appBarHeight: appBarHeight,
+                      title: widget.selectedMedia.title,
+                    ),
+                    collapseMode: CollapseMode.parallax,
+                    background: Stack(
+                      fit: StackFit.expand,
                       children: [
-                        Text(
-                          movieDetails.tagline,
-                          style: MovieAppTextStyle.secondaryPBold,
-                        ),
-                        Text(movieDetails.overview),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          'Genres',
-                          style: MovieAppTextStyle.secondaryPBold,
-                        ),
-                        Wrap(
-                          spacing: 8.0,
-                          children: (movieDetails.genres)
-                              .map(
-                                (genre) => Chip(
-                                  label: Text(genre.name),
+                        // * Immagine di sfondo
+                        Positioned.fill(
+                          bottom: 100,
+                          child: CachedNetworkImage(
+                            imageBuilder: (context, imageProvider) => Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
                                 ),
-                              )
-                              .toList(),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      MovieAppColors.primary.withOpacity(0.8),
+                                      Colors.transparent,
+                                    ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            imageUrl: widget
+                                .selectedMedia.completeBackdropPathOriginal,
+                            progressIndicatorBuilder:
+                                (context, url, progress) => Center(
+                              child: CircularProgressIndicator(
+                                value: progress.progress,
+                              ),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.image_not_supported),
+                          ),
                         ),
-                        const SizedBox(height: 16.0),
-                        const Text(
-                          'Information',
-                          style: MovieAppTextStyle.secondaryPBold,
-                        ),
-                        const SizedBox(
-                          height: 16.0,
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Original title',
-                          value: movieDetails.originalTitle,
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Release date',
-                          value: movieDetails.releaseDate,
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Budget',
-                          value: movieDetails.budget.toString(),
-                          isVisibleWhen: () => movieDetails.budget != 0,
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Revenue',
-                          value: movieDetails.revenue.toString(),
-                          isVisibleWhen: () => movieDetails.revenue != 0,
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Runtime',
-                          value: movieDetails.runtime.toString(),
-                        ),
-                        _buildHorizontalSectionInfo(
-                          title: 'Original language',
-                          value: movieDetails.originalLanguage,
+                        // * Contenuto sovrapposto
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              // * Poster
+                              Hero(
+                                tag: widget.selectedMedia.id,
+                                child: MediaPoster(
+                                  movie: widget.selectedMedia,
+                                  isVoteAverageVisible: false,
+                                ),
+                              ),
+                              const SizedBox(width: 16.0),
+                              //* Titolo
+                              Expanded(
+                                child: Text(
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  widget.selectedMedia.title,
+                                  style: MovieAppTextStyle.secondaryH1Bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                );
-              case Error<MovieDetails>(message: var message):
-                return Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      'Error movieId(${widget.selectedMedia.id}): $message',
-                    ),
-                  ),
-                );
-              case Loading<MovieDetails>():
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-            }
+                  );
+                }),
+              ),
+            ];
           },
+          body: Consumer<DetailViewModel>(
+            builder: (context, viewModel, child) {
+              switch (viewModel.movieDetails) {
+                //* Success
+                case Success<MovieDetails>(data: var data):
+                  MovieDetails? movieDetails = data;
+                  return SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            movieDetails.tagline,
+                            style: MovieAppTextStyle.secondaryPBold,
+                          ),
+                          Text(movieDetails.overview),
+                          const SizedBox(height: 16.0),
+                          const Text(
+                            'Genres',
+                            style: MovieAppTextStyle.secondaryPBold,
+                          ),
+                          Wrap(
+                            spacing: 8.0,
+                            children: (movieDetails.genres)
+                                .map(
+                                  (genre) => Chip(
+                                    label: Text(genre.name),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                          const SizedBox(height: 16.0),
+                          const Text(
+                            'Information',
+                            style: MovieAppTextStyle.secondaryPBold,
+                          ),
+                          const SizedBox(
+                            height: 16.0,
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Original title',
+                            value: movieDetails.originalTitle,
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Release date',
+                            value: movieDetails.releaseDate,
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Budget',
+                            value: movieDetails.budget.toString(),
+                            isVisibleWhen: () => movieDetails.budget != 0,
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Revenue',
+                            value: movieDetails.revenue.toString(),
+                            isVisibleWhen: () => movieDetails.revenue != 0,
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Runtime',
+                            value: movieDetails.runtime.toString(),
+                          ),
+                          _buildHorizontalSectionInfo(
+                            title: 'Original language',
+                            value: movieDetails.originalLanguage,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                case Error<MovieDetails>(message: var message):
+                  return Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        'Error movieId(${widget.selectedMedia.id}): $message',
+                      ),
+                    ),
+                  );
+                case Loading<MovieDetails>():
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+              }
+            },
+          ),
         ),
       ),
     );

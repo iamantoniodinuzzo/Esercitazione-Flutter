@@ -19,7 +19,8 @@ class AppRoutes {
 
   //Filterable
   static const _filterableScopeName = 'filterable';
-  static const filterable = AppRouteData('filterable', _filterableScopeName);
+  static const filterable =
+      AppRouteData('filterable', _filterableScopeName, true);
 }
 
 class AppRouteData {

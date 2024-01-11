@@ -25,34 +25,32 @@ class MediaVerticalList extends StatelessWidget {
               extra: movies[index],
             );
           },
-          child: Material(
-            child: Card(
-              margin: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  // Left side: Movie Poster
-                  Hero(
-                      tag: movies[index].id,
-                      child: MediaPoster(
-                        movie: movies[index],
-                      )),
-                  // Right side: Movie Details
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            movies[index].title,
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ],
-                      ),
+          child: Card(
+            margin: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                // Left side: Movie Poster
+                Hero(
+                    tag: movies[index].id,
+                    child: MediaPoster(
+                      movie: movies[index],
+                    )),
+                // Right side: Movie Details
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          movies[index].title,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

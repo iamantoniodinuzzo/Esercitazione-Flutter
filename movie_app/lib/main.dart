@@ -12,6 +12,7 @@ import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/theme/theme.dart';
 import 'package:movie_app/util/config/config.dart';
 import 'package:movie_app/views/details/detail_view_model.dart';
+import 'package:movie_app/views/filterable/filterable_screen_view_model.dart';
 import 'package:movie_app/views/home/home_view_model.dart';
 import 'package:movie_app/views/routes/go_router_config.dart';
 import 'package:movie_app/views/search/search_view_model.dart';
@@ -63,6 +64,10 @@ Future<InitialData> _createData() async {
     movieRepository: movieRepository,
     log: log,
   );
+  final filterableViewModel = FilterableScreenViewModel(
+    movieRepository: movieRepository,
+    log: log,
+  );
 
 //Create and return list of providers
   return InitialData(
@@ -72,6 +77,8 @@ Future<InitialData> _createData() async {
       ChangeNotifierProvider<HomeViewModel>.value(value: homeViewModel),
       ChangeNotifierProvider<DetailViewModel>.value(value: detailViewModel),
       ChangeNotifierProvider<SearchViewModel>.value(value: searchViewModel),
+      ChangeNotifierProvider<FilterableScreenViewModel>.value(
+          value: filterableViewModel),
     ],
   );
 }

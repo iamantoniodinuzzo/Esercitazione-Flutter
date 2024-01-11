@@ -16,31 +16,33 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        indicatorColor: MovieAppColors.secondary.withOpacity(0.5),
-        backgroundColor: MovieAppColors.primary,
-        // Here, the items of BottomNavigationBar are hard coded. In a real
-        // world scenario, the items would most likely be generated from the
-        // branches of the shell route, which can be fetched using
-        // `navigationShell.route.branches`.
-        destinations: const <NavigationDestination>[
-          NavigationDestination(
-            icon: Icon(
-              Icons.home,
+    return SafeArea(
+      child: Scaffold(
+        body: navigationShell,
+        bottomNavigationBar: NavigationBar(
+          indicatorColor: MovieAppColors.secondary.withOpacity(0.5),
+          backgroundColor: MovieAppColors.primary,
+          // Here, the items of BottomNavigationBar are hard coded. In a real
+          // world scenario, the items would most likely be generated from the
+          // branches of the shell route, which can be fetched using
+          // `navigationShell.route.branches`.
+          destinations: const <NavigationDestination>[
+            NavigationDestination(
+              icon: Icon(
+                Icons.home,
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.search,
+            NavigationDestination(
+              icon: Icon(
+                Icons.search,
+              ),
+              label: 'Discover',
             ),
-            label: 'Discover',
-          ),
-        ],
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: (int index) => _onTap(context, index),
+          ],
+          selectedIndex: navigationShell.currentIndex,
+          onDestinationSelected: (int index) => _onTap(context, index),
+        ),
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:movie_app/views/search/search_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends SearchDelegate {
+
+  
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [

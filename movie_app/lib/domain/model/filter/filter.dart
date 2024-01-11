@@ -11,6 +11,10 @@ class Filter {
   factory Filter(Builder builder) {
     return Filter._builder(builder);
   }
+
+  static Builder builder() {
+    return Builder();
+  }
 }
 
 class Builder {
@@ -18,8 +22,9 @@ class Builder {
   Set<String>? withGenres;
 
   Builder setSortType(
-      {required SortOptions sortOption, bool isDescending = true}) {
-    sortBy = '${sortOption.sortName}.${isDescending ? 'desc' : 'asc'}';
+      {SortOptions? sortOption, bool isDescending = true}) {
+    sortBy =
+        '${sortOption?.sortName ?? SortOptions.popularity.sortName}.${isDescending ? 'desc' : 'asc'}';
     return this;
   }
 

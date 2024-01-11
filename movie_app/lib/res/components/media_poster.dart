@@ -4,6 +4,7 @@ import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/theme/colors.dart';
 import 'package:movie_app/theme/texts.dart';
 
+//! La view del poster deve essere migliorata
 class MediaPoster extends StatelessWidget {
   final Movie movie;
   final bool isVoteAverageVisible;
@@ -16,19 +17,17 @@ class MediaPoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: SizedBox(
-        height: 150,
-        width: 100,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(5.0),
-          child: Stack(
-            alignment: AlignmentDirectional.topEnd,
-            children: [
-              _buildCachedNetworkImage(),
-              _buildVoteAverageChip(),
-            ],
-          ),
+    return SizedBox(
+      height: 150,
+      width: 100,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(5.0),
+        child: Stack(
+          alignment: AlignmentDirectional.topEnd,
+          children: [
+            _buildCachedNetworkImage(),
+            _buildVoteAverageChip(),
+          ],
         ),
       ),
     );
@@ -36,18 +35,18 @@ class MediaPoster extends StatelessWidget {
 
   CachedNetworkImage _buildCachedNetworkImage() {
     return CachedNetworkImage(
-              imageUrl: movie.completePosterPathOriginal,
-              progressIndicatorBuilder: (context, url, progress) => Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Text(
-                    movie.title,
-                    style: const TextStyle(fontSize: 10),
-                  ),
-                ),
-              ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            );
+      imageUrl: movie.completePosterPathOriginal,
+      progressIndicatorBuilder: (context, url, progress) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Text(
+            movie.title,
+            style: const TextStyle(fontSize: 10),
+          ),
+        ),
+      ),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
+    );
   }
 
   Widget _buildVoteAverageChip() {
