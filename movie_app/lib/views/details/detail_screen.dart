@@ -176,10 +176,12 @@ class _DetailScreenState extends State<DetailScreen> {
                         _HorizontalSectionInfo(
                           title: 'Budget',
                           value: movieDetails.budget.toString(),
+                          isVisibleWhen: () => movieDetails.budget != 0,
                         ),
                         _HorizontalSectionInfo(
                           title: 'Revenue',
                           value: movieDetails.revenue.toString(),
+                          isVisibleWhen: () => movieDetails.revenue != 0,
                         ),
                         _HorizontalSectionInfo(
                           title: 'Runtime',
@@ -216,39 +218,48 @@ class _DetailScreenState extends State<DetailScreen> {
 
 /// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
 class _HorizontalSectionInfo extends StatelessWidget {
-  final String title;
-  final String value;
+  final String _title;
+  final String _value;
+  final bool Function()? _isVisibleWhen;
 
   const _HorizontalSectionInfo({
-    required this.title,
-    required this.value,
-  });
+    required String title,
+    required String value,
+    bool Function()? isVisibleWhen,
+  })  : _title = title,
+        _value = value,
+        _isVisibleWhen = isVisibleWhen;
+
+  bool get isVisible => _isVisibleWhen?.call() ?? true;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Text(
-            title,
-            style: MovieAppTextStyle.secondaryPRegular,
-            textAlign: TextAlign.left,
-            overflow: TextOverflow.clip,
+    return Visibility(
+      visible:  isVisible,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Text(
+              _title,
+              style: MovieAppTextStyle.secondaryPRegular,
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.clip,
+            ),
           ),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.left,
-            value,
-            overflow: TextOverflow.clip,
-            style: MovieAppTextStyle.secondaryPBold,
+          const SizedBox(
+            width: 10,
           ),
-        )
-      ],
+          Expanded(
+            child: Text(
+              textAlign: TextAlign.left,
+              _value,
+              overflow: TextOverflow.clip,
+              style: MovieAppTextStyle.secondaryPBold,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
