@@ -21,21 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MovieAppColors.primary,
-      appBar: AppBar(
-        title: const Text('Trending Movies'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: SearchScreen(),
-              );
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
-      ),
+      backgroundColor: MovieAppColors.secondary,
       body: Consumer<HomeViewModel>(
         builder: (context, viewModel, child) {
           switch (viewModel.trendingMovies) {

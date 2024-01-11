@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/theme/colors.dart';
+import 'package:movie_app/views/routes/app_routes.dart';
 import 'package:movie_app/views/search/search_screen.dart';
 
 class DiscoverScreen extends StatefulWidget {
@@ -13,7 +15,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MovieAppColors.secondary,
+      backgroundColor: MovieAppColors.primary,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -44,7 +46,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
             alignment: Alignment.centerLeft,
             child: ElevatedButton.icon(
                 onPressed: () {
-                  //TODO: Navigare verso la schermata di filtraggio
+                  context.pushNamed(AppRoutes.filterable.name);
                 },
                 icon: const Icon(Icons.filter_alt_outlined),
                 label: const Text('Advanced'),
@@ -52,9 +54,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  backgroundColor: MovieAppColors.primary,
+                  backgroundColor: MovieAppColors.secondary,
                   elevation: 15,
-                  shadowColor: MovieAppColors.primary,
+                  shadowColor: MovieAppColors.secondary,
                   padding: const EdgeInsets.all(15.0),
                   textStyle: const TextStyle(
                     fontSize: 16,
@@ -77,9 +79,9 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          backgroundColor: MovieAppColors.primary,
+          backgroundColor: MovieAppColors.secondary,
           elevation: 15,
-          shadowColor: MovieAppColors.primary,
+          shadowColor: MovieAppColors.secondary,
           padding: const EdgeInsets.all(15.0),
           textStyle: const TextStyle(
             fontSize: 16,

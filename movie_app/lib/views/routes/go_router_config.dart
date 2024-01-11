@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/views/details/detail_screen.dart';
 import 'package:movie_app/views/discover/discover_screen.dart';
+import 'package:movie_app/views/filterable/filterable_screen.dart';
 import 'package:movie_app/views/home/home_screen.dart';
 import 'package:movie_app/views/routes/app_routes.dart';
 import 'package:movie_app/views/routes/scaffold_with_nav_bar.dart';
 
 import '../../domain/model/movie/movie.dart';
 
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'root');
+
 @immutable
 class GoRouterConfig {
   const GoRouterConfig._();
 
   static final routes = GoRouter(
+    navigatorKey: _rootNavigatorKey,
     initialLocation: AppRoutes.rootHome.path,
     routes: [
       GoRoute(
@@ -28,6 +33,12 @@ class GoRouterConfig {
             );
           }
         },
+      ),
+      GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
+        path: AppRoutes.filterable.path,
+        name: AppRoutes.filterable.name,
+        builder: (context, state) => const FilterableScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

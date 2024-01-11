@@ -37,3 +37,7 @@ V
 &lib/domain/model/filter/sort_type.dart,b\d\bda80153fcf7439b649117d3a832fe0317869f3a
 `
 0lib/data/remote/repository/movie_repository.dart,a\f\af8ce29f303731d8d8ae9d454263762351bae9cf
+[
++lib/views/filterable/filterable_screen.dart,7\b\7b0ced46b03eea2af3ccec74ed1520b6592cd615
+S
+#lib/views/search/search_screen.dart,f\8\f82e801c2a5f2912b5db42dc311fdbe84642212b

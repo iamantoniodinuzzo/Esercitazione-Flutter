@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/theme/colors.dart';
 
 class MovieAppTheme {
