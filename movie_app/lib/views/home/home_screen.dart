@@ -5,7 +5,7 @@ import 'package:movie_app/views/home/home_view_model.dart';
 import 'package:movie_app/views/search/search_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../../res/components/media_tile_list.dart';
+import '../../res/components/media_vertical_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               } else {
-                return MediaTileList(movies: movies);
+                return MediaVerticalList(movies: movies);
               }
             //* Error
             case Error<List<Movie>>(message: var message):

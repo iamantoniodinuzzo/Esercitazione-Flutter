@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/res/components/media_poster.dart';
+import 'package:movie_app/theme/colors.dart';
+import 'package:movie_app/theme/texts.dart';
 import 'package:movie_app/util/user_interface_state.dart';
 import 'package:movie_app/views/details/detail_view_model.dart';
 import 'package:provider/provider.dart';
@@ -33,6 +35,7 @@ class _DetailScreenState extends State<DetailScreen> {
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
+              backgroundColor: MovieAppColors.primary,
               leading: GestureDetector(
                 child: const Icon(Icons.arrow_back),
                 onTap: () {
@@ -70,7 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.white.withOpacity(0.6),
+                                    MovieAppColors.primary.withOpacity(0.8),
                                     Colors.transparent,
                                   ],
                                   begin: Alignment.bottomCenter,
@@ -100,7 +103,10 @@ class _DetailScreenState extends State<DetailScreen> {
                             // * Poster
                             Hero(
                               tag: widget.selectedMedia.id,
-                              child: MediaPoster(movie: widget.selectedMedia),
+                              child: MediaPoster(
+                                movie: widget.selectedMedia,
+                                isVoteAverageVisible: false,
+                              ),
                             ),
                             const SizedBox(width: 16.0),
                             //* Titolo
@@ -109,11 +115,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 widget.selectedMedia.title,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: MovieAppTextStyle.secondaryH1Bold,
                               ),
                             ),
                           ],
@@ -140,13 +142,13 @@ class _DetailScreenState extends State<DetailScreen> {
                       children: [
                         Text(
                           movieDetails.tagline,
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
                         Text(movieDetails.overview),
                         const SizedBox(height: 16.0),
-                        Text(
+                        const Text(
                           'Genres',
-                          style: Theme.of(context).textTheme.titleLarge,
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
                         Wrap(
                           spacing: 8.0,
@@ -159,13 +161,39 @@ class _DetailScreenState extends State<DetailScreen> {
                               .toList(),
                         ),
                         const SizedBox(height: 16.0),
-                        Text(
-                          'Release Date: ${movieDetails.releaseDate}',
+                        const Text(
+                          'Information',
+                          style: MovieAppTextStyle.secondaryPBold,
                         ),
-                        Text('Tagline: ${movieDetails.tagline}'),
-                        Text('Original Title: ${movieDetails.originalTitle}'),
-                        Text('Language: ${movieDetails.originalLanguage}'),
-                        Text('Budget: ${movieDetails.budget}'),
+                        const SizedBox(
+                          height: 16.0,
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Original title',
+                          value: movieDetails.originalTitle,
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Release date',
+                          value: movieDetails.releaseDate,
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Budget',
+                          value: movieDetails.budget.toString(),
+                          isVisibleWhen: () => movieDetails.budget != 0,
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Revenue',
+                          value: movieDetails.revenue.toString(),
+                          isVisibleWhen: () => movieDetails.revenue != 0,
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Runtime',
+                          value: movieDetails.runtime.toString(),
+                        ),
+                        _buildHorizontalSectionInfo(
+                          title: 'Original language',
+                          value: movieDetails.originalLanguage,
+                        ),
                       ],
                     ),
                   ),
@@ -191,6 +219,44 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 }
 
+/// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
+/// nascondendola quando [isVisibleWhen] non rispetta la logica fornita
+Widget _buildHorizontalSectionInfo({
+  required String title,
+  required String value,
+  bool Function()? isVisibleWhen,
+}) {
+  return Visibility(
+    visible: isVisibleWhen?.call() ?? true,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: MovieAppTextStyle.secondaryPRegular,
+            textAlign: TextAlign.left,
+            overflow: TextOverflow.clip,
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.left,
+            value,
+            overflow: TextOverflow.clip,
+            style: MovieAppTextStyle.secondaryPBold,
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+///Mostra il titolo nella App bar
+///solo quando l'altezza della sliver app bar raggiunge quella della toolbar più quella della status
 class _CollapsedTitle extends StatelessWidget {
   const _CollapsedTitle({
     required this.appBarHeight,
@@ -210,10 +276,7 @@ class _CollapsedTitle extends StatelessWidget {
               : 0.0,
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18.0,
-          color: Colors.black,
-        ),
+        style: MovieAppTextStyle.secondaryPBold,
       ),
     );
   }

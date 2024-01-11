@@ -9,6 +9,7 @@ import 'package:movie_app/core/network/dio_client.dart';
 import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
+import 'package:movie_app/theme/theme.dart';
 import 'package:movie_app/util/config/config.dart';
 import 'package:movie_app/views/details/detail_view_model.dart';
 import 'package:movie_app/views/home/home_view_model.dart';
@@ -118,6 +119,8 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: appTitle,
         routerConfig: GoRouterConfig.routes,
+        darkTheme: MovieAppTheme.darkTheme,
+        themeMode: ThemeMode.dark,
       ),
     );
   }
