@@ -220,7 +220,6 @@ class _HorizontalSectionInfo extends StatelessWidget {
   final String value;
 
   const _HorizontalSectionInfo({
-    super.key,
     required this.title,
     required this.value,
   });
@@ -230,20 +229,32 @@ class _HorizontalSectionInfo extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: MovieAppTextStyle.secondaryPRegular,
+        Expanded(
+          child: Text(
+            title,
+            style: MovieAppTextStyle.secondaryPRegular,
+            textAlign: TextAlign.left,
+            overflow: TextOverflow.clip,
+          ),
         ),
-        Text(
-          textAlign: TextAlign.center,
-          value,
-          style: MovieAppTextStyle.secondaryPBold,
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.left,
+            value,
+            overflow: TextOverflow.clip,
+            style: MovieAppTextStyle.secondaryPBold,
+          ),
         )
       ],
     );
   }
 }
 
+///Mostra il titolo nella App bar
+///solo quando l'altezza della sliver app bar raggiunge quella della toolbar più quella della status
 class _CollapsedTitle extends StatelessWidget {
   const _CollapsedTitle({
     required this.appBarHeight,
