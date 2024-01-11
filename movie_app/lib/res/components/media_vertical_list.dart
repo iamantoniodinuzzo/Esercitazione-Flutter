@@ -33,7 +33,9 @@ class MediaVerticalList extends StatelessWidget {
                   // Left side: Movie Poster
                   Hero(
                       tag: movies[index].id,
-                      child: MediaPoster(movie: movies[index])),
+                      child: MediaPoster(
+                        movie: movies[index],
+                      )),
                   // Right side: Movie Details
                   Expanded(
                     child: Padding(

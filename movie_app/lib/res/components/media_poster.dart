@@ -6,8 +6,13 @@ import 'package:movie_app/theme/texts.dart';
 
 class MediaPoster extends StatelessWidget {
   final Movie movie;
+  final bool isVoteAverageVisible;
 
-  const MediaPoster({super.key, required this.movie});
+  const MediaPoster({
+    super.key,
+    required this.movie,
+    this.isVoteAverageVisible = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +42,19 @@ class MediaPoster extends StatelessWidget {
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                   ),
-                  Chip(
-                    label: Text(
-                      style: MovieAppTextStyle.secondaryPBold.copyWith(fontSize: 10),
-                      movie.voteAverage.ceilToDouble().toString(),
+                  Visibility(
+                    visible: isVoteAverageVisible,
+                    child: Opacity(
+                      opacity: 0.5,
+                      child: Chip(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0), // Imposta il padding per allungare il chip
+                        backgroundColor: MovieAppColors.primary,
+                        label: Text(
+                          style: MovieAppTextStyle.secondaryPBold
+                              .copyWith(fontSize: 12),
+                          movie.voteAverage.ceilToDouble().toString(),
+                        ),
+                      ),
                     ),
                   ),
                 ],

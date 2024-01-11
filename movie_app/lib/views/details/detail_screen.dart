@@ -103,7 +103,10 @@ class _DetailScreenState extends State<DetailScreen> {
                             // * Poster
                             Hero(
                               tag: widget.selectedMedia.id,
-                              child: MediaPoster(movie: widget.selectedMedia),
+                              child: MediaPoster(
+                                movie: widget.selectedMedia,
+                                isVoteAverageVisible: false,
+                              ),
                             ),
                             const SizedBox(width: 16.0),
                             //* Titolo
@@ -165,29 +168,29 @@ class _DetailScreenState extends State<DetailScreen> {
                         const SizedBox(
                           height: 16.0,
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Original title',
                           value: movieDetails.originalTitle,
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Release date',
                           value: movieDetails.releaseDate,
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Budget',
                           value: movieDetails.budget.toString(),
                           isVisibleWhen: () => movieDetails.budget != 0,
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Revenue',
                           value: movieDetails.revenue.toString(),
                           isVisibleWhen: () => movieDetails.revenue != 0,
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Runtime',
                           value: movieDetails.runtime.toString(),
                         ),
-                        _HorizontalSectionInfo(
+                        _buildHorizontalSectionInfo(
                           title: 'Original language',
                           value: movieDetails.originalLanguage,
                         ),
@@ -217,51 +220,39 @@ class _DetailScreenState extends State<DetailScreen> {
 }
 
 /// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
-class _HorizontalSectionInfo extends StatelessWidget {
-  final String _title;
-  final String _value;
-  final bool Function()? _isVisibleWhen;
-
-  const _HorizontalSectionInfo({
-    required String title,
-    required String value,
-    bool Function()? isVisibleWhen,
-  })  : _title = title,
-        _value = value,
-        _isVisibleWhen = isVisibleWhen;
-
-  bool get isVisible => _isVisibleWhen?.call() ?? true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Visibility(
-      visible:  isVisible,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Text(
-              _title,
-              style: MovieAppTextStyle.secondaryPRegular,
-              textAlign: TextAlign.left,
-              overflow: TextOverflow.clip,
-            ),
+/// nascondendola quando [isVisibleWhen] non rispetta la logica fornita
+Widget _buildHorizontalSectionInfo({
+  required String title,
+  required String value,
+  bool Function()? isVisibleWhen,
+}) {
+  return Visibility(
+    visible: isVisibleWhen?.call() ?? true,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Text(
+            title,
+            style: MovieAppTextStyle.secondaryPRegular,
+            textAlign: TextAlign.left,
+            overflow: TextOverflow.clip,
           ),
-          const SizedBox(
-            width: 10,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.left,
+            value,
+            overflow: TextOverflow.clip,
+            style: MovieAppTextStyle.secondaryPBold,
           ),
-          Expanded(
-            child: Text(
-              textAlign: TextAlign.left,
-              _value,
-              overflow: TextOverflow.clip,
-              style: MovieAppTextStyle.secondaryPBold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
+        )
+      ],
+    ),
+  );
 }
 
 ///Mostra il titolo nella App bar
