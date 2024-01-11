@@ -6,6 +6,7 @@ import 'package:movie_app/core/network/endpoints.dart';
 import 'package:movie_app/core/network/perform_api_call.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/response/base_media_response.dart';
+import 'package:movie_app/domain/model/filter/filter.dart';
 
 class MovieService {
   final DioClient apiClient;
@@ -19,6 +20,16 @@ class MovieService {
   Future<BaseMediaResponse> getTrendingMovies(String timeWindow) async {
     return performApiCall(
       () => apiClient.get('${Endpoints.trendingMovies}$timeWindow'),
+      (json) => BaseMediaResponse.fromJson(json),
+    );
+  }
+
+  Future<BaseMediaResponse> discoverMovieByFilter(Filter filter) async {
+    return performApiCall(
+      () => apiClient.get(Endpoints.discoverMovie, queryParameters: {
+        'with_genres': filter.withGenres,
+        'sort_by': filter.sortBy
+      }),
       (json) => BaseMediaResponse.fromJson(json),
     );
   }

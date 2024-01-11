@@ -27,3 +27,13 @@ Y
 +lib/views/routes/scaffold_with_nav_bar.dart,2\0\20962b2f1d5079450e0772fcc65ebd13b3f4b7c3
 W
 'lib/views/discover/discover_screen.dart,1\6\1676de3118b41c14cabae4f48735d0d9aa4bb0cc
+Z
+*lib/data/remote/service/movie_service.dart,6\a\6a1c0e17ba7b4c74947c8c5da1b0abe7e99b62a3
+O
+lib/core/network/endpoints.dart,0\a\0a543669903a979cd61eca374c58ce99dee8c862
+S
+#lib/domain/model/filter/filter.dart,5\1\51f594b02eff0b84a392bcf4d912cd4fc62b6b31
+V
+&lib/domain/model/filter/sort_type.dart,b\d\bda80153fcf7439b649117d3a832fe0317869f3a
+`
+0lib/data/remote/repository/movie_repository.dart,a\f\af8ce29f303731d8d8ae9d454263762351bae9cf

@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/domain/model/filter/filter.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/model/filter/sort_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/routes/scaffold_with_nav_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/routes/scaffold_with_nav_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/core/network/endpoints.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/endpoints.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/service/movie_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/service/movie_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/discover/discover_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/discover/discover_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
