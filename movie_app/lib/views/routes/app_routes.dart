@@ -8,6 +8,11 @@ class AppRoutes {
   static const _homeScopeName = 'home';
   static const rootHome = AppRouteData('home', _homeScopeName, true);
 
+  //Discover
+  static const _discoverScopeName = 'discover';
+  static const rootDiscover =
+      AppRouteData('discover', _discoverScopeName, true);
+
   //Details
   static const _detailsScopeName = 'detail';
   static const details = AppRouteData('detail', _detailsScopeName, true);

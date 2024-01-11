@@ -23,3 +23,7 @@ D
 +lib/res/components/media_vertical_list.dart,9\1\9143c96d231ca9fefa9a6eaf23a017771724ecd8
 Y
 )lib/domain/model/movie/movie_details.dart,6\c\6c32d64cc1a616e262395045a15fa7ee2d7e2357
+[
++lib/views/routes/scaffold_with_nav_bar.dart,2\0\20962b2f1d5079450e0772fcc65ebd13b3f4b7c3
+W
+'lib/views/discover/discover_screen.dart,1\6\1676de3118b41c14cabae4f48735d0d9aa4bb0cc
