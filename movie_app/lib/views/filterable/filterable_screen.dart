@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:movie_app/views/filterable/filterable_screen_view_model.dart';
 import 'package:provider/provider.dart';
 
 import '../../domain/model/filter/sort_type.dart';
+import '../../domain/model/genre/genre.dart';
 
 class FilterableScreen extends StatefulWidget {
   const FilterableScreen({super.key});
@@ -60,6 +62,7 @@ class _FilterableScreenState extends State<FilterableScreen> {
                   ),
                 );
               } else {
+                //* Mostro i film filtrati
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: GridView.builder(
@@ -110,9 +113,9 @@ Future _displayBottomSheet(
       builder: (context) {
         return Consumer<FilterableScreenViewModel>(
             builder: (context, viewModel, child) {
-          log('Selected chip: ${viewModel.selectedSortOption.name}');
           return StatefulBuilder(builder: (context, state) {
             SortOptions selectedSortBy = viewModel.selectedSortOption;
+            Set<Genre> selectedGenres = viewModel.selectedGenres;
             return Container(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -124,19 +127,7 @@ Future _displayBottomSheet(
                       style: MovieAppTextStyle.primaryPBold,
                     ),
                   ),
-                  Wrap(
-                    spacing: 8.0,
-                    children: SortOptions.values.map((sortOption) {
-                      return FilterChip(
-                        label: Text(sortOption.name),
-                        selected: selectedSortBy == sortOption,
-                        onSelected: (isSelected) {
-                          selectedSortBy = sortOption;
-                          viewModel.selectSortBy(sortOption);
-                        },
-                      );
-                    }).toList(),
-                  ),
+                  _buildSortByChipGroup(selectedSortBy, viewModel),
                   const SizedBox(
                     height: 10,
                   ),
@@ -147,10 +138,62 @@ Future _displayBottomSheet(
                       style: MovieAppTextStyle.primaryPBold,
                     ),
                   ),
+                  _buildGenresChipGroup(selectedGenres, viewModel)
                 ],
               ),
             );
           });
         });
       });
+}
+
+Wrap _buildSortByChipGroup(
+    SortOptions selectedSortBy, FilterableScreenViewModel viewModel) {
+  return Wrap(
+    spacing: 8.0,
+    children: SortOptions.values.map((sortOption) {
+      return FilterChip(
+        label: Text(sortOption.name),
+        selected: selectedSortBy == sortOption,
+        onSelected: (isSelected) {
+          // selectedSortBy = sortOption;
+          viewModel.selectSortBy(sortOption);
+        },
+      );
+    }).toList(),
+  );
+}
+
+Widget _buildGenresChipGroup(
+    Set<Genre> selectedGenres, FilterableScreenViewModel viewModel) {
+  switch (viewModel.movieGenres) {
+    case Success<List<Genre>>(data: var data):
+      return Wrap(
+          spacing: 8.0,
+          children: data.map((genre) {
+            return FilterChip(
+              label: Text(genre.name),
+              selected: selectedGenres.contains(genre),
+              onSelected: (isSelected) {
+                //Se il genere risulta selezionato lo aggiungo alla collezione
+                //altrimenti viene rimosso
+                if (isSelected) {
+                  // selectedGenres.add(genre);
+                  viewModel.selectGenre(genre);
+                } else {
+                  //  selectedGenres.remove(genre);
+                  viewModel.removeGenre(genre);
+                }
+              },
+            );
+          }).toList());
+    case Error<List<Genre>>(message: var message):
+      return Center(
+        child: Text(message),
+      );
+    case Loading<List<Genre>>():
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+  }
 }

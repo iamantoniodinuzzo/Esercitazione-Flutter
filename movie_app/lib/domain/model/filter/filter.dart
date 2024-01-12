@@ -1,34 +1,28 @@
 import 'package:movie_app/domain/model/filter/sort_type.dart';
 
+import '../genre/genre.dart';
+
 class Filter {
   String sortBy;
   String? withGenres;
 
-  Filter._builder(Builder builder)
+  Filter._builder(FilterBuilder builder)
       : sortBy = builder.sortBy ?? 'popularity.desc',
-        withGenres = builder.withGenres?.join(',');
-
-  factory Filter(Builder builder) {
-    return Filter._builder(builder);
-  }
-
-  static Builder builder() {
-    return Builder();
-  }
+        withGenres = builder.withGenres?.map((e) => e.id).join(',');
 }
 
-class Builder {
+class FilterBuilder {
   String? sortBy;
-  Set<String>? withGenres;
+  Set<Genre>? withGenres;
 
-  Builder setSortType(
+  FilterBuilder setSortType(
       {SortOptions? sortOption, bool isDescending = true}) {
     sortBy =
         '${sortOption?.sortName ?? SortOptions.popularity.sortName}.${isDescending ? 'desc' : 'asc'}';
     return this;
   }
 
-  Builder setGenre(String genre) {
+  FilterBuilder setGenre(Genre genre) {
     if (withGenres == null) {
       withGenres = {genre};
     } else {
@@ -37,7 +31,7 @@ class Builder {
     return this;
   }
 
-  Builder removeGenre(String genre) {
+  FilterBuilder removeGenre(Genre genre) {
     if (withGenres != null) {
       withGenres!.remove(genre);
     }

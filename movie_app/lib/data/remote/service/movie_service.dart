@@ -6,6 +6,7 @@ import 'package:movie_app/core/network/endpoints.dart';
 import 'package:movie_app/core/network/perform_api_call.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/response/base_media_response.dart';
+import 'package:movie_app/data/remote/response/genre_response.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
 
 class MovieService {
@@ -46,6 +47,15 @@ class MovieService {
       () => apiClient
           .get(Endpoints.searchMovie, queryParameters: {'query': query}),
       (json) => BaseMediaResponse.fromJson(json),
+    );
+  }
+
+  Future<GenreResponse> getMovieGenres() async {
+    return performApiCall(
+      () => apiClient.get(Endpoints.movieGenres),
+      (json) => GenreResponse.fromJson(
+        json,
+      ),
     );
   }
 }

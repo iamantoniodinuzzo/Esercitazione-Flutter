@@ -6,6 +6,8 @@ import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/util/time_window.dart';
 
+import '../../../domain/model/genre/genre.dart';
+
 class MovieRepository {
   final MovieService movieService;
   final NetworkMapper networkMapper;
@@ -37,6 +39,12 @@ class MovieRepository {
   Future<List<Movie>> discoverMovieByFilter(Filter filter) async {
     final baseResponse = await movieService.discoverMovieByFilter(filter);
     final mappedResult = networkMapper.toMovies(baseResponse.results);
+    return mappedResult;
+  }
+
+  Future<List<Genre>> getMovieGenres() async {
+    final baseResponse = await movieService.getMovieGenres();
+    final mappedResult = networkMapper.toGenreList(baseResponse.genres);
     return mappedResult;
   }
 }

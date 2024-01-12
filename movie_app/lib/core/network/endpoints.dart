@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 /// A utility class for getting paths for API endpoints.
@@ -18,4 +17,8 @@ class Endpoints {
   static const String searchMovie = '${_search}movie';
   static const String _discover = '/discover/';
   static const String discoverMovie = '${_discover}movie';
+
+  //Genres
+  static const String _genres = '/genre';
+  static const String movieGenres = '$_genres/movie/list';
 }
