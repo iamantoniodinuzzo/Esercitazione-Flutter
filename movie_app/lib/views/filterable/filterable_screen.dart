@@ -131,12 +131,12 @@ Future _displayBottomSheet(
                   const SizedBox(
                     height: 10,
                   ),
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'With Genres',
-                      style: MovieAppTextStyle.primaryPBold,
-                    ),
+                  _buildActionableHeader(
+                    title: 'With Genre',
+                    onActionSelected: () {
+                      viewModel.clearGenreSelection();
+                    },
+                    isActionVisible: selectedGenres.isNotEmpty,
                   ),
                   _buildGenresChipGroup(selectedGenres, viewModel)
                 ],
@@ -147,8 +147,40 @@ Future _displayBottomSheet(
       });
 }
 
+Widget _buildActionableHeader({
+  bool isActionVisible = true,
+  required String title,
+  required Function onActionSelected,
+}) {
+  return Row(
+    children: [
+      Expanded(
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            title,
+            style: MovieAppTextStyle.primaryPBold,
+          ),
+        ),
+      ),
+      AnimatedOpacity(
+        opacity: isActionVisible ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 300),
+        child: IconButton(
+          onPressed: () {
+            onActionSelected();
+          },
+          icon: const Icon(Icons.cleaning_services),
+        ),
+      ),
+    ],
+  );
+}
+
 Wrap _buildSortByChipGroup(
-    SortOptions selectedSortBy, FilterableScreenViewModel viewModel) {
+  SortOptions selectedSortBy,
+  FilterableScreenViewModel viewModel,
+) {
   return Wrap(
     spacing: 8.0,
     children: SortOptions.values.map((sortOption) {
@@ -168,25 +200,34 @@ Widget _buildGenresChipGroup(
     Set<Genre> selectedGenres, FilterableScreenViewModel viewModel) {
   switch (viewModel.movieGenres) {
     case Success<List<Genre>>(data: var data):
-      return Wrap(
-          spacing: 8.0,
-          children: data.map((genre) {
+      return SizedBox(
+        height: 120,
+        width: double.infinity,
+        child: GridView.builder(
+          scrollDirection: Axis.horizontal,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 2.0,
+            mainAxisSpacing: 2.0,
+            childAspectRatio: 1 / 2,
+          ),
+          itemCount: data.length,
+          itemBuilder: (BuildContext context, int index) {
+            Genre genre = data[index];
             return FilterChip(
               label: Text(genre.name),
               selected: selectedGenres.contains(genre),
               onSelected: (isSelected) {
-                //Se il genere risulta selezionato lo aggiungo alla collezione
-                //altrimenti viene rimosso
                 if (isSelected) {
-                  // selectedGenres.add(genre);
                   viewModel.selectGenre(genre);
                 } else {
-                  //  selectedGenres.remove(genre);
                   viewModel.removeGenre(genre);
                 }
               },
             );
-          }).toList());
+          },
+        ),
+      );
     case Error<List<Genre>>(message: var message):
       return Center(
         child: Text(message),

@@ -94,6 +94,15 @@ class FilterableScreenViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clearGenreSelection() {
+    _selectedGenres.clear();
+    _log.d('Cleared genre selection');
+
+    _filter = FilterBuilder().clearGenreSelection();
+
+    notifyListeners();
+  }
+
   void applyFilter() {
     //Richiamo la funzione con il filtro corrente
     discoverMoviesByFIlter(_filter.build());

@@ -38,6 +38,13 @@ class FilterBuilder {
     return this;
   }
 
+  FilterBuilder clearGenreSelection() {
+    if (withGenres != null) {
+      withGenres!.clear();
+    }
+    return this;
+  }
+
   Filter build() {
     return Filter._builder(this);
   }
