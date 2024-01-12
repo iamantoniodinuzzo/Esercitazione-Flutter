@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/data/remote/repository/movie_repository.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/res/components/media_vertical_list.dart';
 import 'package:movie_app/util/user_interface_state.dart';
@@ -7,6 +6,8 @@ import 'package:movie_app/views/search/search_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends SearchDelegate {
+
+  
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [

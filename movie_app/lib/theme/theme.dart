@@ -6,7 +6,7 @@ class MovieAppTheme {
     useMaterial3: false,
     primaryColor: MovieAppColors.primary,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: MovieAppColors.primary,
+    scaffoldBackgroundColor: MovieAppColors.primaryVariant,
     cardColor: MovieAppColors.primaryVariant,
     colorScheme: const ColorScheme(
       background: MovieAppColors.primary,

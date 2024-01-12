@@ -1,4 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter/material.dart';
 
 /// A utility class for getting paths for API endpoints.
 /// This class has no constructor and all methods are `static`.
@@ -15,4 +15,10 @@ class Endpoints {
   static const String movieDetails = '/movie/';
   static const String _search = '/search/';
   static const String searchMovie = '${_search}movie';
+  static const String _discover = '/discover/';
+  static const String discoverMovie = '${_discover}movie';
+
+  //Genres
+  static const String _genres = '/genre';
+  static const String movieGenres = '$_genres/movie/list';
 }

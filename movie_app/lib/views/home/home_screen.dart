@@ -3,7 +3,6 @@ import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/theme/colors.dart';
 import 'package:movie_app/util/user_interface_state.dart';
 import 'package:movie_app/views/home/home_view_model.dart';
-import 'package:movie_app/views/search/search_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../res/components/media_vertical_list.dart';
@@ -21,21 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MovieAppColors.primary,
-      appBar: AppBar(
-        title: const Text('Trending Movies'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: SearchScreen(),
-              );
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
-      ),
+      backgroundColor: MovieAppColors.secondary,
       body: Consumer<HomeViewModel>(
         builder: (context, viewModel, child) {
           switch (viewModel.trendingMovies) {

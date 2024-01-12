@@ -6,6 +6,8 @@ import 'package:movie_app/core/network/endpoints.dart';
 import 'package:movie_app/core/network/perform_api_call.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/response/base_media_response.dart';
+import 'package:movie_app/data/remote/response/genre_response.dart';
+import 'package:movie_app/domain/model/filter/filter.dart';
 
 class MovieService {
   final DioClient apiClient;
@@ -23,6 +25,16 @@ class MovieService {
     );
   }
 
+  Future<BaseMediaResponse> discoverMovieByFilter(Filter filter) async {
+    return performApiCall(
+      () => apiClient.get(Endpoints.discoverMovie, queryParameters: {
+        'with_genres': filter.withGenres,
+        'sort_by': filter.sortBy
+      }),
+      (json) => BaseMediaResponse.fromJson(json),
+    );
+  }
+
   Future<MovieDetailsDto> getMovieDetails(int movieId) async {
     return performApiCall(
       () => apiClient.get('${Endpoints.movieDetails}$movieId'),
@@ -35,6 +47,15 @@ class MovieService {
       () => apiClient
           .get(Endpoints.searchMovie, queryParameters: {'query': query}),
       (json) => BaseMediaResponse.fromJson(json),
+    );
+  }
+
+  Future<GenreResponse> getMovieGenres() async {
+    return performApiCall(
+      () => apiClient.get(Endpoints.movieGenres),
+      (json) => GenreResponse.fromJson(
+        json,
+      ),
     );
   }
 }

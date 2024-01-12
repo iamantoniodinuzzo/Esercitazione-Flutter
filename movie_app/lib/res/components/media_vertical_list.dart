@@ -14,18 +14,18 @@ class MediaVerticalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            context.pushNamed(
-              AppRoutes.details.name,
-              extra: movies[index],
-            );
-          },
-          child: Material(
+    return SafeArea(
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              context.pushNamed(
+                AppRoutes.details.name,
+                extra: movies[index],
+              );
+            },
             child: Card(
               margin: const EdgeInsets.all(8.0),
               child: Row(
@@ -54,9 +54,9 @@ class MediaVerticalList extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

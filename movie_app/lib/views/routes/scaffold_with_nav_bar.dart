@@ -17,7 +17,10 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: navigationShell,
+      body: SafeArea(
+        minimum: const EdgeInsets.only(top: kToolbarHeight),
+        child: navigationShell,
+      ),
       bottomNavigationBar: NavigationBar(
         indicatorColor: MovieAppColors.secondary.withOpacity(0.5),
         backgroundColor: MovieAppColors.primary,
