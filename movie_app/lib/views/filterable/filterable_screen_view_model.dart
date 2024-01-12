@@ -16,6 +16,7 @@ class FilterableScreenViewModel extends ChangeNotifier {
   final Logger _log;
 
   FilterBuilder _filter = FilterBuilder();
+  Filter appliedFilter = FilterBuilder().build();
 
   //* Film filtrati
   UserInterfaceState<List<Movie>> _movieDiscovered = Loading();
@@ -34,7 +35,7 @@ class FilterableScreenViewModel extends ChangeNotifier {
       {required MovieRepository movieRepository, required Logger log})
       : _movieRepository = movieRepository,
         _log = log {
-    discoverMoviesByFIlter(_filter.build());
+    discoverMoviesByFIlter(appliedFilter);
     _getMovieGenres();
   }
 
@@ -104,15 +105,23 @@ class FilterableScreenViewModel extends ChangeNotifier {
   }
 
   void applyFilter() {
+    //Creo il filtro da applicare
+    appliedFilter = _filter.build();
+    _log.d('Apply filters: $appliedFilter');
     //Richiamo la funzione con il filtro corrente
-    discoverMoviesByFIlter(_filter.build());
+    discoverMoviesByFIlter(appliedFilter);
   }
 
   void clearFilter() {
+    _log.d('Clear all filters');
+    //Setto il FilterBuilder allo stato iniziale
     _filter = FilterBuilder();
+    //Applico i filtri
     applyFilter();
+    //Svuoto le selezioni correnti
     _selectedSortOption = SortOptions.popularity;
     _selectedGenres = {};
+
     notifyListeners();
   }
 }

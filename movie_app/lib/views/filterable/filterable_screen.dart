@@ -1,7 +1,7 @@
-import 'dart:collection';
-import 'dart:developer';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/res/components/media_poster.dart';
@@ -116,31 +116,78 @@ Future _displayBottomSheet(
           return StatefulBuilder(builder: (context, state) {
             SortOptions selectedSortBy = viewModel.selectedSortOption;
             Set<Genre> selectedGenres = viewModel.selectedGenres;
-            return Container(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  const Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'Sort by',
-                      style: MovieAppTextStyle.primaryPBold,
+            return Stack(
+              children: [
+                Column(
+                  children: [
+                    const Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Sort by',
+                          style: MovieAppTextStyle.primaryPBold,
+                        ),
+                      ),
+                    ),
+                    _buildSortByChipGroup(selectedSortBy, viewModel),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: _buildActionableHeader(
+                        title: 'With Genre',
+                        onActionSelected: () {
+                          viewModel.clearGenreSelection();
+                        },
+                        isActionVisible: selectedGenres.isNotEmpty,
+                      ),
+                    ),
+                    _buildGenresChipGroup(selectedGenres, viewModel),
+                  ],
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0, right: 10),
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 10,
+                      children: [
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor:
+                                MovieAppColors.primary, // Colore dello sfondo
+                          ),
+                          child: Text(
+                            'Clear filters',
+                            style: MovieAppTextStyle.secondaryPBold
+                                .copyWith(color: MovieAppColors.onPrimary),
+                          ),
+                          onPressed: () {
+                            viewModel.clearFilter();
+                          },
+                        ),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            backgroundColor:
+                                MovieAppColors.accent, // Colore dello sfondo
+                          ),
+                          child: Text(
+                            'Apply filters',
+                            style: MovieAppTextStyle.secondaryPBold
+                                .copyWith(color: MovieAppColors.onPrimary),
+                          ),
+                          onPressed: () {
+                            viewModel.applyFilter();
+                          },
+                        ),
+                      ],
                     ),
                   ),
-                  _buildSortByChipGroup(selectedSortBy, viewModel),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  _buildActionableHeader(
-                    title: 'With Genre',
-                    onActionSelected: () {
-                      viewModel.clearGenreSelection();
-                    },
-                    isActionVisible: selectedGenres.isNotEmpty,
-                  ),
-                  _buildGenresChipGroup(selectedGenres, viewModel)
-                ],
-              ),
+                )
+              ],
             );
           });
         });
@@ -170,7 +217,10 @@ Widget _buildActionableHeader({
           onPressed: () {
             onActionSelected();
           },
-          icon: const Icon(Icons.cleaning_services),
+          icon: const Icon(
+            Icons.delete,
+            color: MovieAppColors.accent,
+          ),
         ),
       ),
     ],
@@ -201,8 +251,7 @@ Widget _buildGenresChipGroup(
   switch (viewModel.movieGenres) {
     case Success<List<Genre>>(data: var data):
       return SizedBox(
-        height: 120,
-        width: double.infinity,
+        height: 100,
         child: GridView.builder(
           scrollDirection: Axis.horizontal,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
