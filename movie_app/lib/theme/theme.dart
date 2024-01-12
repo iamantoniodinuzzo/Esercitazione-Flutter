@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/theme/colors.dart';
 
 class MovieAppTheme {
@@ -7,7 +6,7 @@ class MovieAppTheme {
     useMaterial3: false,
     primaryColor: MovieAppColors.primary,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: MovieAppColors.primary,
+    scaffoldBackgroundColor: MovieAppColors.primaryVariant,
     cardColor: MovieAppColors.primaryVariant,
     colorScheme: const ColorScheme(
       background: MovieAppColors.primary,

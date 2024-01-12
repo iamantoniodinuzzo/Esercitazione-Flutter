@@ -25,7 +25,6 @@ class _FilterableScreenState extends State<FilterableScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: kToolbarHeight,
         actions: [
           InkWell(
             child: const Icon(Icons.filter),
@@ -41,54 +40,54 @@ class _FilterableScreenState extends State<FilterableScreen> {
           child: const Icon(Icons.arrow_back),
         ),
       ),
-      body: SafeArea(
-        child: Consumer<FilterableScreenViewModel>(
-          builder: (context, viewModel, child) {
-            switch (viewModel.movieDiscovered) {
-              case Success<List<Movie>>(data: var data):
-                List<Movie> movies = data;
-                //* Non ci sono film da mostrare
-                if (movies.isEmpty) {
-                  return const Center(
-                    child: Column(
-                      children: [
-                        Text(
-                          'Seems empty here!',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                } else {
-                  return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 3.0,
-                      ),
-                      itemCount: movies.length,
-                      itemBuilder: (context, index) {
-                        return MediaPoster(
-                          movie: movies[index],
-                        );
-                      });
-                }
-              //* Error
-              case Error<List<Movie>>(message: var message):
-                return Center(
-                  child: Text('Error: $message'),
-                );
-              //* Loading
-              case Loading<List<Movie>>():
+      body: Consumer<FilterableScreenViewModel>(
+        builder: (context, viewModel, child) {
+          switch (viewModel.movieDiscovered) {
+            case Success<List<Movie>>(data: var data):
+              List<Movie> movies = data;
+              //* Non ci sono film da mostrare
+              if (movies.isEmpty) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Seems empty here!',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
                 );
-            }
-          },
-        ),
+              } else {
+                return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      mainAxisSpacing: 20,
+                      maxCrossAxisExtent: 150,
+                      crossAxisSpacing: 20,
+                      childAspectRatio: 1 / 2,
+                    ),
+                    itemCount: movies.length,
+                    itemBuilder: (context, index) {
+                      return MediaPoster(
+                        movie: movies[index],
+                      );
+                    });
+              }
+            //* Error
+            case Error<List<Movie>>(message: var message):
+              return Center(
+                child: Text('Error: $message'),
+              );
+            //* Loading
+            case Loading<List<Movie>>():
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+          }
+        },
       ),
     );
   }

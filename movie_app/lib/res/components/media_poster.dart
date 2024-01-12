@@ -20,22 +20,25 @@ class MediaPoster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 140,
       width: 100,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(10),
         child: Stack(
-          alignment: AlignmentDirectional.topEnd,
+          fit: StackFit.expand,
           children: [
             _buildCachedNetworkImage(),
-            _buildVoteAverageChip(),
+            Align(
+              alignment: Alignment.topRight,
+              child: _buildVoteAverageChip(),
+            ),
           ],
         ),
       ),
     );
   }
 
-  CachedNetworkImage _buildCachedNetworkImage() {
+  Widget _buildCachedNetworkImage() {
     return CachedNetworkImage(
       fit: BoxFit.cover,
       imageUrl: movie.completePosterPathOriginal,
