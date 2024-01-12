@@ -1,9 +1,10 @@
 enum SortOptions {
-  popularity(sortName: 'popularity'),
-  voteAverage(sortName: 'vote_average'),
-  revenue(sortName: 'revenue');
+  popularity(sortName: 'popularity', name: 'Popularity'),
+  voteAverage(sortName: 'vote_average', name: 'Vote Average'),
+  revenue(sortName: 'revenue', name: 'Revenue');
 
   final String sortName;
+  final String name;
 
-  const SortOptions({required this.sortName});
+  const SortOptions({required this.sortName, required this.name});
 }
