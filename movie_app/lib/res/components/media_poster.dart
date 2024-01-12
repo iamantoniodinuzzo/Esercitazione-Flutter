@@ -8,11 +8,13 @@ import 'package:movie_app/theme/texts.dart';
 class MediaPoster extends StatelessWidget {
   final Movie movie;
   final bool isVoteAverageVisible;
+  final bool isClickable;
 
   const MediaPoster({
     super.key,
     required this.movie,
     this.isVoteAverageVisible = true,
+    this.isClickable = false,
   });
 
   @override
@@ -35,6 +37,7 @@ class MediaPoster extends StatelessWidget {
 
   CachedNetworkImage _buildCachedNetworkImage() {
     return CachedNetworkImage(
+      fit: BoxFit.cover,
       imageUrl: movie.completePosterPathOriginal,
       progressIndicatorBuilder: (context, url, progress) => Padding(
         padding: const EdgeInsets.all(8.0),
@@ -55,8 +58,6 @@ class MediaPoster extends StatelessWidget {
       child: Opacity(
         opacity: 0.5,
         child: Chip(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-          // Imposta il padding per allungare il chip
           backgroundColor: MovieAppColors.primary,
           label: Text(
             style: MovieAppTextStyle.secondaryPBold.copyWith(fontSize: 12),

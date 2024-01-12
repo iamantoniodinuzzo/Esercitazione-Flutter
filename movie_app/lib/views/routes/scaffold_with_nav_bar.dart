@@ -16,33 +16,34 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: navigationShell,
-        bottomNavigationBar: NavigationBar(
-          indicatorColor: MovieAppColors.secondary.withOpacity(0.5),
-          backgroundColor: MovieAppColors.primary,
-          // Here, the items of BottomNavigationBar are hard coded. In a real
-          // world scenario, the items would most likely be generated from the
-          // branches of the shell route, which can be fetched using
-          // `navigationShell.route.branches`.
-          destinations: const <NavigationDestination>[
-            NavigationDestination(
-              icon: Icon(
-                Icons.home,
-              ),
-              label: 'Home',
+    return Scaffold(
+      body: SafeArea(
+        minimum: const EdgeInsets.only(top: kToolbarHeight),
+        child: navigationShell,
+      ),
+      bottomNavigationBar: NavigationBar(
+        indicatorColor: MovieAppColors.secondary.withOpacity(0.5),
+        backgroundColor: MovieAppColors.primary,
+        // Here, the items of BottomNavigationBar are hard coded. In a real
+        // world scenario, the items would most likely be generated from the
+        // branches of the shell route, which can be fetched using
+        // `navigationShell.route.branches`.
+        destinations: const <NavigationDestination>[
+          NavigationDestination(
+            icon: Icon(
+              Icons.home,
             ),
-            NavigationDestination(
-              icon: Icon(
-                Icons.search,
-              ),
-              label: 'Discover',
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.search,
             ),
-          ],
-          selectedIndex: navigationShell.currentIndex,
-          onDestinationSelected: (int index) => _onTap(context, index),
-        ),
+            label: 'Discover',
+          ),
+        ],
+        selectedIndex: navigationShell.currentIndex,
+        onDestinationSelected: (int index) => _onTap(context, index),
       ),
     );
   }

@@ -23,47 +23,44 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           'Discover',
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 18,
-            ),
-            _buildSearchButton(context),
-            const SizedBox(
-              height: 18,
-            ),
-            _buildAdvancedFilteringButton(),
-          ],
-        ),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 18,
+          ),
+          _buildSearchButton(context),
+          const SizedBox(
+            height: 18,
+          ),
+          _buildAdvancedFilteringButton(),
+        ],
       ),
     );
   }
 
   Align _buildAdvancedFilteringButton() {
     return Align(
-            alignment: Alignment.centerLeft,
-            child: ElevatedButton.icon(
-                onPressed: () {
-                  context.pushNamed(AppRoutes.filterable.name);
-                },
-                icon: const Icon(Icons.filter_alt_outlined),
-                label: const Text('Advanced'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  backgroundColor: MovieAppColors.secondary,
-                  elevation: 15,
-                  shadowColor: MovieAppColors.secondary,
-                  padding: const EdgeInsets.all(15.0),
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-          );
+      alignment: Alignment.centerLeft,
+      child: ElevatedButton.icon(
+          onPressed: () {
+            context.pushNamed(AppRoutes.filterable.name);
+          },
+          icon: const Icon(Icons.filter_alt_outlined),
+          label: const Text('Advanced'),
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            backgroundColor: MovieAppColors.secondary,
+            elevation: 15,
+            shadowColor: MovieAppColors.secondary,
+            padding: const EdgeInsets.all(15.0),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
+    );
   }
 
   SizedBox _buildSearchButton(BuildContext context) {

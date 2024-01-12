@@ -30,9 +30,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
     detailViewModel.getMovieDetails(widget.selectedMedia.id);
 
-    return SafeArea(
-      child: Scaffold(
-        body: NestedScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               SliverAppBar(

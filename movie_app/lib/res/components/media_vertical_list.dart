@@ -14,47 +14,49 @@ class MediaVerticalList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            context.pushNamed(
-              AppRoutes.details.name,
-              extra: movies[index],
-            );
-          },
-          child: Card(
-            margin: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                // Left side: Movie Poster
-                Hero(
-                    tag: movies[index].id,
-                    child: MediaPoster(
-                      movie: movies[index],
-                    )),
-                // Right side: Movie Details
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          movies[index].title,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                      ],
+    return SafeArea(
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: movies.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              context.pushNamed(
+                AppRoutes.details.name,
+                extra: movies[index],
+              );
+            },
+            child: Card(
+              margin: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  // Left side: Movie Poster
+                  Hero(
+                      tag: movies[index].id,
+                      child: MediaPoster(
+                        movie: movies[index],
+                      )),
+                  // Right side: Movie Details
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            movies[index].title,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

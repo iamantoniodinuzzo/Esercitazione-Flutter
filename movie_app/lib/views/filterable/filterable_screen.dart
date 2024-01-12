@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
@@ -24,25 +23,26 @@ class _FilterableScreenState extends State<FilterableScreen> {
         Provider.of<FilterableScreenViewModel>(context, listen: false);
     filterableScreenViewModel.discoverMoviesByFIlter(Filter.builder().build());
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            InkWell(
-              child: const Icon(Icons.filter),
-              onTap: () {
-                _displayBottomSheet(context);
-              },
-            ),
-          ],
-          leading: InkWell(
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: kToolbarHeight,
+        actions: [
+          InkWell(
+            child: const Icon(Icons.filter),
             onTap: () {
-              context.pop();
+              _displayBottomSheet(context);
             },
-            child: const Icon(Icons.arrow_back),
           ),
+        ],
+        leading: InkWell(
+          onTap: () {
+            context.pop();
+          },
+          child: const Icon(Icons.arrow_back),
         ),
-        body: Consumer<FilterableScreenViewModel>(
+      ),
+      body: SafeArea(
+        child: Consumer<FilterableScreenViewModel>(
           builder: (context, viewModel, child) {
             switch (viewModel.movieDiscovered) {
               case Success<List<Movie>>(data: var data):
