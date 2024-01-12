@@ -46,6 +46,11 @@ class FilterableScreenViewModel extends ChangeNotifier {
   void selectSortBy(SortOptions sortType) {
     _selectedSortOption = sortType;
     log('Selezionato $sortType');
+    discoverMoviesByFIlter(Filter.builder()
+        .setSortType(
+          sortOption: sortType,
+        )
+        .build());
     notifyListeners();
   }
 }

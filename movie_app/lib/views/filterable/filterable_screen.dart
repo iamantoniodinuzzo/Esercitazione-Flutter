@@ -25,18 +25,18 @@ class _FilterableScreenState extends State<FilterableScreen> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          InkWell(
-            child: const Icon(Icons.filter),
-            onTap: () {
+          IconButton(
+            icon: const Icon(Icons.filter),
+            onPressed: () {
               _displayBottomSheet(context);
             },
           ),
         ],
-        leading: InkWell(
-          onTap: () {
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
             context.pop();
           },
-          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: Consumer<FilterableScreenViewModel>(
@@ -60,20 +60,23 @@ class _FilterableScreenState extends State<FilterableScreen> {
                   ),
                 );
               } else {
-                return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      mainAxisSpacing: 20,
-                      maxCrossAxisExtent: 150,
-                      crossAxisSpacing: 20,
-                      childAspectRatio: 1 / 2,
-                    ),
-                    itemCount: movies.length,
-                    itemBuilder: (context, index) {
-                      return MediaPoster(
-                        movie: movies[index],
-                      );
-                    });
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        mainAxisSpacing: 20,
+                        maxCrossAxisExtent: 150,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 1 / 2,
+                      ),
+                      itemCount: movies.length,
+                      itemBuilder: (context, index) {
+                        return MediaPoster(
+                          movie: movies[index],
+                        );
+                      }),
+                );
               }
             //* Error
             case Error<List<Movie>>(message: var message):
@@ -96,11 +99,14 @@ Future _displayBottomSheet(
   BuildContext context,
 ) {
   return showModalBottomSheet(
+      showDragHandle: true,
       context: context,
-      backgroundColor: MovieAppColors.primary,
+      backgroundColor: MovieAppColors.primary.withOpacity(0.5),
       barrierColor: MovieAppColors.primary.withOpacity(0.5),
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+        side: BorderSide(color: MovieAppColors.primary, width: 2),
+      ),
       builder: (context) {
         return Consumer<FilterableScreenViewModel>(
             builder: (context, viewModel, child) {
@@ -130,7 +136,17 @@ Future _displayBottomSheet(
                         },
                       );
                     }).toList(),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  const Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'With Genres',
+                      style: MovieAppTextStyle.primaryPBold,
+                    ),
+                  ),
                 ],
               ),
             );
