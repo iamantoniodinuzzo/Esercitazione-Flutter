@@ -8,13 +8,13 @@ import 'package:movie_app/data/remote/dto/production_company/production_company_
 import 'package:movie_app/data/remote/dto/production_country/production_country_dto.dart';
 import 'package:movie_app/data/remote/dto/spoken_language/spoken_language_dto.dart';
 import 'package:movie_app/domain/exception/mapper_exception.dart';
-import 'package:movie_app/domain/model/collection/collection.dart';
-import 'package:movie_app/domain/model/genre/genre.dart';
-import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/domain/model/movie/movie_details.dart';
-import 'package:movie_app/domain/model/production_company/production_company.dart';
-import 'package:movie_app/domain/model/production_country/production_country.dart';
-import 'package:movie_app/domain/model/spoken_language/spoken_language.dart';
+import 'package:movie_app/domain/models/collection/collection.dart';
+import 'package:movie_app/domain/models/genre/genre.dart';
+import 'package:movie_app/domain/models/movie/movie.dart';
+import 'package:movie_app/domain/models/movie/movie_details.dart';
+import 'package:movie_app/domain/models/production_company/production_company.dart';
+import 'package:movie_app/domain/models/production_country/production_country.dart';
+import 'package:movie_app/domain/models/spoken_language/spoken_language.dart';
 
 class NetworkMapper {
   final Logger log;

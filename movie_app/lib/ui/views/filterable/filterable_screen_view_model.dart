@@ -1,0 +1,127 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:movie_app/core/error/exception/server_exception_type.dart';
+import 'package:movie_app/domain/models/filter/filter.dart';
+import 'package:movie_app/domain/models/movie/movie.dart';
+import 'package:movie_app/util/user_interface_state.dart';
+
+import '../../../data/repository/movie_repository_impl.dart';
+import '../../../domain/models/filter/sort_type.dart';
+import '../../../domain/models/genre/genre.dart';
+
+class FilterableScreenViewModel extends ChangeNotifier {
+  final MovieRepositoryImpl _movieRepository;
+  final Logger _log;
+
+  FilterBuilder _filter = FilterBuilder();
+  Filter appliedFilter = FilterBuilder().build();
+
+  //* Film filtrati
+  UserInterfaceState<List<Movie>> _movieDiscovered = Loading();
+  UserInterfaceState<List<Movie>> get movieDiscovered => _movieDiscovered;
+  //* Generi dei film
+  UserInterfaceState<List<Genre>> _movieGenres = Loading();
+  UserInterfaceState<List<Genre>> get movieGenres => _movieGenres;
+  //* Sort by selezionato
+  SortOptions _selectedSortOption = SortOptions.popularity;
+  SortOptions get selectedSortOption => _selectedSortOption;
+  //* Generi selezionati
+  Set<Genre> _selectedGenres = <Genre>{};
+  Set<Genre> get selectedGenres => _selectedGenres;
+
+  FilterableScreenViewModel(
+      {required MovieRepositoryImpl movieRepository, required Logger log})
+      : _movieRepository = movieRepository,
+        _log = log {
+    discoverMoviesByFIlter(appliedFilter);
+    _getMovieGenres();
+  }
+
+  void discoverMoviesByFIlter(Filter filter) async {
+    _log.d('Discover movies with this filter $filter');
+    try {
+      var result = await _movieRepository.discoverMovieByFilter(filter);
+      _movieDiscovered = Success<List<Movie>>(data: result);
+      _log.d('Movies discovered');
+      notifyListeners();
+    } on ServerException catch (e) {
+      _log.e('An error occurred while retrieving movies', error: e);
+      _movieDiscovered = Error(message: e.message);
+      notifyListeners();
+    }
+  }
+
+  void _getMovieGenres() async {
+    _log.d('Retrieve movie\'s genres');
+    try {
+      var result = await _movieRepository.getMovieGenres();
+      _movieGenres = Success<List<Genre>>(data: result);
+      _log.d('Movie genres retrieved');
+      notifyListeners();
+    } on ServerException catch (e) {
+      _log.e('An error occurred while retrieving movie genres', error: e);
+      _movieGenres = Error(message: e.message);
+      notifyListeners();
+    }
+  }
+
+  void selectSortBy(SortOptions sortType) {
+    _selectedSortOption = sortType;
+    _log.d('Selected sortBy: $sortType');
+
+    //Aggiorno il filtro
+    _filter = _filter.setSortType(sortOption: sortType);
+
+    notifyListeners();
+  }
+
+  void selectGenre(Genre selectedGenre) {
+    _selectedGenres.add(selectedGenre);
+    _log.d('Selected genre: ${selectedGenre.name}');
+
+    _filter = FilterBuilder().setGenre(selectedGenre);
+
+    notifyListeners();
+  }
+
+  void removeGenre(Genre selectedGenre) {
+    _selectedGenres.remove(selectedGenre);
+    _log.d('Remove ${selectedGenre.name} genre');
+
+    _filter = FilterBuilder().removeGenre(selectedGenre);
+
+    notifyListeners();
+  }
+
+  void clearGenreSelection() {
+    _selectedGenres.clear();
+    _log.d('Cleared genre selection');
+
+    _filter = FilterBuilder().clearGenreSelection();
+
+    notifyListeners();
+  }
+
+  void applyFilter() {
+    //Creo il filtro da applicare
+    appliedFilter = _filter.build();
+    _log.d('Apply filters: $appliedFilter');
+    //Richiamo la funzione con il filtro corrente
+    discoverMoviesByFIlter(appliedFilter);
+  }
+
+  void clearFilter() {
+    _log.d('Clear all filters');
+    //Setto il FilterBuilder allo stato iniziale
+    _filter = FilterBuilder();
+    //Applico i filtri
+    applyFilter();
+    //Svuoto le selezioni correnti
+    _selectedSortOption = SortOptions.popularity;
+    _selectedGenres = {};
+
+    notifyListeners();
+  }
+}
