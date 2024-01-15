@@ -4,7 +4,6 @@ import 'package:movie_app/util/user_interface_state.dart';
 import '../../../domain/models/movie/movie.dart';
 
 class HomeVMState extends BaseViewModelState {
-  // final List<Movie> trendingMovies = [];//FIXME: Da sostituire con la sealed class che ne incapsuli i valori
  late UserInterfaceState<List<Movie>> trendingMovies;
 }
 

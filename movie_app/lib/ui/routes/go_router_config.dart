@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/ui/views/details/detail_screen.dart';
+import 'package:movie_app/ui/views/movie_details/movie_details_view.dart';
 import 'package:movie_app/ui/views/discover/discover_screen.dart';
 import 'package:movie_app/ui/views/filterable/filterable_screen.dart';
 import 'package:movie_app/ui/views/home/home_view.dart';
@@ -28,7 +28,7 @@ class GoRouterConfig {
           if (selectedMedia == null) {
             return const Scaffold();
           } else {
-            return DetailScreen(
+            return MovieDetailView(
               selectedMedia: selectedMedia,
             );
           }
