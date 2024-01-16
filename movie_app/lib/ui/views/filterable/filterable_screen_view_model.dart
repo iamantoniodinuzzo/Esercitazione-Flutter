@@ -1,43 +1,49 @@
-import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_app/core/network/exception/server_exception_type.dart';
+import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/di/injector.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/ui/views/_base/base_view_model.dart';
 
 import '../../../domain/model/filter/sort_type.dart';
 import '../../../domain/model/genre/genre.dart';
 import '../../../domain/repository/movie_repository.dart';
 
-class FilterableScreenViewModel extends ChangeNotifier {
-  final MovieRepository _movieRepository;
-  final Logger _log;
+class FilterableScreenViewModel extends BaseViewModel {
+  final MovieRepository _movieRepository = getIt<MovieRepository>();
+  final Logger _log = getIt<Logger>();
 
-  FilterBuilder _filter = FilterBuilder();
-  Filter appliedFilter = FilterBuilder().build();
+  final FilterBuilder _filterBuilder = FilterBuilder();
+
+  Filter get appliedFilter => _filterBuilder.build();
 
   //* Film filtrati
   NetworkState<List<Movie>> _movieDiscovered = Loading();
+
   NetworkState<List<Movie>> get movieDiscovered => _movieDiscovered;
+
   //* Generi dei film
   NetworkState<List<Genre>> _movieGenres = Loading();
+
   NetworkState<List<Genre>> get movieGenres => _movieGenres;
+
   //* Sort by selezionato
   SortOptions _selectedSortOption = SortOptions.popularity;
+
   SortOptions get selectedSortOption => _selectedSortOption;
+
   //* Generi selezionati
   Set<Genre> _selectedGenres = <Genre>{};
+
   Set<Genre> get selectedGenres => _selectedGenres;
 
-  FilterableScreenViewModel(
-      {required MovieRepository movieRepository, required Logger log})
-      : _movieRepository = movieRepository,
-        _log = log {
-    discoverMoviesByFIlter(appliedFilter);
+  void onInit() {
+    discoverMoviesByFilter(appliedFilter);
     _getMovieGenres();
   }
 
-  void discoverMoviesByFIlter(Filter filter) async {
+  void discoverMoviesByFilter(Filter filter) async {
     _log.d('Discover movies with this filter $filter');
     try {
       var result = await _movieRepository.discoverMovieByFilter(filter);
@@ -70,7 +76,7 @@ class FilterableScreenViewModel extends ChangeNotifier {
     _log.d('Selected sortBy: $sortType');
 
     //Aggiorno il filtro
-    _filter = _filter.setSortType(sortOption: sortType);
+    _filterBuilder.setSortType(sortOption: sortType);
 
     notifyListeners();
   }
@@ -79,7 +85,7 @@ class FilterableScreenViewModel extends ChangeNotifier {
     _selectedGenres.add(selectedGenre);
     _log.d('Selected genre: ${selectedGenre.name}');
 
-    _filter = FilterBuilder().setGenre(selectedGenre);
+    _filterBuilder.setGenre(selectedGenre);
 
     notifyListeners();
   }
@@ -88,7 +94,7 @@ class FilterableScreenViewModel extends ChangeNotifier {
     _selectedGenres.remove(selectedGenre);
     _log.d('Remove ${selectedGenre.name} genre');
 
-    _filter = FilterBuilder().removeGenre(selectedGenre);
+    _filterBuilder.removeGenre(selectedGenre);
 
     notifyListeners();
   }
@@ -97,23 +103,22 @@ class FilterableScreenViewModel extends ChangeNotifier {
     _selectedGenres.clear();
     _log.d('Cleared genre selection');
 
-    _filter = FilterBuilder().clearGenreSelection();
+    _filterBuilder.clearGenreSelection();
 
     notifyListeners();
   }
 
   void applyFilter() {
     //Creo il filtro da applicare
-    appliedFilter = _filter.build();
     _log.d('Apply filters: $appliedFilter');
     //Richiamo la funzione con il filtro corrente
-    discoverMoviesByFIlter(appliedFilter);
+    discoverMoviesByFilter(appliedFilter);
   }
 
   void clearFilter() {
     _log.d('Clear all filters');
     //Setto il FilterBuilder allo stato iniziale
-    _filter = FilterBuilder();
+    _filterBuilder.clear();
     //Applico i filtri
     applyFilter();
     //Svuoto le selezioni correnti

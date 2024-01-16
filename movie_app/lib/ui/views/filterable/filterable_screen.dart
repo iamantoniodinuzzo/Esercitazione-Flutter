@@ -1,17 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/network/network_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
-import 'package:movie_app/core/network/network_state.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/texts.dart';
 import '../../../domain/model/filter/sort_type.dart';
 import '../../../domain/model/genre/genre.dart';
+import '../_base/base_widget.dart';
 import 'filterable_screen_view_model.dart';
 
 class FilterableScreen extends StatefulWidget {
@@ -28,7 +25,7 @@ class _FilterableScreenState extends State<FilterableScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            icon: const Icon(Icons.filter),
+            icon: const Icon(Icons.filter_list),
             onPressed: () {
               _displayBottomSheet(context);
             },
@@ -41,8 +38,11 @@ class _FilterableScreenState extends State<FilterableScreen> {
           },
         ),
       ),
-      body: Consumer<FilterableScreenViewModel>(
-        builder: (context, viewModel, child) {
+      body: BaseWidget<FilterableScreenViewModel>(
+        viewModel: FilterableScreenViewModel(),
+        onModelReady: (FilterableScreenViewModel viewModel) =>
+            viewModel.onInit(),
+        builder: (context, viewModel, _) {
           switch (viewModel.movieDiscovered) {
             case Success<List<Movie>>(data: var data):
               List<Movie> movies = data;
@@ -111,86 +111,88 @@ Future _displayBottomSheet(
         side: BorderSide(color: MovieAppColors.primary, width: 2),
       ),
       builder: (context) {
-        return Consumer<FilterableScreenViewModel>(
-            builder: (context, viewModel, child) {
-          return StatefulBuilder(builder: (context, state) {
-            SortOptions selectedSortBy = viewModel.selectedSortOption;
-            Set<Genre> selectedGenres = viewModel.selectedGenres;
-            return Stack(
-              children: [
-                Column(
+        return BaseWidget<FilterableScreenViewModel>(
+            viewModel: FilterableScreenViewModel(),
+            onModelReady: (FilterableScreenViewModel viewModel) {},
+            builder: (context, viewModel, _) {
+              return StatefulBuilder(builder: (context, state) {
+                SortOptions selectedSortBy = viewModel.selectedSortOption;
+                Set<Genre> selectedGenres = viewModel.selectedGenres;
+                return Stack(
                   children: [
-                    const Align(
-                      alignment: Alignment.topLeft,
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Sort by',
-                          style: MovieAppTextStyle.primaryPBold,
-                        ),
-                      ),
-                    ),
-                    _buildSortByChipGroup(selectedSortBy, viewModel),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: _buildActionableHeader(
-                        title: 'With Genre',
-                        onActionSelected: () {
-                          viewModel.clearGenreSelection();
-                        },
-                        isActionVisible: selectedGenres.isNotEmpty,
-                      ),
-                    ),
-                    _buildGenresChipGroup(selectedGenres, viewModel),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0, right: 10),
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 10,
+                    Column(
                       children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor:
-                                MovieAppColors.primary, // Colore dello sfondo
+                        const Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'Sort by',
+                              style: MovieAppTextStyle.primaryPBold,
+                            ),
                           ),
-                          child: Text(
-                            'Clear filters',
-                            style: MovieAppTextStyle.secondaryPBold
-                                .copyWith(color: MovieAppColors.onPrimary),
-                          ),
-                          onPressed: () {
-                            viewModel.clearFilter();
-                          },
                         ),
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            backgroundColor:
-                                MovieAppColors.accent, // Colore dello sfondo
-                          ),
-                          child: Text(
-                            'Apply filters',
-                            style: MovieAppTextStyle.secondaryPBold
-                                .copyWith(color: MovieAppColors.onPrimary),
-                          ),
-                          onPressed: () {
-                            viewModel.applyFilter();
-                          },
+                        _buildSortByChipGroup(selectedSortBy, viewModel),
+                        const SizedBox(
+                          height: 10,
                         ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: _buildActionableHeader(
+                            title: 'With Genre',
+                            onActionSelected: () {
+                              viewModel.clearGenreSelection();
+                            },
+                            isActionVisible: selectedGenres.isNotEmpty,
+                          ),
+                        ),
+                        _buildGenresChipGroup(selectedGenres, viewModel),
                       ],
                     ),
-                  ),
-                )
-              ],
-            );
-          });
-        });
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 10.0, right: 10),
+                        child: Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          spacing: 10,
+                          children: [
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: MovieAppColors
+                                    .primary, // Colore dello sfondo
+                              ),
+                              child: Text(
+                                'Clear filters',
+                                style: MovieAppTextStyle.secondaryPBold
+                                    .copyWith(color: MovieAppColors.onPrimary),
+                              ),
+                              onPressed: () {
+                                viewModel.clearFilter();
+                              },
+                            ),
+                            TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: MovieAppColors
+                                    .accent, // Colore dello sfondo
+                              ),
+                              child: Text(
+                                'Apply filters',
+                                style: MovieAppTextStyle.secondaryPBold
+                                    .copyWith(color: MovieAppColors.onPrimary),
+                              ),
+                              onPressed: () {
+                                viewModel.applyFilter();
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              });
+            });
       });
 }
 

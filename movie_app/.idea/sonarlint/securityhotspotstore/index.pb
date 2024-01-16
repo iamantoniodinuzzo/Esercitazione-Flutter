@@ -85,3 +85,19 @@ Q
 !lib/di/injector_repositories.dart,0\8\08c109927169b108f51f12b950e2b92010bab4c4
 M
 lib/di/injector_services.dart,e\2\e2dbc4549f8ed69b070865aa80b3bf888e1a84d2
+O
+lib/core/routes/app_routes.dart,e\7\e74ad0f39051829190488a10b87777046d57bcf5
+U
+%lib/core/routes/go_router_config.dart,6\5\65a8c09ac2effe421fb3004929914ba4a27717ea
+P
+ lib/core/network/dio_client.dart,b\f\bfcf802866b285c30169fde67e97333303eae318
+V
+&lib/core/network/perform_api_call.dart,7\3\73b98390133aa045dba1a60f8aa2b9d6f8ddd7bf
+R
+"lib/ui/views/_base/BaseWidget.dart,9\c\9cdecda476c3194c221741f2b980ce8049f30782
+S
+#lib/ui/views/_base/base_widget.dart,5\e\5ed5c300e283e8712f4502f8ecf815a0766a3158
+W
+'lib/ui/views/_base/base_view_model.dart,5\9\59fe8c6d8d5934b6f1b3703fb9ea34c1a2572fe1
+Z
+*lib/ui/views/search/search_view_model.dart,0\9\09a4e71e2329f8c8a5c6a1e063a83fa7f8116c86

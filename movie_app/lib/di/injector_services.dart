@@ -21,11 +21,9 @@ Future<void> initializeServices() async {
   //DioClient
   getIt.registerSingleton<DioClient>(DioClient(apiKey: config.apiKey));
 
-
   //MovieService
   getIt.registerSingleton<MovieService>(
     MovieService(
-      getIt<Logger>(),
       apiClient: getIt<DioClient>(),
     ),
   );

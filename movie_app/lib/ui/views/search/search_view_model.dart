@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_app/core/network/exception/server_exception_type.dart';
+import 'package:movie_app/di/injector.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/ui/views/_base/base_view_model.dart';
 
 import '../../../domain/repository/movie_repository.dart';
 
-class SearchViewModel extends ChangeNotifier {
-  final MovieRepository _movieRepository;
-  final Logger _log;
+class SearchViewModel extends BaseViewModel {
+  final MovieRepository _movieRepository = getIt<MovieRepository>();
+  final Logger _log = getIt<Logger>();
 
   NetworkState<List<Movie>> _queryResult = Loading();
   NetworkState<List<Movie>> get queryResult => _queryResult;
 
-  SearchViewModel({
-    required MovieRepository movieRepository,
-    required Logger log,
-  })  : _movieRepository = movieRepository,
-        _log = log;
 
   void searchMovie({required String query}) async {
     _log.d("Search movie with query ($query)");

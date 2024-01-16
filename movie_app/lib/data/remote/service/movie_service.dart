@@ -11,17 +11,15 @@ import 'package:movie_app/domain/model/filter/filter.dart';
 import 'package:movie_app/domain/model/time_window.dart';
 
 class MovieService {
-  final DioClient apiClient;
-  final Logger log;
+  final DioClient _dioClient;
 
-  MovieService(
-    this.log, {
-    required this.apiClient,
-  });
+  MovieService({
+    required DioClient apiClient,
+  }) : _dioClient = apiClient;
 
   Future<BaseMediaResponse> getTrendingMovies(TimeWindow timeWindow) async {
     return performApiCall(
-      () => apiClient.get(
+      () => _dioClient.get(
         ApiEndpoints.trending(
           TrendingEndpoint.movie,
           timeWindow: timeWindow,
@@ -33,7 +31,7 @@ class MovieService {
 
   Future<BaseMediaResponse> discoverMovieByFilter(Filter filter) async {
     return performApiCall(
-      () => apiClient.get(ApiEndpoints.discover(DiscoverEndpoint.movie),
+      () => _dioClient.get(ApiEndpoints.discover(DiscoverEndpoint.movie),
           queryParameters: {
             'with_genres': filter.withGenres,
             'sort_by': filter.sortBy
@@ -44,7 +42,7 @@ class MovieService {
 
   Future<MovieDetailsDto> getMovieDetails(int movieId) async {
     return performApiCall(
-      () => apiClient.get(
+      () => _dioClient.get(
         ApiEndpoints.movies(
           MoviesEndpoint.details,
           movieId,
@@ -56,7 +54,7 @@ class MovieService {
 
   Future<BaseMediaResponse> searchMovie(String query) async {
     return performApiCall(
-      () => apiClient.get(ApiEndpoints.search(SearchEndpoint.movie),
+      () => _dioClient.get(ApiEndpoints.search(SearchEndpoint.movie),
           queryParameters: {'query': query}),
       (json) => BaseMediaResponse.fromJson(json),
     );
@@ -64,7 +62,7 @@ class MovieService {
 
   Future<GenreResponse> getMovieGenres() async {
     return performApiCall(
-      () => apiClient.get(
+      () => _dioClient.get(
         ApiEndpoints.genres(GenresEndpoint.movieList),
       ),
       (json) => GenreResponse.fromJson(

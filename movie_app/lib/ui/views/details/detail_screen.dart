@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/network/network_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
-import 'package:movie_app/core/network/network_state.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/texts.dart';
+import '../_base/base_widget.dart';
 import 'detail_view_model.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -26,11 +26,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final detailViewModel =
-        Provider.of<DetailViewModel>(context, listen: false);
-
-    detailViewModel.getMovieDetails(widget.selectedMedia.id);
-
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
@@ -130,7 +125,10 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ];
           },
-          body: Consumer<DetailViewModel>(
+          body: BaseWidget<DetailViewModel>(
+            viewModel: DetailViewModel(),
+            onModelReady: (DetailViewModel viewModel) =>
+                viewModel.getMovieDetails(widget.selectedMedia.id),
             builder: (context, viewModel, child) {
               switch (viewModel.movieDetails) {
                 //* Success

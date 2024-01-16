@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/theme/theme.dart';
 import 'package:movie_app/core/routes/go_router_config.dart';
 import 'package:movie_app/di/injector.dart';
+import 'package:movie_app/domain/repository/movie_repository.dart';
+import 'package:movie_app/ui/views/home/home_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -20,17 +22,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String appTitle = 'Movie App';
-    return MultiProvider(
-      providers: const [
-        //? TODO aggiungere view model
-      ],
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: appTitle,
-        routerConfig: GoRouterConfig.routes,
-        darkTheme: MovieAppTheme.darkTheme,
-        themeMode: ThemeMode.dark,
-      ),
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: appTitle,
+      routerConfig: GoRouterConfig.routes,
+      darkTheme: MovieAppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
     );
   }
 }

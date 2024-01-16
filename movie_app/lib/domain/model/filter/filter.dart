@@ -45,6 +45,12 @@ class FilterBuilder {
     return this;
   }
 
+  FilterBuilder clear(){
+    sortBy = null;
+    withGenres = null;
+    return this;
+  }
+
   Filter build() {
     return Filter._builder(this);
   }
