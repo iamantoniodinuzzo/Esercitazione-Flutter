@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/core/network/endpoints.dart';
+import 'package:flutter/foundation.dart';
+import 'package:movie_app/core/network/api_endpoints.dart';
 import 'package:movie_app/core/network/logger_interceptor.dart';
 import 'package:movie_app/util/constants.dart';
 
 /// Useful resource https://medium.com/@huguesarnold/networking-with-dio-how-to-develop-a-feature-in-flutter-project-part-4-eb6e0f3beef6
 class DioClient {
   late final Dio _dio;
-  static const String _baseUrl = Endpoints.baseUrl;
+  static const String _baseUrl = ApiEndpoints.baseUrl;
 
   DioClient({required String apiKey})
       : _dio = Dio(
@@ -21,7 +22,9 @@ class DioClient {
                   const Duration(milliseconds: Constants.receiveTimeout),
               headers: {'Content-Type': 'application/json; charset=UTF-8'},
               responseType: ResponseType.json),
-        )..interceptors.addAll([LoggerInterceptor()]);
+        )..interceptors.addAll([
+            if (kDebugMode) LoggerInterceptor(),
+          ]);
 
   // GET METHOD
   Future<Response> get(

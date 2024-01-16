@@ -3,6 +3,7 @@ import '../dto/movie/movie_dto.dart';
 
 part 'base_media_response.g.dart';
 
+//TODO: Rimozione dell'annotazione e utilizzare invece il codice generato all'interno della classe
 @JsonSerializable()
 class BaseMediaResponse {
   final int page;

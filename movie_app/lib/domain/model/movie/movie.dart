@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:movie_app/core/network/endpoints.dart';
+import 'package:movie_app/core/network/api_endpoints.dart';
 import 'package:movie_app/util/constants.dart';
-import 'package:movie_app/util/media_type.dart';
+import 'package:movie_app/domain/model/media_type.dart';
 
 class Movie {
   final bool adult;
@@ -29,24 +29,24 @@ class Movie {
   }) : mediaType = MediaType.movie;
 
   String get completePosterPathW500 {
-    return posterPath != null ? '${Endpoints.imagePathW500}$posterPath' : '';
+    return posterPath != null ? '${ApiEndpoints.imagePathW500}$posterPath' : '';
   }
 
   String get completeBackdropPathW500 {
     return backdropPath != null
-        ? '${Endpoints.imagePathW500}$backdropPath'
+        ? '${ApiEndpoints.imagePathW500}$backdropPath'
         : '';
   }
 
   String get completePosterPathOriginal {
     return posterPath != null
-        ? '${Endpoints.imagePathOriginal}$posterPath'
+        ? '${ApiEndpoints.imagePathOriginal}$posterPath'
         : '';
   }
 
   String get completeBackdropPathOriginal {
     return posterPath != null
-        ? '${Endpoints.imagePathOriginal}$backdropPath'
+        ? '${ApiEndpoints.imagePathOriginal}$backdropPath'
         : '';
   }
 }

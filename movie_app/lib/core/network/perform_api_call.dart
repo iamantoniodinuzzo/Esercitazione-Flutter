@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/core/error/exception/server_exception_type.dart';
+import 'package:movie_app/core/exception/server_exception_type.dart';
 import 'package:movie_app/util/extensions/extensions.dart';
 
 

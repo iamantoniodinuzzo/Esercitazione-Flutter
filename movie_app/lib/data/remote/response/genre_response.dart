@@ -3,6 +3,7 @@ import 'package:movie_app/data/remote/dto/genre/genre_dto.dart';
 
 part 'genre_response.g.dart';
 
+//TODO: Rimozione dell'annotazione e utilizzare invece il codice generato all'interno della classe
 @JsonSerializable()
 class GenreResponse {
   @JsonKey(name: "genres")
