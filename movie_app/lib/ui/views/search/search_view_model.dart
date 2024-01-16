@@ -12,8 +12,8 @@ class SearchViewModel extends BaseViewModel {
   final MovieRepository _movieRepository = getIt<MovieRepository>();
   final Logger _log = getIt<Logger>();
 
-  NetworkState<List<Movie>> _queryResult = Loading();
-  NetworkState<List<Movie>> get queryResult => _queryResult;
+  ResultState<List<Movie>> _queryResult = Loading();
+  ResultState<List<Movie>> get queryResult => _queryResult;
 
 
   void searchMovie({required String query}) async {

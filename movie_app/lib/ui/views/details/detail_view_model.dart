@@ -11,9 +11,9 @@ class DetailViewModel extends BaseViewModel {
   final MovieRepository _movieRepository = getIt<MovieRepository>();
   final Logger _log = getIt<Logger>();
 
-  NetworkState<MovieDetails> _movieDetails = Loading();
+  ResultState<MovieDetails> _movieDetails = Loading();
 
-  NetworkState<MovieDetails> get movieDetails => _movieDetails;
+  ResultState<MovieDetails> get movieDetails => _movieDetails;
 
   void getMovieDetails(int movieId) async {
     _log.d('Search movie details wth id ($movieId)');

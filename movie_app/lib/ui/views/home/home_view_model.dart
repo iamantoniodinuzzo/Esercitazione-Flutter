@@ -13,9 +13,9 @@ class HomeViewModel extends BaseViewModel {
   final MovieRepository _movieRepository = getIt<MovieRepository>();
   final Logger _log = getIt<Logger>();
 
-  NetworkState<List<Movie>> _trendingMovies = Loading();
+  ResultState<List<Movie>> _trendingMovies = Loading();
 
-  NetworkState<List<Movie>> get trendingMovies => _trendingMovies;
+  ResultState<List<Movie>> get trendingMovies => _trendingMovies;
 
   /// Recupera i film in tendenza.
   /// [timeWidow] indica la finestra temporale della tendenza, di default [TimeWidow.week]

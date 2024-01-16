@@ -19,14 +19,14 @@ class FilterableScreenViewModel extends BaseViewModel {
   Filter get appliedFilter => _filterBuilder.build();
 
   //* Film filtrati
-  NetworkState<List<Movie>> _movieDiscovered = Loading();
+  ResultState<List<Movie>> _movieDiscovered = Loading();
 
-  NetworkState<List<Movie>> get movieDiscovered => _movieDiscovered;
+  ResultState<List<Movie>> get movieDiscovered => _movieDiscovered;
 
   //* Generi dei film
-  NetworkState<List<Genre>> _movieGenres = Loading();
+  ResultState<List<Genre>> _movieGenres = Loading();
 
-  NetworkState<List<Genre>> get movieGenres => _movieGenres;
+  ResultState<List<Genre>> get movieGenres => _movieGenres;
 
   //* Sort by selezionato
   SortOptions _selectedSortOption = SortOptions.popularity;
@@ -38,10 +38,10 @@ class FilterableScreenViewModel extends BaseViewModel {
 
   Set<Genre> get selectedGenres => _selectedGenres;
 
-  void onInit() {
-    discoverMoviesByFilter(appliedFilter);
-    _getMovieGenres();
-  }
+   FilterableScreenViewModel(){
+     discoverMoviesByFilter(appliedFilter);
+     _getMovieGenres();
+   }
 
   void discoverMoviesByFilter(Filter filter) async {
     _log.d('Discover movies with this filter $filter');
@@ -49,12 +49,12 @@ class FilterableScreenViewModel extends BaseViewModel {
       var result = await _movieRepository.discoverMovieByFilter(filter);
       _movieDiscovered = Success<List<Movie>>(data: result);
       _log.d('Movies discovered');
-      notifyListeners();
     } on ServerException catch (e) {
       _log.e('An error occurred while retrieving movies', error: e);
       _movieDiscovered = Error(message: e.message);
-      notifyListeners();
     }
+    notifyListeners();
+
   }
 
   void _getMovieGenres() async {
@@ -63,12 +63,11 @@ class FilterableScreenViewModel extends BaseViewModel {
       var result = await _movieRepository.getMovieGenres();
       _movieGenres = Success<List<Genre>>(data: result);
       _log.d('Movie genres retrieved');
-      notifyListeners();
     } on ServerException catch (e) {
       _log.e('An error occurred while retrieving movie genres', error: e);
       _movieGenres = Error(message: e.message);
-      notifyListeners();
     }
+    notifyListeners();
   }
 
   void selectSortBy(SortOptions sortType) {

@@ -24,17 +24,20 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
           'Discover',
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 18,
-          ),
-          _buildSearchButton(context),
-          const SizedBox(
-            height: 18,
-          ),
-          _buildAdvancedFilteringButton(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 18,
+            ),
+            _buildSearchButton(context),
+            const SizedBox(
+              height: 18,
+            ),
+            _buildAdvancedFilteringButton(),
+          ],
+        ),
       ),
     );
   }

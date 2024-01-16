@@ -5,35 +5,41 @@ import 'package:movie_app/domain/model/movie/movie.dart';
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/texts.dart';
 
-//! La view del poster deve essere migliorata
 class MediaPoster extends StatelessWidget {
   final Movie movie;
   final bool isVoteAverageVisible;
   final bool isClickable;
+  final Function()? onTap;
 
   const MediaPoster({
     super.key,
     required this.movie,
     this.isVoteAverageVisible = true,
     this.isClickable = false,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 140,
-      width: 100,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            _buildCachedNetworkImage(),
-            Align(
-              alignment: Alignment.topRight,
-              child: _buildVoteAverageChip(),
-            ),
-          ],
+      width: 120,
+      child: GestureDetector(
+        onTap: () {
+          onTap?.call();
+        },
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              _buildCachedNetworkImage(),
+              Align(
+                alignment: Alignment.topRight,
+                child: _buildVoteAverageChip(),
+              ),
+            ],
+          ),
         ),
       ),
     );

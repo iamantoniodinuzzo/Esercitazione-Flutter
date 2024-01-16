@@ -40,8 +40,7 @@ class _FilterableScreenState extends State<FilterableScreen> {
       ),
       body: BaseWidget<FilterableScreenViewModel>(
         viewModel: FilterableScreenViewModel(),
-        onModelReady: (FilterableScreenViewModel viewModel) =>
-            viewModel.onInit(),
+        onModelReady: (FilterableScreenViewModel viewModel) {},
         builder: (context, viewModel, _) {
           switch (viewModel.movieDiscovered) {
             case Success<List<Movie>>(data: var data):
