@@ -7,12 +7,12 @@ class HomeVMState extends BaseViewModelState {
  late UserInterfaceState<List<Movie>> trendingMovies;
 }
 
-//dal view model alla view
+//Eventi per la view
 abstract class HomeViewContract extends BaseViewContract {
   void goToMovieDetails(Movie selectedMovie);
 }
 
-//Dalla view al view model
+//Dal view model alla view
 abstract class HomeVMContract
     extends BaseViewModelContract<HomeVMState, HomeViewContract> {
   void tapOnMovie(Movie selectedMovie);

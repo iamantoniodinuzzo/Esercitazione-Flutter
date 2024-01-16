@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/ui/views/movie_details/movie_details_view.dart';
 import 'package:movie_app/ui/views/discover/discover_screen.dart';
-import 'package:movie_app/ui/views/filterable/filterable_screen.dart';
+import 'package:movie_app/ui/views/filterable/filterable_media_view.dart';
 import 'package:movie_app/ui/views/home/home_view.dart';
 import 'package:movie_app/ui/routes/app_routes.dart';
 import 'package:movie_app/ui/routes/scaffold_with_nav_bar.dart';
@@ -38,7 +38,7 @@ class GoRouterConfig {
         parentNavigatorKey: _rootNavigatorKey,
         path: AppRoutes.filterable.path,
         name: AppRoutes.filterable.name,
-        builder: (context, state) => const FilterableScreen(),
+        builder: (context, state) => const FilterableMediaView(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) =>

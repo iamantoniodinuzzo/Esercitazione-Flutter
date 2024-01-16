@@ -6,7 +6,8 @@ import 'package:movie_app/core/locators/locator.dart';
 import 'package:movie_app/data/modules/services/dio_client.dart';
 import 'package:movie_app/data/modules/services/movie_service.dart';
 import 'package:movie_app/data/remote/mapper/network_mapper.dart';
-import 'package:movie_app/util/config/config.dart';
+
+import '../config/config.dart';
 
 Future<void> initializeModules() async {
   getIt.registerSingleton<Logger>(

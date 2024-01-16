@@ -1,33 +1,3 @@
-// class HomeViewModel extends ChangeNotifier {
-//   final MovieRepositoryImpl _movieRepository;
-//   final Logger _log;
-
-//   UserInterfaceState<List<Movie>> _trendingMovies = Loading();
-//   UserInterfaceState<List<Movie>> get trendingMovies => _trendingMovies;
-
-//   HomeViewModel({
-//     required MovieRepositoryImpl movieRepository,
-//     required Logger log,
-//   })  : _movieRepository = movieRepository,
-//         _log = log {
-//     fetchTrendingMovies();
-//   }
-
-//   /// Recupera i film in tendenza.
-//   /// [timeWidow] indica la finestra temporale della tendenza, di default [TimeWidow.week]
-//   void fetchTrendingMovies({TimeWindow timeWindow = TimeWindow.week}) async {
-//     try {
-//       var result = await _movieRepository.getTrendingMovies(timeWindow);
-//       _trendingMovies = Success<List<Movie>>(data: result);
-//       _log.d("Trending movies retrieved");
-//       notifyListeners();
-//     } on ServerException catch (serverException) {
-//       _log.d('An error occurred while retrieving trending movies');
-//       _trendingMovies = Error(message: serverException.message);
-//       notifyListeners();
-//     }
-//   }
-// }
 
 import 'package:logger/logger.dart';
 import 'package:movie_app/domain/models/movie/movie.dart';

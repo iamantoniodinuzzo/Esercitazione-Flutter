@@ -31,6 +31,12 @@ class FilterBuilder {
     return this;
   }
 
+  FilterBuilder clear(){
+    sortBy = null;
+    withGenres = null;
+    return this;
+  }
+
   FilterBuilder removeGenre(Genre genre) {
     if (withGenres != null) {
       withGenres!.remove(genre);
