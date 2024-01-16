@@ -268,6 +268,13 @@
             </list>
           </value>
         </entry>
+        <entry key="get_it">
+          <value>
+            <list>
+              <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/get_it-7.6.6/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="glob">
           <value>
             <list>
@@ -754,6 +761,7 @@
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freezed-2.4.6/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/freezed_annotation-2.4.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/frontend_server_client-3.2.0/lib" />
+      <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/get_it-7.6.6/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/glob-2.1.2/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/go_router-13.0.1/lib" />
       <root url="file://$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/graphs-2.3.1/lib" />

@@ -32,6 +32,7 @@ class _MovieDetailViewState extends BaseViewWidgetState<
   @override
   Widget contentBuilder(BuildContext context) {
     return Scaffold(
+      backgroundColor: MovieAppColors.primary,
       body: SafeArea(
         child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -232,9 +233,6 @@ class _MovieDetailViewState extends BaseViewWidgetState<
   void onInitState() {
     vmContract.getMovieDetails(widget.selectedMedia.id);
   }
-
-
-
 }
 
 /// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
