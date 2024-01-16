@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//TODO: Da migliorare
 @immutable
 class AppRoutes {
   const AppRoutes._();

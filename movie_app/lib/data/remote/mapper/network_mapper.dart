@@ -7,7 +7,7 @@ import 'package:movie_app/data/remote/dto/movie/movie_dto.dart';
 import 'package:movie_app/data/remote/dto/production_company/production_company_dto.dart';
 import 'package:movie_app/data/remote/dto/production_country/production_country_dto.dart';
 import 'package:movie_app/data/remote/dto/spoken_language/spoken_language_dto.dart';
-import 'package:movie_app/core/exception/mapper_exception.dart';
+import 'package:movie_app/core/network/exception/mapper_exception.dart';
 import 'package:movie_app/domain/model/collection/collection.dart';
 import 'package:movie_app/domain/model/genre/genre.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';

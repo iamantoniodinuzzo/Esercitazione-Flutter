@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:movie_app/core/network/api_endpoints.dart';
-import 'package:movie_app/core/network/logger_interceptor.dart';
-import 'package:movie_app/util/constants.dart';
+import 'package:movie_app/core/network/interceptor/logger_interceptor.dart';
+import 'package:movie_app/core/util/constants.dart';
 
 /// Useful resource https://medium.com/@huguesarnold/networking-with-dio-how-to-develop-a-feature-in-flutter-project-part-4-eb6e0f3beef6
 class DioClient {

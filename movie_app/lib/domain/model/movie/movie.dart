@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:movie_app/core/network/api_endpoints.dart';
-import 'package:movie_app/util/constants.dart';
+import 'package:movie_app/core/util/constants.dart';
 import 'package:movie_app/domain/model/media_type.dart';
 
 class Movie {
