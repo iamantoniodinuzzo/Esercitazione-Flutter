@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/_base/base_view_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/_base/base_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/network/dio_client.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/dio_client.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/remote/service/movie_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/service/movie_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/di/injector_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/di/injector_services.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/model/filter/filter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/model/filter/filter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/details/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository_impl.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui/views/details/detail_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/home_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/search_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_view_model.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

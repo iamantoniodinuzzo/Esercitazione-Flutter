@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/mapper/genre_mapper.dart';
 import 'package:movie_app/data/remote/mapper/movie_mapper.dart';
+import 'package:movie_app/data/remote/mapper/movie_details_mapper.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
@@ -27,8 +29,8 @@ class MovieRepositoryImpl implements MovieRepository{
 
   @override
   Future<MovieDetails> getMovieDetails(int movieId) async {
-    final movieDetails = await _movieService.getMovieDetails(movieId);
-    final MovieDetails mappedResult = movieDetails.mapToDomain() as MovieDetails;
+    final MovieDetailsDto movieDetails = await _movieService.getMovieDetails(movieId);
+    final MovieDetails mappedResult = movieDetails.mapToDomain() ;
     return mappedResult;
   }
 

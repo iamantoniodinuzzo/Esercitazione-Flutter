@@ -21,11 +21,10 @@ class DetailViewModel extends BaseViewModel {
       var result = await _movieRepository.getMovieDetails(movieId);
       _movieDetails = Success<MovieDetails>(data: result);
       _log.d('Movie details retrieved');
-      notifyListeners();
     } on ServerException catch (e) {
       _log.e('An error occurred while retrieving movie details', error: e);
       _movieDetails = Error(message: e.message);
-      notifyListeners();
     }
+    notifyListeners();
   }
 }
