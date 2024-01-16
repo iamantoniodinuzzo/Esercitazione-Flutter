@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_app/core/network/dio_client.dart';
-import 'package:movie_app/data/remote/mapper/network_mapper.dart';
 import 'package:movie_app/data/remote/service/movie_service.dart';
 import 'package:movie_app/di/injector.dart';
 
@@ -22,10 +21,6 @@ Future<void> initializeServices() async {
   //DioClient
   getIt.registerSingleton<DioClient>(DioClient(apiKey: config.apiKey));
 
-  //NetworkMapper
-  getIt.registerSingleton<NetworkMapper>(
-    NetworkMapper(log: getIt<Logger>()),
-  );
 
   //MovieService
   getIt.registerSingleton<MovieService>(

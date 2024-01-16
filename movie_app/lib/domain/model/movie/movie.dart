@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:movie_app/core/network/api_endpoints.dart';
-import 'package:movie_app/core/util/constants.dart';
+import 'package:movie_app/data/remote/dto/movie/movie_dto.dart';
 import 'package:movie_app/domain/model/media_type.dart';
 
 class Movie {
@@ -49,4 +49,20 @@ class Movie {
         ? '${ApiEndpoints.imagePathOriginal}$backdropPath'
         : '';
   }
+
+  @override
+  Movie map(MovieDto from) {
+    return Movie(
+      adult: from.adult,
+      backdropPath: from.backdropPath,
+      id: from.id,
+      title: from.title,
+      posterPath: from.posterPath,
+      genreIds: from.genreIds,
+      popularity: from.popularity,
+      releaseDate: from.releaseDate,
+      voteAverage: from.voteAverage,
+    );
+  }
 }
+

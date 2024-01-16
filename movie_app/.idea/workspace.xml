@@ -5,40 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/domain/repository/movie_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/remote/mapper/collection_mapper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/remote/mapper/genre_mapper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/remote/mapper/production_companies_mapper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/remote/mapper/production_countries_mapper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/remote/mapper/spoken_language_mapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a543669903a979cd61eca374c58ce99dee8c862" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d0a64142de28707177c476fb530aa156966a652" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/6/1676de3118b41c14cabae4f48735d0d9aa4bb0cc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/28539357507985186e728410252922ce3159429b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/0/20962b2f1d5079450e0772fcc65ebd13b3f4b7c3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/2866051d7ffb37a15b0aae928abb3526bb815195" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/2846ad36901b04b2e75b029c5cc08753d05f51a4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/35692ff4c60d8adfa1d1e2c3fa9e0cc73188de55" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38ab292eb361b9b514d42c8523125ef1751479c7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/44912dbea670945196ae83288786446abbb725ff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c0fa73df7294540253501bd95c93b849a77211b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/502e4f997070cd53d2904f149a410d2a5dd4cdac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/e/5ef24754b4667d31257559d486eea8b66db193ed" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/a/5a1889d3189d1229189bff53ea0d0c34b80db1b9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74721f15123cddc5717959a80db3d8f04616ab3f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72d8f42c92c4d4072509506fa2faeef5b5434dc1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/b/7b0ced46b03eea2af3ccec74ed1520b6592cd615" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8698cb24100c79da43d3fe3f2efbac936a676ea9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8b653a71a0aef7f83818701a1d879238319e2a5d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/5/d5ce9ab6c60517072cf6c943cf432ae55ca6c087" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/1/9143c96d231ca9fefa9a6eaf23a017771724ecd8" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8e045469170189f1d6ef12576bd01af132b1018" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/af8ce29f303731d8d8ae9d454263762351bae9cf" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f848ce23165eecb78df8953d4a3b8a5988e664d4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b438b2aacec2a0e293b94af0e56edc2bdd73d509" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/d/1d0a64142de28707177c476fb530aa156966a652" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b473f7a15307b81cd1de4b3cd910186c52ef6323" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/8/28539357507985186e728410252922ce3159429b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/4/d45dc376f8f8c879b0c0162e8db0374495106823" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/8/2866051d7ffb37a15b0aae928abb3526bb815195" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd21080c5a1ee62c70a0b2f4872cc23bf64a4aa1" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/5/35692ff4c60d8adfa1d1e2c3fa9e0cc73188de55" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dda6ecec9075c6727ba5b7daed8ca72292e63654" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/44912dbea670945196ae83288786446abbb725ff" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f82e801c2a5f2912b5db42dc311fdbe84642212b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/0/502e4f997070cd53d2904f149a410d2a5dd4cdac" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/a/0a543669903a979cd61eca374c58ce99dee8c862" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/a/5a1889d3189d1229189bff53ea0d0c34b80db1b9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/6/1676de3118b41c14cabae4f48735d0d9aa4bb0cc" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/2/72d8f42c92c4d4072509506fa2faeef5b5434dc1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/0/20962b2f1d5079450e0772fcc65ebd13b3f4b7c3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/6/8698cb24100c79da43d3fe3f2efbac936a676ea9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/8/2846ad36901b04b2e75b029c5cc08753d05f51a4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/5/d5ce9ab6c60517072cf6c943cf432ae55ca6c087" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/8/38ab292eb361b9b514d42c8523125ef1751479c7" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/8/e8e045469170189f1d6ef12576bd01af132b1018" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/c/4c0fa73df7294540253501bd95c93b849a77211b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/8/f848ce23165eecb78df8953d4a3b8a5988e664d4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/e/5ef24754b4667d31257559d486eea8b66db193ed" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/mapper/movie_details_mapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/74721f15123cddc5717959a80db3d8f04616ab3f" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/mapper/movie_mapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/b/7b0ced46b03eea2af3ccec74ed1520b6592cd615" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/b/8b653a71a0aef7f83818701a1d879238319e2a5d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/1/9143c96d231ca9fefa9a6eaf23a017771724ecd8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/f/af8ce29f303731d8d8ae9d454263762351bae9cf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/4/b438b2aacec2a0e293b94af0e56edc2bdd73d509" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/4/b473f7a15307b81cd1de4b3cd910186c52ef6323" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/4/d45dc376f8f8c879b0c0162e8db0374495106823" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/d/dd21080c5a1ee62c70a0b2f4872cc23bf64a4aa1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/d/dda6ecec9075c6727ba5b7daed8ca72292e63654" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/8/f82e801c2a5f2912b5db42dc311fdbe84642212b" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/remote/mapper/network_mapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/mapper/network_mapper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository_impl.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/exception/mapper_exception.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/error/exception/mapper_exception.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/domain/exception/network_exception.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/error/exception/network_exception.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/dto/genre/genre_dto.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/dto/genre/genre_dto.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/mapper/network_mapper.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/repository/movie_repository_impl.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/response/base_media_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/response/base_media_response.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/remote/response/genre_response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/remote/response/genre_response.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/di/injector_repositories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/di/injector_repositories.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/di/injector_services.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/di/injector_services.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/domain/model/movie/movie.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/model/movie/movie.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/res/components/media_poster.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/widgets/model_widgets/media_poster.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/res/components/media_vertical_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/widgets/generic_widgets/media_vertical_list.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/colors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/colors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/dimensions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/dimensions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/texts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/texts.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/theme/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/theme/theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/config/config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/config/config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/config/config.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/config/config.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/media_type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/model/media_type.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/time_window.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/domain/model/time_window.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/util/user_interface_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/user_interface_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/details/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/details/detail_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/discover/discover_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/discover/discover_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/filterable/filterable_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/filterable/filterable_screen_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home/home_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/routes/app_routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/routes/app_routes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/routes/go_router_config.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/routes/go_router_config.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/routes/scaffold_with_nav_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/routes/scaffold_with_nav_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/search/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/search/search_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +69,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dart File" />
+        <option value="DTO Mapper" />
       </list>
     </option>
+    <option name="SCHEME" value="Project" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -77,17 +99,17 @@
     &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\data\remote\mapper" />
       <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\core\network" />
       <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\domain\model" />
       <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\ui" />
       <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\ui\widgets\generic_widgets" />
-      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\ui\widgets\model_widgets" />
     </key>
   </component>
   <component name="RunManager">
