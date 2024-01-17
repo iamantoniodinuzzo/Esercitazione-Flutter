@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/core/theme/colors.dart';
 import 'package:movie_app/core/theme/texts.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';

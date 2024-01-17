@@ -89,3 +89,15 @@ Z
 *lib/ui/views/search/search_view_model.dart,0\9\09a4e71e2329f8c8a5c6a1e063a83fa7f8116c86
 Z
 *lib/core/routes/scaffold_with_nav_bar.dart,4\f\4f9b9c2d0d03c4feae8ab27500bd604ae4dd3799
+X
+(lib/core/util/extensions/extensions.dart,5\e\5e483627e44369196ffd85b18d30f003cf78954c
+L
+lib/core/util/constants.dart,3\8\388cdd7ab6ab34d52edfa384f14fcf617fe47a33
+`
+0lib/core/network/exception/mapper_exception.dart,d\a\dadf7999587ffd77736cf60f7d12b33bbdff28dd
+a
+1lib/core/network/exception/network_exception.dart,9\d\9d6062927f0195a0bbd7ae973559846eed74a678
+e
+5lib/core/network/exception/server_exception_type.dart,b\b\bb71d9a8e4ad9f58b14477314c580b3992b7a987
+R
+"lib/core/network/result_state.dart,1\d\1db1903f6cc5a6a6850d000198e702f086d33dc2

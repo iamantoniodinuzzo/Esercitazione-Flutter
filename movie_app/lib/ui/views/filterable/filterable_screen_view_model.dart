@@ -1,6 +1,6 @@
 import 'package:logger/logger.dart';
 import 'package:movie_app/core/network/exception/server_exception_type.dart';
-import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/di/injector.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';

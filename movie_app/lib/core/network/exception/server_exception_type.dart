@@ -18,7 +18,7 @@ enum ServerExceptionType {
 
   sendTimeout,
 
-  recieveTimeout,
+  receiveTimeout,
 
   conflict,
 
@@ -72,7 +72,7 @@ class ServerException extends Equatable implements Exception {
 
           case DioExceptionType.receiveTimeout:
             serverException = ServerException._(
-                exceptionType: ServerExceptionType.recieveTimeout,
+                exceptionType: ServerExceptionType.receiveTimeout,
                 statusCode: error.response?.statusCode,
                 message: 'Receive timeout');
             break;

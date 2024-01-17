@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/core/theme/texts.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';

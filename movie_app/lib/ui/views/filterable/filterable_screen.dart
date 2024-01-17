@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
 import 'package:provider/provider.dart';
