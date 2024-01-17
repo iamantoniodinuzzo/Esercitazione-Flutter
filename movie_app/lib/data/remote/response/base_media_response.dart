@@ -1,4 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../dto/movie/movie_dto.dart';
 
 part 'base_media_response.g.dart';

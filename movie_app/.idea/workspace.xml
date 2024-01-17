@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="DTO Mapper" />
         <option value="Dart File" />
       </list>
     </option>
@@ -42,14 +43,17 @@
     &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\assets\rive" />
-      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\res\components" />
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\data\remote\mapper" />
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\core\network" />
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\domain\model" />
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\ui" />
+      <recent name="C:\Users\Mark9\Desktop\Progetti\Esercitazione-Flutter\movie_app\lib\ui\widgets\generic_widgets" />
     </key>
   </component>
   <component name="RunManager">

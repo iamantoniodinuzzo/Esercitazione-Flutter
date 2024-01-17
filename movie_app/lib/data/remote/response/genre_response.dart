@@ -1,4 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_app/data/remote/dto/genre/genre_dto.dart';
 
 part 'genre_response.g.dart';
