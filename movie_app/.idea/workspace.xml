@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/lib/core/network/exception/mapper_exception.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/network/exception/network_exception.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/network/exception/server_exception_type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/exception/server_exception_type.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/core/network/network_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/core/network/result_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/details/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/details/detail_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/details/detail_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/home_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/search_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_view_model.dart" afterDir="false" />
-    </list>
+    <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
