@@ -10,6 +10,8 @@ class MediaPoster extends StatelessWidget {
   final bool isVoteAverageVisible;
   final bool isClickable;
   final Function()? onTap;
+  final double height;
+  final double width;
 
   const MediaPoster({
     super.key,
@@ -17,13 +19,15 @@ class MediaPoster extends StatelessWidget {
     this.isVoteAverageVisible = true,
     this.isClickable = false,
     this.onTap,
+    required this.height,
+    required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 140,
-      width: 120,
+      height: height,
+      width: width,
       child: GestureDetector(
         onTap: () {
           onTap?.call();

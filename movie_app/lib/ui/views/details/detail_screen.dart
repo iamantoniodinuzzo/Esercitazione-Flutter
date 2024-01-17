@@ -104,6 +104,8 @@ class _DetailScreenState extends State<DetailScreen> {
                               Hero(
                                 tag: widget.selectedMedia.id,
                                 child: MediaPoster(
+                                  height: 140,
+                                  width: 100,
                                   movie: widget.selectedMedia,
                                   isVoteAverageVisible: false,
                                 ),

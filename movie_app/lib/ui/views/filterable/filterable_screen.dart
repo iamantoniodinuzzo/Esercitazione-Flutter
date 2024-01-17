@@ -81,6 +81,8 @@ class _FilterableScreenState extends State<FilterableScreen> {
                       itemCount: movies.length,
                       itemBuilder: (context, index) {
                         return MediaPoster(
+                          height: 140,
+                          width: 120,
                           movie: movies[index],
                         );
                       }),

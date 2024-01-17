@@ -118,6 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
             MediaPoster(
+              height: 140,
+          width: 130,
           movie: data[itemIndex],
           onTap: () {
             context.pushNamed(
