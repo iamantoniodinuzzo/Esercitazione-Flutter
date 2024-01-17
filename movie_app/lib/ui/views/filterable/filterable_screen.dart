@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/network/network_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/texts.dart';
@@ -21,13 +22,18 @@ class FilterableScreen extends StatefulWidget {
 class _FilterableScreenState extends State<FilterableScreen> {
   @override
   Widget build(BuildContext context) {
+    final filterableViewModel = Provider.of<FilterableScreenViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list),
             onPressed: () {
-              _displayBottomSheet(context);
+              _displayBottomSheet(
+                context,
+                filterableViewModel,
+              );
             },
           ),
         ],
@@ -39,7 +45,7 @@ class _FilterableScreenState extends State<FilterableScreen> {
         ),
       ),
       body: BaseWidget<FilterableScreenViewModel>(
-        viewModel: FilterableScreenViewModel(),
+        viewModel: filterableViewModel,
         onModelReady: (FilterableScreenViewModel viewModel) {},
         builder: (context, viewModel, _) {
           switch (viewModel.movieDiscovered) {
@@ -99,6 +105,7 @@ class _FilterableScreenState extends State<FilterableScreen> {
 
 Future _displayBottomSheet(
   BuildContext context,
+  FilterableScreenViewModel viewModel,
 ) {
   return showModalBottomSheet(
       showDragHandle: true,
@@ -111,7 +118,7 @@ Future _displayBottomSheet(
       ),
       builder: (context) {
         return BaseWidget<FilterableScreenViewModel>(
-            viewModel: FilterableScreenViewModel(),
+            viewModel: viewModel,
             onModelReady: (FilterableScreenViewModel viewModel) {},
             builder: (context, viewModel, _) {
               return StatefulBuilder(builder: (context, state) {

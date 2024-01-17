@@ -51,22 +51,10 @@ K
 lib/core/config/config.dart,5\0\502e4f997070cd53d2904f149a410d2a5dd4cdac
 <
 pubspec.yaml,e\8\e8e045469170189f1d6ef12576bd01af132b1018
-Z
-*lib/data/remote/mapper/network_mapper.dart,4\4\44912dbea670945196ae83288786446abbb725ff
 Q
 !lib/domain/model/movie/movie.dart,2\8\28539357507985186e728410252922ce3159429b
 S
 #lib/core/network/network_state.dart,1\d\1d0a64142de28707177c476fb530aa156966a652
-T
-$lib/core/network/network_mapper.dart,3\5\35692ff4c60d8adfa1d1e2c3fa9e0cc73188de55
-P
- lib/core/network/dto_mapper.dart,d\5\d5ce9ab6c60517072cf6c943cf432ae55ca6c087
-L
-lib/core/network/mapper.dart,0\f\0fc279411d34000d55a6fe3822c93da552a70fee
-R
-"lib/data/remote/mapper/mapper.dart,8\6\866b99cd092a48c24bf33fba4b4ebcab4e225642
-W
-'lib/data/remote/mapper/MovieMapper.dart,d\d\ddb6cf6d5f6b7f7048ce0d24d7379496e1f9a9fc
 `
 0lib/data/remote/mapper/movie_details_mapper.dart,2\f\2fad0c78afdf9dcd10500d9cf0e74dc115c5f3a2
 X
@@ -93,11 +81,11 @@ P
  lib/core/network/dio_client.dart,b\f\bfcf802866b285c30169fde67e97333303eae318
 V
 &lib/core/network/perform_api_call.dart,7\3\73b98390133aa045dba1a60f8aa2b9d6f8ddd7bf
-R
-"lib/ui/views/_base/BaseWidget.dart,9\c\9cdecda476c3194c221741f2b980ce8049f30782
 S
 #lib/ui/views/_base/base_widget.dart,5\e\5ed5c300e283e8712f4502f8ecf815a0766a3158
 W
 'lib/ui/views/_base/base_view_model.dart,5\9\59fe8c6d8d5934b6f1b3703fb9ea34c1a2572fe1
 Z
 *lib/ui/views/search/search_view_model.dart,0\9\09a4e71e2329f8c8a5c6a1e063a83fa7f8116c86
+Z
+*lib/core/routes/scaffold_with_nav_bar.dart,4\f\4f9b9c2d0d03c4feae8ab27500bd604ae4dd3799

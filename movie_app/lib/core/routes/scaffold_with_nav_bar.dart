@@ -38,7 +38,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.search,
+              Icons.explore,
             ),
             label: 'Discover',
           ),

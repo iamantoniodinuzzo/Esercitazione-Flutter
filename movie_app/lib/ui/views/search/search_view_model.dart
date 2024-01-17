@@ -12,7 +12,8 @@ class SearchViewModel extends BaseViewModel {
   final MovieRepository _movieRepository = getIt<MovieRepository>();
   final Logger _log = getIt<Logger>();
 
-  ResultState<List<Movie>> _queryResult = Loading();
+  ResultState<List<Movie>> _queryResult = Success(data: []);
+
   ResultState<List<Movie>> get queryResult => _queryResult;
 
 
@@ -28,4 +29,5 @@ class SearchViewModel extends BaseViewModel {
       notifyListeners();
     }
   }
+
 }

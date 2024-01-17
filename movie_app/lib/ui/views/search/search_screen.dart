@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/network/network_state.dart';
+import 'package:movie_app/core/theme/colors.dart';
+import 'package:movie_app/core/theme/texts.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/ui/views/search/search_view_model.dart';
 import 'package:movie_app/ui/widgets/generic_widgets/media_vertical_list.dart';
 import 'package:provider/provider.dart';
 
-import '../_base/base_widget.dart';
-
 class SearchScreen extends SearchDelegate {
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    return Theme.of(context);
+  }
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -40,15 +45,9 @@ class SearchScreen extends SearchDelegate {
     return _searchMovie(context);
   }
 
-  BaseWidget<SearchViewModel> _searchMovie(BuildContext context) {
-    final searchViewModel =
-        Provider.of<SearchViewModel>(context, listen: false);
-    searchViewModel.searchMovie(query: query);
+  Consumer<SearchViewModel> _searchMovie(BuildContext context) {
 
-    return BaseWidget<SearchViewModel>(
-        viewModel: SearchViewModel(),
-        onModelReady: (SearchViewModel viewModel) =>
-            viewModel.searchMovie(query: query),
+    return Consumer<SearchViewModel>(
         builder: (context, viewModel, _) {
           switch (viewModel.queryResult) {
             //* Success
@@ -58,10 +57,7 @@ class SearchScreen extends SearchDelegate {
                 return const Center(
                   child: Text(
                     'Seems empty here, search some movies',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.grey,
-                    ),
+                    style: MovieAppTextStyle.secondaryPRegular,
                   ),
                 );
               } else {

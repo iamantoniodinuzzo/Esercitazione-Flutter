@@ -5,6 +5,7 @@ import 'package:movie_app/core/network/network_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/model/movie/movie_details.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/theme/colors.dart';
 import '../../../core/theme/texts.dart';
@@ -26,6 +27,8 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final  detailViewModel= Provider.of<DetailViewModel>(context);
+
     return Scaffold(
       body: SafeArea(
         child: NestedScrollView(
@@ -126,7 +129,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ];
           },
           body: BaseWidget<DetailViewModel>(
-            viewModel: DetailViewModel(),
+            viewModel: detailViewModel,
             onModelReady: (DetailViewModel viewModel) =>
                 viewModel.getMovieDetails(widget.selectedMedia.id),
             builder: (context, viewModel, child) {
