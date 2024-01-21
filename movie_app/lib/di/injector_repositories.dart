@@ -1,12 +1,9 @@
 import 'package:movie_app/data/remote/repository/movie_repository_impl.dart';
-import 'package:movie_app/data/remote/service/movie_service.dart';
-import 'package:movie_app/di/injector.dart';
+import 'package:movie_app/di/injector_services.dart';
 import 'package:movie_app/domain/repository/movie_repository.dart';
+import 'package:riverpod/riverpod.dart';
 
-void initializeRepositories() {
-  getIt.registerFactory<MovieRepository>(
-    () => MovieRepositoryImpl(
-      movieService: getIt<MovieService>(),
-    ),
-  );
-}
+final movieRepositoryProvider = Provider<MovieRepository>((ref) {
+  final movieService = ref.read(movieServiceProvider);
+  return MovieRepositoryImpl(movieService: movieService);
+});

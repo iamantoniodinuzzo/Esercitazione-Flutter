@@ -53,8 +53,6 @@ K
 pubspec.yaml,e\8\e8e045469170189f1d6ef12576bd01af132b1018
 Q
 !lib/domain/model/movie/movie.dart,2\8\28539357507985186e728410252922ce3159429b
-S
-#lib/core/network/network_state.dart,1\d\1d0a64142de28707177c476fb530aa156966a652
 `
 0lib/data/remote/mapper/movie_details_mapper.dart,2\f\2fad0c78afdf9dcd10500d9cf0e74dc115c5f3a2
 X
@@ -93,11 +91,9 @@ X
 (lib/core/util/extensions/extensions.dart,5\e\5e483627e44369196ffd85b18d30f003cf78954c
 L
 lib/core/util/constants.dart,3\8\388cdd7ab6ab34d52edfa384f14fcf617fe47a33
-`
-0lib/core/network/exception/mapper_exception.dart,d\a\dadf7999587ffd77736cf60f7d12b33bbdff28dd
-a
-1lib/core/network/exception/network_exception.dart,9\d\9d6062927f0195a0bbd7ae973559846eed74a678
 e
 5lib/core/network/exception/server_exception_type.dart,b\b\bb71d9a8e4ad9f58b14477314c580b3992b7a987
 R
 "lib/core/network/result_state.dart,1\d\1db1903f6cc5a6a6850d000198e702f086d33dc2
+D
+lib/di/injector.dart,0\2\02cf802dc95e98a749ea94adfcde08dd3ff20560
