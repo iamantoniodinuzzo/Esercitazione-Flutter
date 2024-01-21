@@ -1,18 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/core/theme/texts.dart';
+import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/ui/views/_base/base_widget.dart';
+import 'package:movie_app/ui/views/home/bloc/home_bloc.dart';
+import 'package:movie_app/ui/views/home/bloc/home_event_bloc.dart';
+import 'package:movie_app/ui/views/home/bloc/home_state_bloc.dart';
 import 'package:movie_app/ui/views/search/search_screen.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/theme/colors.dart';
-import 'home_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -26,48 +26,42 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final  homeViewModel = Provider.of<HomeViewModel>(context);
-
-    return Scaffold(
-      backgroundColor: MovieAppColors.secondary,
-      body: BaseWidget<HomeViewModel>(
-        viewModel: homeViewModel,
-        onModelReady: (HomeViewModel viewModel) =>
-            viewModel.fetchTrendingMovies(),
-        builder: (context, viewModel, _) {
-          switch (viewModel.trendingMovies) {
-            //*Success
-            case Success<List<Movie>>(data: var data):
-              return Column(
-                children: [
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  _buildSearchBar(onPressed: () {
-                    showSearch(
-                      context: context,
-                      delegate: SearchScreen(),
-                    );
-                  }),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  _buildMediaCarousel(data),
-                ],
-              );
-              return _buildMediaCarousel(data);
-            //* Error
-            case Error<List<Movie>>(message: var message):
-              return Center(
-                child: Text('Error: $message'),
-              );
-            //* Loading
-            case Loading<List<Movie>>():
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-          }
-        },
+    return BlocProvider(
+      create: (context) => getIt<HomeBloc>()..add(const GetTrendingMovies()),
+      child: Scaffold(
+        backgroundColor: MovieAppColors.secondary,
+        body: BlocBuilder<HomeBloc, HomeState>(
+          builder: (_, state) {
+            switch (state) {
+              case TrendingMoviesLoading():
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              case TrendingMoviesLoaded():
+                return Column(
+                  children: [
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    _buildSearchBar(onPressed: () {
+                      showSearch(
+                        context: context,
+                        delegate: SearchScreen(),
+                      );
+                    }),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    _buildMediaCarousel(state.trendingMovies ?? List.empty()),
+                  ],
+                );
+              case TrendingMoviesError():
+                return Center(
+                  child: Text('Error: ${state.errorMessage}'),
+                );
+            }
+          },
+        ),
       ),
     );
   }
@@ -82,7 +76,9 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
           backgroundColor: MovieAppColors.primaryVariant,
           shape: RoundedRectangleBorder(
-            side: const BorderSide(color: MovieAppColors.primary), // Imposta il colore del contorno
+            side: const BorderSide(
+                color:
+                    MovieAppColors.primary), // Imposta il colore del contorno
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),
@@ -118,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
             MediaPoster(
-              height: 140,
+          height: 140,
           width: 130,
           movie: data[itemIndex],
           onTap: () {

@@ -1,3 +1,5 @@
+import 'package:movie_app/core/network/result_state.dart';
+
 import '../model/filter/filter.dart';
 import '../model/genre/genre.dart';
 import '../model/movie/movie.dart';
@@ -6,13 +8,13 @@ import '../model/time_window.dart';
 
 abstract class MovieRepository {
 
-  Future<List<Movie>> getTrendingMovies(TimeWindow timeWindow) ;
+  Future<ResultState<List<Movie>>> getTrendingMovies(TimeWindow timeWindow) ;
 
-  Future<MovieDetails> getMovieDetails(int movieId);
+  Future<ResultState<MovieDetails>> getMovieDetails(int movieId);
 
-  Future<List<Movie>> searchMovie(String query) ;
+  Future<ResultState<List<Movie>>> searchMovie(String query) ;
 
-  Future<List<Movie>> discoverMovieByFilter(Filter filter);
+  Future<ResultState<List<Movie>>> discoverMovieByFilter(Filter filter);
 
-  Future<List<Genre>> getMovieGenres() ;
+  Future<ResultState<List<Genre>>> getMovieGenres() ;
 }
