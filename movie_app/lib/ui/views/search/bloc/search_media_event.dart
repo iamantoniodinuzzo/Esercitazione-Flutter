@@ -3,6 +3,6 @@ abstract class SearchMediaEvent {
 }
 
 class GetSearchMedia extends SearchMediaEvent {
-  final String? query;
+  final String query;
   const GetSearchMedia(this.query);
 }

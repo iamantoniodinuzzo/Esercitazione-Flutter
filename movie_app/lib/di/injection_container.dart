@@ -10,7 +10,7 @@ import 'package:movie_app/domain/usecases/get_movie_genres.dart';
 import 'package:movie_app/domain/usecases/get_trending_movies.dart';
 import 'package:movie_app/ui/views/details/bloc/media_details_bloc.dart';
 import 'package:movie_app/ui/views/filterable/bloc/discover_media_bloc.dart';
-import 'package:movie_app/ui/views/home/bloc/home_bloc.dart';
+import 'package:movie_app/ui/views/home/bloc/trending_movie_bloc.dart';
 import 'package:movie_app/ui/views/search/bloc/search_media_bloc.dart';
 
 final getIt = GetIt.instance;
@@ -49,8 +49,8 @@ Future<void> initializeDependencies() async {
 
 
   //* Blocs
-  getIt.registerFactory<HomeBloc>(
-    () => HomeBloc(getIt<GetTrendingMoviesUseCase>()),
+  getIt.registerFactory<TrendingMovieBloc>(
+    () => TrendingMovieBloc(getIt<GetTrendingMoviesUseCase>()),
   );
   getIt.registerFactory<MediaDetailsBloc>(
     () => MediaDetailsBloc(getIt<GetMovieDetailsUseCase>()),

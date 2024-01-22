@@ -6,9 +6,9 @@ import 'package:movie_app/core/routes/app_routes.dart';
 import 'package:movie_app/core/theme/texts.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/ui/views/home/bloc/home_bloc.dart';
-import 'package:movie_app/ui/views/home/bloc/home_event_bloc.dart';
-import 'package:movie_app/ui/views/home/bloc/home_state_bloc.dart';
+import 'package:movie_app/ui/views/home/bloc/trending_movie_bloc.dart';
+import 'package:movie_app/ui/views/home/bloc/trending_movie_event.dart';
+import 'package:movie_app/ui/views/home/bloc/trending_movie_state.dart';
 import 'package:movie_app/ui/views/search/search_screen.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
 
@@ -27,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<HomeBloc>()..add(const GetTrendingMovies()),
+      create: (context) => getIt<TrendingMovieBloc>()..add(GetTrendingMovies()),
       child: Scaffold(
         backgroundColor: MovieAppColors.secondary,
-        body: BlocBuilder<HomeBloc, HomeState>(
+        body: BlocBuilder<TrendingMovieBloc, TrendingMovieState>(
           builder: (_, state) {
             switch (state) {
               case TrendingMoviesLoading():

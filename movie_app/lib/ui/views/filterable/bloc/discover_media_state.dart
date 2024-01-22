@@ -1,38 +1,43 @@
+import 'package:equatable/equatable.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
-import 'package:movie_app/domain/model/genre/genre.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 
-sealed class FilteredMediaState {
-  final Filter? appliedFilter;
-  final List<Movie>? filteredMedia;
-  final String? errorMessage;
-  final Set<Genre>? selectedGenres;
-  final List<Genre>? movieGenres;
-
-  FilteredMediaState(
-      {this.appliedFilter,
-      this.filteredMedia,
-      this.errorMessage,
-      this.selectedGenres,
-      this.movieGenres});
+enum DiscoverMediaStateStatus {
+  initial,
+  mediaLoaded,
+  mediaLoading,
+  mediaError;
 }
 
-class FilteredMediaLoaded extends FilteredMediaState {
-  FilteredMediaLoaded({super.filteredMedia, super.appliedFilter});
+class DiscoverMediaState extends Equatable {
+  final Filter appliedFilter;
+  final List<Movie> filteredMedia;
+  final String errorMessage;
+  final DiscoverMediaStateStatus status;
+
+  DiscoverMediaState(
+      {Filter? appliedFilter,
+      List<Movie>? filteredMedia,
+      String? errorMessage,
+      required this.status})
+      : appliedFilter = appliedFilter ?? FilterBuilder().build(),
+        filteredMedia = filteredMedia ?? const [],
+        errorMessage = errorMessage ?? "";
+
+  @override
+  List<Object?> get props =>
+      [appliedFilter, filteredMedia, errorMessage, status];
+
+  DiscoverMediaState copyWith(
+      {Filter? appliedFilter,
+      List<Movie>? filteredMedia,
+      String? errorMessage,
+      DiscoverMediaStateStatus? status}) {
+    return DiscoverMediaState(
+      status: status ?? this.status,
+      appliedFilter: appliedFilter ?? this.appliedFilter,
+      filteredMedia: filteredMedia ?? this.filteredMedia,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 }
-
-class FilteredMediaError extends FilteredMediaState {
-  FilteredMediaError({super.errorMessage});
-}
-
-class FilteredMediaLoading extends FilteredMediaState {}
-
-class MovieGenresLoaded extends FilteredMediaState {
-  MovieGenresLoaded({super.movieGenres});
-}
-
-class MovieGenresError extends FilteredMediaState {
-  MovieGenresError({super.errorMessage});
-}
-
-class MovieGenresLoading extends FilteredMediaState {}

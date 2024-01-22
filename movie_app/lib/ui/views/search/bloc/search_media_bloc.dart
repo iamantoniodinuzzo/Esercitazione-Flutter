@@ -10,18 +10,18 @@ class SearchMediaBloc extends Bloc<SearchMediaEvent, SearchMediaState> {
 
   SearchMediaBloc(this._getMediaBySearchUseCase)
       : super(
-          SearchMediaLoaded(searchMovieResult: List.empty()),
+          const SearchMediaInitial(),
         ) {
     on<GetSearchMedia>(onSearchMedia);
   }
 
   void onSearchMedia(
       GetSearchMedia event, Emitter<SearchMediaState> emit) async {
-    final searchResult = await _getMediaBySearchUseCase(params: event.query!);
+    final searchResult = await _getMediaBySearchUseCase(params: event.query);
     switch (searchResult) {
       case Success<List<Movie>>(data: var searchResult):
         if (searchResult.isNotEmpty) {
-          emit(SearchMediaLoaded(searchMovieResult: searchResult));
+          emit(SearchMediaLoaded(movieResult: searchResult));
         }
       case Error<List<Movie>>(message: var message):
         emit(SearchMediaError(errorMessage: message));

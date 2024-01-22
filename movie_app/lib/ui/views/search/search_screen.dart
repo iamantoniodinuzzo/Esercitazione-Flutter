@@ -53,20 +53,10 @@ class SearchScreen extends SearchDelegate {
           BlocBuilder<SearchMediaBloc, SearchMediaState>(builder: (_, state) {
         switch (state) {
           //* Success
-          case SearchMediaLoaded(searchMovieResult: var data!):
-            if (data.isEmpty) {
-              return const Center(
-                child: Text(
-                  'Seems empty here, search some movies',
-                  style: MovieAppTextStyle.secondaryPRegular,
-                ),
-              );
-            } else {
-              return MediaVerticalList(
-                movies: data,
-              );
-            }
-
+          case SearchMediaLoaded(result: var data):
+            return MediaVerticalList(
+              movies: data,
+            );
           //* Error
           case SearchMediaError(errorMessage: var message):
             return Center(
@@ -77,6 +67,13 @@ class SearchScreen extends SearchDelegate {
           case SearchMediaLoading():
             return const Center(
               child: CircularProgressIndicator(),
+            );
+          case SearchMediaInitial():
+            return const Center(
+              child: Text(
+                'Seems empty here, search some movies',
+                style: MovieAppTextStyle.secondaryPRegular,
+              ),
             );
         }
       }),

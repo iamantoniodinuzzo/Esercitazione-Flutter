@@ -2,16 +2,21 @@ import 'package:equatable/equatable.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 
 sealed class SearchMediaState extends Equatable {
-  final List<Movie>? searchMovieResult;
-  final String? errorMessage;
+  final List<Movie> result;
+  final String errorMessage;
 
-  const SearchMediaState({this.searchMovieResult, this.errorMessage});
+  const SearchMediaState({List<Movie>? movieResult, String? errorMessage})
+      : result = movieResult ?? const [],
+        errorMessage = errorMessage ?? "";
+
   @override
-  List<Object?> get props => [searchMovieResult!, errorMessage!];
+  List<Object?> get props => [result, errorMessage];
 }
-
+class SearchMediaInitial extends SearchMediaState{
+  const SearchMediaInitial();
+}
 class SearchMediaLoaded extends SearchMediaState {
-  const SearchMediaLoaded({super.searchMovieResult});
+  const SearchMediaLoaded({super.movieResult});
 }
 
 class SearchMediaError extends SearchMediaState {
