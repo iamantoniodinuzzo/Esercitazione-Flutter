@@ -23,16 +23,10 @@ Z
 *lib/ui/views/discover/discover_screen.dart,a\f\af31dead61d4722fe2106ae7f3cdffbf83f9157e
 W
 'lib/ui/views/details/detail_screen.dart,4\d\4d350cb2001d14339fba15304caced4ed9d01e47
-[
-+lib/ui/views/details/detail_view_model.dart,6\0\605656ad0c17c378bdce66e24ccaf315156367b2
 ^
 .lib/ui/views/filterable/filterable_screen.dart,4\c\4cff113cab4bc30355b49637558ff6ba5a6edf51
-i
-9lib/ui/views/filterable/filterable_screen_view_model.dart,6\b\6b6b1f60c098646221b8e85a705385242caa5a69
 R
 "lib/ui/views/home/home_screen.dart,1\4\147b4cc9b3ce37dcdf056b2f14255f2db4789546
-V
-&lib/ui/views/home/home_view_model.dart,3\c\3c03da3cc8cc32fcc86003786c0608f8a5407473
 V
 &lib/ui/views/search/search_screen.dart,4\2\42727f204835e103d0a84a4e14b75bad7983a41a
 g
@@ -67,10 +61,6 @@ g
 7lib/data/remote/mapper/production_countries_mapper.dart,2\c\2cba9652fe17b9887f6729142f14dab575063ee9
 b
 2lib/data/remote/mapper/spoken_language_mapper.dart,3\c\3c55909b7667664266bff24aa0000a2daa99389c
-Q
-!lib/di/injector_repositories.dart,0\8\08c109927169b108f51f12b950e2b92010bab4c4
-M
-lib/di/injector_services.dart,e\2\e2dbc4549f8ed69b070865aa80b3bf888e1a84d2
 O
 lib/core/routes/app_routes.dart,e\7\e74ad0f39051829190488a10b87777046d57bcf5
 U
@@ -79,12 +69,6 @@ P
  lib/core/network/dio_client.dart,b\f\bfcf802866b285c30169fde67e97333303eae318
 V
 &lib/core/network/perform_api_call.dart,7\3\73b98390133aa045dba1a60f8aa2b9d6f8ddd7bf
-S
-#lib/ui/views/_base/base_widget.dart,5\e\5ed5c300e283e8712f4502f8ecf815a0766a3158
-W
-'lib/ui/views/_base/base_view_model.dart,5\9\59fe8c6d8d5934b6f1b3703fb9ea34c1a2572fe1
-Z
-*lib/ui/views/search/search_view_model.dart,0\9\09a4e71e2329f8c8a5c6a1e063a83fa7f8116c86
 Z
 *lib/core/routes/scaffold_with_nav_bar.dart,4\f\4f9b9c2d0d03c4feae8ab27500bd604ae4dd3799
 X
@@ -95,5 +79,3 @@ e
 5lib/core/network/exception/server_exception_type.dart,b\b\bb71d9a8e4ad9f58b14477314c580b3992b7a987
 R
 "lib/core/network/result_state.dart,1\d\1db1903f6cc5a6a6850d000198e702f086d33dc2
-D
-lib/di/injector.dart,0\2\02cf802dc95e98a749ea94adfcde08dd3ff20560
