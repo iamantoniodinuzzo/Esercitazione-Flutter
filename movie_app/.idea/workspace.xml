@@ -5,29 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b57d9784-28cd-4292-b230-92cdc7e85af3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bottom_sheet_filters/bloc/filter_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bottom_sheet_filters/bloc/filter_event.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bottom_sheet_filters/bloc/filter_state.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bottom_sheet_filters/filter_bottom_sheet.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/6/46444e4526420f43236303dbc6800affa85adc35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/6/666413e40f8b1cf1b2cbbf2b359990a2d7d3e203" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/4/b4281cf8ad3a5b9121bbfa1ea42c7c0be127f6f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1810dad1b1b3379fdff057698d0e3a7fba143b7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/d/dd0864aa861dcf569bd1feb580b544322afda18e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f8b90d907958541fb0c4535ace983f776ca6242a" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/6/46444e4526420f43236303dbc6800affa85adc35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/6/666413e40f8b1cf1b2cbbf2b359990a2d7d3e203" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/4/b4281cf8ad3a5b9121bbfa1ea42c7c0be127f6f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/1/d1810dad1b1b3379fdff057698d0e3a7fba143b7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/d/dd0864aa861dcf569bd1feb580b544322afda18e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/8/f8b90d907958541fb0c4535ace983f776ca6242a" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/7.6.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/di/injection_container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/di/injection_container.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_event.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/bloc/discover_media_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/filterable/filterable_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/bloc/home_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/bloc/trending_movie_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/bloc/home_event_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/bloc/trending_movie_event.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/bloc/home_state_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/bloc/trending_movie_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_event.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/bloc/search_media_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui/views/search/search_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,7 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mark9/Desktop/Progetti/Esercitazione-Flutter/movie_app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mark9/Desktop/Progetti/Flutter/flutter_template_mobile&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,

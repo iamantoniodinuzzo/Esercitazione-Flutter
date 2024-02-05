@@ -79,12 +79,6 @@ e
 5lib/core/network/exception/server_exception_type.dart,b\b\bb71d9a8e4ad9f58b14477314c580b3992b7a987
 R
 "lib/core/network/result_state.dart,1\d\1db1903f6cc5a6a6850d000198e702f086d33dc2
-[
-+lib/ui/views/home/bloc/home_event_bloc.dart,d\d\dd0864aa861dcf569bd1feb580b544322afda18e
-[
-+lib/ui/views/home/bloc/home_state_bloc.dart,f\8\f8b90d907958541fb0c4535ace983f776ca6242a
-U
-%lib/ui/views/home/bloc/home_bloc.dart,4\6\46444e4526420f43236303dbc6800affa85adc35
 _
 /lib/ui/views/home/bloc/trending_movie_bloc.dart,e\f\efbe025020b4c99b5f9d594a951d3bd7331b63b8
 `
@@ -103,12 +97,6 @@ O
 lib/di/injection_container.dart,5\1\517ce00db02e1c5dba4af572ad978db94d6c048b
 u
 Elib/ui/views/filterable/bottom_sheet_filters/filter_bottom_sheet.dart,7\4\748c1854973c073c2563554a1bafd98a0fcdbb79
-y
-Ilib/ui/views/filterable/bottom_sheet_filters/bloc/bottom_sheet_state.dart,d\1\d1810dad1b1b3379fdff057698d0e3a7fba143b7
-y
-Ilib/ui/views/filterable/bottom_sheet_filters/bloc/bottom_sheet_event.dart,6\6\666413e40f8b1cf1b2cbbf2b359990a2d7d3e203
-x
-Hlib/ui/views/filterable/bottom_sheet_filters/bloc/bottom_sheet_bloc.dart,b\4\b4281cf8ad3a5b9121bbfa1ea42c7c0be127f6f5
 s
 Clib/ui/views/filterable/bottom_sheet_filters/bloc/filter_event.dart,6\9\699d845cbdfeffc4a383ca4fb4bd3cf2e60befdb
 s

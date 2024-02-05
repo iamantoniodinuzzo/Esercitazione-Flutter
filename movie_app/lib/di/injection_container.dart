@@ -61,7 +61,6 @@ Future<void> initializeDependencies() async {
   getIt.registerFactory<DiscoverMediaBloc>(
     () => DiscoverMediaBloc(
       getIt<GetMediaByFilterUseCase>(),
-      getIt<GetMovieGenresUseCase>(),
     ),
   );
 }
