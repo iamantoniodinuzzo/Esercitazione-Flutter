@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:movie_app/core/network/exception/server_exception_type.dart';
+import 'package:movie_app/core/network/exception/api_exception.dart';
 import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/mapper/genre_mapper.dart';
@@ -28,7 +28,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final trendingMovies = await _movieService.getTrendingMovies(timeWindow);
       final mappedResult = trendingMovies.results.mapToDomain().toList();
       return Success(data: mappedResult);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Error(message: e.message);
     }
   }
@@ -40,7 +40,7 @@ class MovieRepositoryImpl implements MovieRepository {
           await _movieService.getMovieDetails(movieId);
       final MovieDetails mappedResult = movieDetails.mapToDomain();
       return Success(data: mappedResult);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Error(message: e.message);
     }
   }
@@ -51,7 +51,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final baseResponse = await _movieService.searchMovie(query);
       final mappedResult = baseResponse.results.mapToDomain().toList();
       return Success(data: mappedResult);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Error(message: e.message);
     }
   }
@@ -62,7 +62,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final baseResponse = await _movieService.discoverMovieByFilter(filter);
       final mappedResult = baseResponse.results.mapToDomain().toList();
       return Success(data: mappedResult);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Error(message: e.message);
     }
   }
@@ -73,7 +73,7 @@ class MovieRepositoryImpl implements MovieRepository {
       final baseResponse = await _movieService.getMovieGenres();
       final mappedResult = baseResponse.genres.mapToDomain().toList();
       return Success(data: mappedResult);
-    } on ServerException catch (e) {
+    } on ApiException catch (e) {
       return Error(message: e.message);
     }
   }

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:movie_app/core/network/exception/server_exception_type.dart';
+import 'package:movie_app/core/network/exception/api_exception.dart';
 import 'package:movie_app/core/util/extensions/extensions.dart';
-
 
 /// Esegue una chiamata API generica.
 ///
@@ -16,10 +15,9 @@ Future<T> performApiCall<T>(
     if (response.succeeded()) {
       return fromJson(response.data);
     } else {
-      throw ServerException(response);
+      throw ApiException(response);
     }
   } on DioException catch (error) {
-    throw ServerException(error);
+    throw ApiException(error);
   }
 }
-
