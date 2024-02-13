@@ -17,7 +17,7 @@ final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
   //* Dio
   getIt.registerSingleton<DioClient>(
-      DioClient(apiKey: '9ca2906942298ba2a5a9f3b813ee0491'));
+      DioClient(apiKey: 'dc9bd7bc80be4fd9c8532b58c080391f'));
 
   //* Dependencies
   getIt.registerSingleton<MovieService>(

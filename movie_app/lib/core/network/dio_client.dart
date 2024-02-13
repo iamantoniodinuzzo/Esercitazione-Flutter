@@ -20,7 +20,11 @@ class DioClient {
                   const Duration(milliseconds: Constants.connectTimeout),
               receiveTimeout:
                   const Duration(milliseconds: Constants.receiveTimeout),
-              headers: {'Content-Type': 'application/json; charset=UTF-8'},
+              headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Authorization':
+                    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYzliZDdiYzgwYmU0ZmQ5Yzg1MzJiNThjMDgwMzkxZiIsInN1YiI6IjYxYzMxMTk3ZWZkM2MyMDA0MTkzZTM1YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.q0-l-AWQpi8y0oOoap5bmQMIijBtMkuAuFx_GcXM3bA',
+              },
               responseType: ResponseType.json),
         )..interceptors.addAll([
             if (kDebugMode) LoggerInterceptor(),
@@ -50,13 +54,13 @@ class DioClient {
 
   // POST METHOD
   Future<Response> post(
-      String url, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String url, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.post(
         url,
@@ -73,14 +77,14 @@ class DioClient {
 
   // PUT METHOD
   Future<Response> put(
-      String url, {
-        dynamic data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-        ProgressCallback? onSendProgress,
-        ProgressCallback? onReceiveProgress,
-      }) async {
+    String url, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     try {
       final Response response = await _dio.put(
         url,
@@ -99,12 +103,12 @@ class DioClient {
 
   // DELETE METHOD
   Future<dynamic> delete(
-      String url, {
-        data,
-        Map<String, dynamic>? queryParameters,
-        Options? options,
-        CancelToken? cancelToken,
-      }) async {
+    String url, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+  }) async {
     try {
       final Response response = await _dio.delete(
         url,
