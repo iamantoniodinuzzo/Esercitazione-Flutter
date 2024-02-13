@@ -6,6 +6,7 @@ import 'package:movie_app/di/injection_container.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
+
   runApp(const MainApp());
 }
 
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String appTitle = 'Movie App';
-  
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: appTitle,

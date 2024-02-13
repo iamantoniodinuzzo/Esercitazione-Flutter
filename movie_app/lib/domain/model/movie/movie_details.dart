@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+import 'package:movie_app/core/util/formatter/currency_formatter.dart';
 import 'package:movie_app/domain/model/collection/collection.dart';
 
 import '../genre/genre.dart';
@@ -21,9 +23,9 @@ class MovieDetails {
   final String posterPath;
   final List<ProductionCompany> productionCompanies;
   final List<ProductionCountry> productionCountries;
-  final String releaseDate;
+  final DateTime releaseDate;
   final int revenue;
-  final int runtime;
+  final String runtime;
   final List<SpokenLanguage> spokenLanguages;
   final String status;
   final String tagline;
@@ -59,4 +61,13 @@ class MovieDetails {
     required this.voteAverage,
     required this.voteCount,
   });
+
+  String get formattedReleaseDate =>
+      DateFormat.yMMMMd(Intl.defaultLocale).format(releaseDate);
+
+  String get formattedRevenue =>
+      CurrencyFormatter.formatCurrency(revenue.toDouble());
+
+  String get formattedBudget =>
+      CurrencyFormatter.formatCurrency(budget.toDouble());
 }

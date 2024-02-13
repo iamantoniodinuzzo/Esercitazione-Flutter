@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/core/theme/movie_app_dimensions.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
@@ -120,16 +121,16 @@ class _DetailScreenState extends State<DetailScreen> {
                             ),
                             _buildHorizontalSectionInfo(
                               title: 'Release date',
-                              value: movieDetails.releaseDate,
+                              value: movieDetails.formattedReleaseDate,
                             ),
                             _buildHorizontalSectionInfo(
                               title: 'Budget',
-                              value: movieDetails.budget.toString(),
+                              value: movieDetails.formattedBudget,
                               isVisibleWhen: () => movieDetails.budget != 0,
                             ),
                             _buildHorizontalSectionInfo(
                               title: 'Revenue',
-                              value: movieDetails.revenue.toString(),
+                              value: movieDetails.formattedRevenue,
                               isVisibleWhen: () => movieDetails.revenue != 0,
                             ),
                             _buildHorizontalSectionInfo(

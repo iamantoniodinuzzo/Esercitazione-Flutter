@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+import 'package:movie_app/core/util/formatter/time_formatter.dart';
 import 'package:movie_app/data/remote/dto/movie/movie_details_dto.dart';
 import 'package:movie_app/data/remote/mapper/collection_mapper.dart';
 import 'package:movie_app/data/remote/mapper/genre_mapper.dart';
@@ -24,9 +26,9 @@ extension MovieDetailsMapper on MovieDetailsDto {
       posterPath: posterPath,
       productionCompanies: productionCompanies.mapToDomain().toList(),
       productionCountries: productionCountries.mapToDomain().toList(),
-      releaseDate: releaseDate,
+      releaseDate: DateTime.parse(releaseDate),
       revenue: revenue,
-      runtime: runtime,
+      runtime: TimeFormatter.formatTime(runtime),
       spokenLanguages: spokenLanguages.mapToDomain().toList(),
       status: status,
       tagline: tagline,
