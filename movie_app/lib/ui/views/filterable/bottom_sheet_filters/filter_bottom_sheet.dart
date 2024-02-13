@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/core/theme/colors.dart';
-import 'package:movie_app/core/theme/texts.dart';
+import 'package:movie_app/core/theme/movie_app_colors.dart';
+import 'package:movie_app/core/theme/movie_app_text_style.dart';
 import 'package:movie_app/domain/model/genre/genre.dart';
 import 'package:movie_app/ui/views/filterable/bottom_sheet_filters/bloc/filter_bloc.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/core/theme/texts.dart';
+import 'package:movie_app/core/theme/movie_app_text_style.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/ui/views/search/bloc/search_media_bloc.dart';
 import 'package:movie_app/ui/views/search/bloc/search_media_event.dart';

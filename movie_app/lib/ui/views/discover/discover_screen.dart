@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/theme/colors.dart';
+import '../../../core/theme/movie_app_colors.dart';
 import '../../../core/routes/app_routes.dart';
 import '../search/search_screen.dart';
 

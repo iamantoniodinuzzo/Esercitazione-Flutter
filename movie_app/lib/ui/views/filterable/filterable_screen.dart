@@ -8,8 +8,8 @@ import 'package:movie_app/ui/views/filterable/bloc/discover_media_bloc.dart';
 import 'package:movie_app/ui/views/filterable/bloc/discover_media_event.dart';
 import 'package:movie_app/ui/views/filterable/bloc/discover_media_state.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/texts.dart';
+import '../../../core/theme/movie_app_colors.dart';
+import '../../../core/theme/movie_app_text_style.dart';
 import '../../../domain/model/filter/sort_type.dart';
 import '../../../domain/model/genre/genre.dart';
 import 'bottom_sheet_filters/filter_bottom_sheet.dart';

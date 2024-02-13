@@ -9,8 +9,8 @@ import 'package:movie_app/ui/views/details/bloc/media_details_event.dart';
 import 'package:movie_app/ui/views/details/bloc/media_details_state.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
 
-import '../../../core/theme/colors.dart';
-import '../../../core/theme/texts.dart';
+import '../../../core/theme/movie_app_colors.dart';
+import '../../../core/theme/movie_app_text_style.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key, required this.selectedMedia});
