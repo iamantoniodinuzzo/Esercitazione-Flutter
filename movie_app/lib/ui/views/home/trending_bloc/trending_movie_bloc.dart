@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/usecases/get_trending_movies.dart';
-import 'package:movie_app/ui/views/home/bloc/trending_movie_event.dart';
-import 'package:movie_app/ui/views/home/bloc/trending_movie_state.dart';
+import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_event.dart';
+import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_state.dart';
 
 class TrendingMovieBloc extends Bloc<TrendingMovieEvent, TrendingMovieState> {
   final GetTrendingMoviesUseCase _getTrendingMovies;

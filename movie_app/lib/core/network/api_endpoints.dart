@@ -28,6 +28,20 @@ class ApiEndpoints {
     }
   }
 
+  static String movieLists(MovieListsEndpoint endpoint) {
+    const path = '/movie';
+    switch (endpoint) {
+      case MovieListsEndpoint.nowPlaying:
+        return '$path/now_playing';
+      case MovieListsEndpoint.popular:
+        return '$path/popular';
+      case MovieListsEndpoint.topRated:
+        return '$path/top_rated';
+      case MovieListsEndpoint.upcoming:
+        return '$path/upcoming';
+    }
+  }
+
   ///Return the path for a movie [endpoint].
   ///
   ///Specify movie [movieId] to get the path for a specific movie.
@@ -100,6 +114,13 @@ enum MoviesEndpoint {
   similar,
   videos,
   watchProviders;
+}
+
+enum MovieListsEndpoint {
+  nowPlaying,
+  popular,
+  topRated,
+  upcoming;
 }
 
 enum SearchEndpoint {

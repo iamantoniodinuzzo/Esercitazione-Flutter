@@ -7,9 +7,9 @@ import 'package:movie_app/core/theme/movie_app_dimensions.dart';
 import 'package:movie_app/core/theme/movie_app_text_style.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/ui/views/home/bloc/trending_movie_bloc.dart';
-import 'package:movie_app/ui/views/home/bloc/trending_movie_event.dart';
-import 'package:movie_app/ui/views/home/bloc/trending_movie_state.dart';
+import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_bloc.dart';
+import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_event.dart';
+import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_state.dart';
 import 'package:movie_app/ui/views/search/search_screen.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
 

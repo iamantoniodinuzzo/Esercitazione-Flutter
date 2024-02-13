@@ -77,4 +77,15 @@ class MovieRepositoryImpl implements MovieRepository {
       return Error(message: e.message);
     }
   }
+
+  @override
+  Future<ResultState<List<Movie>>> getUpcomingMovies() async {
+    try {
+      final trendingMovies = await _movieService.getUpcomingMovies();
+      final mappedResult = trendingMovies.results.mapToDomain().toList();
+      return Success(data: mappedResult);
+    } on ApiException catch (e) {
+      return Error(message: e.message);
+    }
+  }
 }

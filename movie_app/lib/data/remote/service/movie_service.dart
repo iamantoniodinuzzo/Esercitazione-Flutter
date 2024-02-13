@@ -28,6 +28,17 @@ class MovieService {
     );
   }
 
+  Future<BaseMediaResponse> getUpcomingMovies() async {
+    return performApiCall(
+      () => _dioClient.get(
+        ApiEndpoints.movieLists(
+          MovieListsEndpoint.upcoming,
+        ),
+      ),
+      (json) => BaseMediaResponse.fromJson(json),
+    );
+  }
+
   Future<BaseMediaResponse> discoverMovieByFilter(Filter filter) async {
     return performApiCall(
       () => _dioClient.get(ApiEndpoints.discover(DiscoverEndpoint.movie),
