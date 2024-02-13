@@ -66,7 +66,7 @@ Future displayBottomSheet(
                         ),
                         child: Text(
                           'Clear filters',
-                          style: MovieAppTextStyle.secondaryPBold
+                          style: MovieAppTextStyle.smallTitle
                               .copyWith(color: MovieAppColors.onPrimary),
                         ),
                         onPressed: () {
@@ -82,12 +82,12 @@ Future displayBottomSheet(
                         ),
                         child: Text(
                           'Apply filters',
-                          style: MovieAppTextStyle.secondaryPBold
+                          style: MovieAppTextStyle.smallTitle
                               .copyWith(color: MovieAppColors.onPrimary),
                         ),
                         onPressed: () {
                           //FIXME: Come passare un filtro?
-                       /*   context
+                          /*   context
                               .read<FilterBloc>()
                               .add(ApplyFilter(filter: filter));*/
                         },

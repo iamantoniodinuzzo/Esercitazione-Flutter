@@ -14,6 +14,13 @@ class MovieAppTextStyle {
     fontWeight: FontWeight.bold,
     fontFamily: 'Open Sans',
     fontStyle: FontStyle.normal,
+    fontSize: MovieAppDimensions.hugeTitle,
+  );
+  
+  static const bigTitle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Open Sans',
+    fontStyle: FontStyle.normal,
     fontSize: MovieAppDimensions.titleBig,
   );
 
@@ -21,7 +28,14 @@ class MovieAppTextStyle {
     fontWeight: FontWeight.bold,
     fontFamily: 'Open Sans',
     fontStyle: FontStyle.normal,
-    fontSize: MovieAppDimensions.titleBig,
+    fontSize: MovieAppDimensions.titleMedium,
+  );
+
+  static const smallTitle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Open Sans',
+    fontStyle: FontStyle.normal,
+    fontSize: MovieAppDimensions.titleSmall,
   );
 
   static const primaryH1Regular = TextStyle(
@@ -66,13 +80,6 @@ class MovieAppTextStyle {
       color: MovieAppColors.onPrimary,
       fontWeight: FontWeight.w300,
       fontFamily: 'Open Sans',
-      fontStyle: FontStyle.normal,
-      fontSize: 16.0);
-
-  static const secondaryPBold = TextStyle(
-      color: MovieAppColors.onPrimary,
-      fontWeight: FontWeight.w700,
-      fontFamily: 'Roboto',
       fontStyle: FontStyle.normal,
       fontSize: 16.0);
 }

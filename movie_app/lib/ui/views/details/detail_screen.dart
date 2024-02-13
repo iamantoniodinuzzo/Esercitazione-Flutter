@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/theme/movie_app_dimensions.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/ui/views/details/bloc/media_details_bloc.dart';
@@ -33,6 +34,7 @@ class _DetailScreenState extends State<DetailScreen> {
           GetMovieDetails(selectedMovie: widget.selectedMedia),
         ),
       child: Scaffold(
+        backgroundColor: MovieAppColors.primary,
         body: SafeArea(
           child: NestedScrollView(
             headerSliverBuilder:
@@ -59,77 +61,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         title: widget.selectedMedia.title,
                       ),
                       collapseMode: CollapseMode.parallax,
-                      background: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          // * Immagine di sfondo
-                          Positioned.fill(
-                            bottom: 100,
-                            child: CachedNetworkImage(
-                              imageBuilder: (context, imageProvider) =>
-                                  Container(
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: imageProvider,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        MovieAppColors.primary.withOpacity(0.8),
-                                        Colors.transparent,
-                                      ],
-                                      begin: Alignment.bottomCenter,
-                                      end: Alignment.topCenter,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              imageUrl: widget
-                                  .selectedMedia.completeBackdropPathOriginal,
-                              progressIndicatorBuilder:
-                                  (context, url, progress) => Center(
-                                child: CircularProgressIndicator(
-                                  value: progress.progress,
-                                ),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.image_not_supported),
-                            ),
-                          ),
-                          // * Contenuto sovrapposto
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                // * Poster
-                                Hero(
-                                  tag: widget.selectedMedia.id,
-                                  child: MediaPoster(
-                                    height: 140,
-                                    width: 100,
-                                    movie: widget.selectedMedia,
-                                    isVoteAverageVisible: false,
-                                  ),
-                                ),
-                                const SizedBox(width: 16.0),
-                                //* Titolo
-                                Expanded(
-                                  child: Text(
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    widget.selectedMedia.title,
-                                    style: MovieAppTextStyle.secondaryH1Bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      background: _buildSpaceAppBarBackground(),
                     );
                   }),
                 ),
@@ -142,19 +74,24 @@ class _DetailScreenState extends State<DetailScreen> {
                   case MediaDetailsLoaded(movieDetails: var movieDetails!):
                     return SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(
+                          MovieAppDimensions.mediumPadding,
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               movieDetails.tagline,
-                              style: MovieAppTextStyle.secondaryPBold,
+                              style: MovieAppTextStyle.smallTitle,
                             ),
                             Text(movieDetails.overview),
-                            const SizedBox(height: 16.0),
-                            const Text(
+                            const SizedBox(
+                              height: MovieAppDimensions.mediumPadding,
+                            ),
+                            Text(
                               'Genres',
-                              style: MovieAppTextStyle.secondaryPBold,
+                              style: MovieAppTextStyle.smallTitle
+                                  .copyWith(color: MovieAppColors.onPrimary),
                             ),
                             Wrap(
                               spacing: 8.0,
@@ -166,13 +103,16 @@ class _DetailScreenState extends State<DetailScreen> {
                                   )
                                   .toList(),
                             ),
-                            const SizedBox(height: 16.0),
-                            const Text(
+                            const SizedBox(
+                              height: MovieAppDimensions.mediumPadding,
+                            ),
+                            Text(
                               'Information',
-                              style: MovieAppTextStyle.secondaryPBold,
+                              style: MovieAppTextStyle.smallTitle
+                                  .copyWith(color: MovieAppColors.onPrimary),
                             ),
                             const SizedBox(
-                              height: 16.0,
+                              height: MovieAppDimensions.mediumPadding,
                             ),
                             _buildHorizontalSectionInfo(
                               title: 'Original title',
@@ -225,6 +165,78 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
     );
   }
+
+  Stack _buildSpaceAppBarBackground() {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        // * Immagine di sfondo
+        Positioned.fill(
+          bottom: 100,
+          child: CachedNetworkImage(
+            imageBuilder: (context, imageProvider) {
+              return Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          MovieAppColors.primary.withOpacity(0.6),
+                          Colors.transparent,
+                        ],
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                      ),
+                    ),
+                  ));
+            },
+            imageUrl: widget.selectedMedia.completeBackdropPathOriginal,
+            progressIndicatorBuilder: (context, url, progress) => Center(
+              child: CircularProgressIndicator(
+                value: progress.progress,
+              ),
+            ),
+            errorWidget: (context, url, error) =>
+                const Icon(Icons.image_not_supported),
+          ),
+        ),
+        // * Contenuto sovrapposto
+        Padding(
+          padding: const EdgeInsets.all(
+            MovieAppDimensions.basePadding,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              // * Poster
+              Hero(
+                tag: widget.selectedMedia.id,
+                child: MediaPoster.small(
+                  movie: widget.selectedMedia,
+                  isVoteAverageVisible: false,
+                ),
+              ),
+              const SizedBox(width: MovieAppDimensions.mediumPadding),
+              //* Titolo
+              Expanded(
+                child: Text(
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  widget.selectedMedia.title,
+                  style: MovieAppTextStyle.hugeTitle,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 /// Mostra una sezione orizzontale caratterizzata da un titolo e un valore
@@ -255,7 +267,7 @@ Widget _buildHorizontalSectionInfo({
             textAlign: TextAlign.left,
             value,
             overflow: TextOverflow.clip,
-            style: MovieAppTextStyle.secondaryPBold,
+            style: MovieAppTextStyle.smallTitle,
           ),
         )
       ],
@@ -284,7 +296,7 @@ class _CollapsedTitle extends StatelessWidget {
               : 0.0,
       child: Text(
         title,
-        style: MovieAppTextStyle.secondaryPBold,
+        style: MovieAppTextStyle.smallTitle,
       ),
     );
   }

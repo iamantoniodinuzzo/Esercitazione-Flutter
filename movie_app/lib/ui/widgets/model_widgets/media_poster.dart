@@ -33,6 +33,15 @@ class MediaPoster extends StatelessWidget {
   })  : height = MovieAppDimensions.bigPosterHeight,
         width = MovieAppDimensions.bigPosterWidth;
 
+  const MediaPoster.small({
+    super.key,
+    required this.movie,
+    this.isVoteAverageVisible = true,
+    this.isClickable = true,
+    this.onTap,
+  })  : height = MovieAppDimensions.smallPosterHeight,
+        width = MovieAppDimensions.smallPosterWidth;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -84,7 +93,7 @@ class MediaPoster extends StatelessWidget {
         child: Chip(
           backgroundColor: MovieAppColors.primary,
           label: Text(
-            style: MovieAppTextStyle.secondaryPBold.copyWith(fontSize: 12),
+            style: MovieAppTextStyle.smallTitle.copyWith(fontSize: 12),
             movie.voteAverage.ceilToDouble().toString(),
           ),
         ),

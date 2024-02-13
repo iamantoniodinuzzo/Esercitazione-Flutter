@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const Text(
                       'Trending Movies',
-                      style: MovieAppTextStyle.hugeTitle,
+                      style: MovieAppTextStyle.bigTitle,
                     ),
                     //* Trending Carousel
                     const SizedBox(
