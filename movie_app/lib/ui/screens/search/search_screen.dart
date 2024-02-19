@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/theme/movie_app_text_style.dart';
 import 'package:movie_app/di/injection_container.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_bloc.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_event.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_state.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_bloc.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_event.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_state.dart';
 import 'package:movie_app/ui/widgets/generic_widgets/media_vertical_list.dart';
 
 class SearchScreen extends SearchDelegate {

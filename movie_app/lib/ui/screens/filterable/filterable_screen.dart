@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/filter/filter.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_bloc.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_event.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_state.dart';
-
-import '../../../core/theme/movie_app_colors.dart';
-import '../../../core/theme/movie_app_text_style.dart';
-import '../../../domain/model/filter/sort_type.dart';
-import '../../../domain/model/genre/genre.dart';
+import 'package:movie_app/domain/model/filter/sort_type.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_bloc.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_event.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_state.dart';
 import 'bottom_sheet_filters/filter_bottom_sheet.dart';
 
 class FilterableScreen extends StatefulWidget {

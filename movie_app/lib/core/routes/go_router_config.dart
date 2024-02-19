@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/routes/scaffold_with_nav_bar.dart';
 import '../../domain/model/movie/movie.dart';
-import '../../ui/views/details/detail_screen.dart';
-import '../../ui/views/discover/discover_screen.dart';
-import '../../ui/views/filterable/filterable_screen.dart';
-import '../../ui/views/home/home_screen.dart';
+import '../../ui/screens/screens.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =

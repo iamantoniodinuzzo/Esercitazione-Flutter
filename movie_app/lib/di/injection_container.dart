@@ -8,10 +8,10 @@ import 'package:movie_app/domain/usecases/get_media_by_search.dart';
 import 'package:movie_app/domain/usecases/get_movie_details.dart';
 import 'package:movie_app/domain/usecases/get_movie_genres.dart';
 import 'package:movie_app/domain/usecases/get_trending_movies.dart';
-import 'package:movie_app/ui/views/details/bloc/media_details_bloc.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_bloc.dart';
-import 'package:movie_app/ui/views/home/trending_bloc/trending_movie_bloc.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_bloc.dart';
+import 'package:movie_app/ui/screens/details/bloc/media_details_bloc.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_bloc.dart';
+import 'package:movie_app/ui/screens/home/trending_bloc/trending_movie_bloc.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_bloc.dart';
 
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {

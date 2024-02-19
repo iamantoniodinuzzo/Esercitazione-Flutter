@@ -2,8 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/usecases/get_media_by_filter.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_event.dart';
-import 'package:movie_app/ui/views/filterable/bloc/discover_media_state.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_event.dart';
+import 'package:movie_app/ui/screens/filterable/bloc/discover_media_state.dart';
 
 class DiscoverMediaBloc extends Bloc<DiscoverMediaEvent, DiscoverMediaState> {
   final GetMediaByFilterUseCase _getMediaByFilterUseCase;

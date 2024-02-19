@@ -2,8 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/network/result_state.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
 import 'package:movie_app/domain/usecases/get_media_by_search.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_event.dart';
-import 'package:movie_app/ui/views/search/bloc/search_media_state.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_event.dart';
+import 'package:movie_app/ui/screens/search/bloc/search_media_state.dart';
 
 class SearchMediaBloc extends Bloc<SearchMediaEvent, SearchMediaState> {
   final GetMediaBySearchUseCase _getMediaBySearchUseCase;

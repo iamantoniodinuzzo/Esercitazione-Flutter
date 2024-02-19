@@ -2,13 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_app/core/theme/movie_app_dimensions.dart';
 import 'package:movie_app/di/injection_container.dart';
 import 'package:movie_app/domain/model/movie/movie.dart';
-import 'package:movie_app/ui/views/details/bloc/media_details_bloc.dart';
-import 'package:movie_app/ui/views/details/bloc/media_details_event.dart';
-import 'package:movie_app/ui/views/details/bloc/media_details_state.dart';
+import 'package:movie_app/ui/screens/details/bloc/media_details_bloc.dart';
+import 'package:movie_app/ui/screens/details/bloc/media_details_event.dart';
+import 'package:movie_app/ui/screens/details/bloc/media_details_state.dart';
 import 'package:movie_app/ui/widgets/model_widgets/media_poster.dart';
 
 import '../../../core/theme/movie_app_colors.dart';
